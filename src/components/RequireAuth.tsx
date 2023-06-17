@@ -3,10 +3,10 @@ import { useAuth } from "../services";
 import { Navigate, useLocation } from "react-router-dom";
 
 const RequireAuth: FC<PropsWithChildren> = ({ children }) => {
-  const auth = useAuth();
+  const { player } = useAuth();
   const location = useLocation();
 
-  if (!auth.player) {
+  if (!player) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
