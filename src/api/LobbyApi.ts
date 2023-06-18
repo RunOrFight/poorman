@@ -1,18 +1,14 @@
-import {
-  ICreateLobbyResponse,
-  IJoinLobbyResponse,
-  IPlayer,
-} from "../interfaces";
+import { ICreateLobbyResponse, IJoinLobbyResponse, IUser } from "../interfaces";
 
 const getBaseUrl = (endPoint: string) =>
   `http://localhost:5157/game/${endPoint}`;
 
 interface ICreteLobbyPayload {
-  userId: IPlayer["id"];
+  userId: IUser["id"];
 }
 
 interface IJoinLobbyPayload {
-  userId: IPlayer["id"];
+  userId: IUser["id"];
   link: ICreateLobbyResponse["link"];
 }
 

@@ -10,16 +10,16 @@ import { useAuth } from ".";
 const useCreateLobby = () => {
   const [requestStatus, setRequestStatus] = useState<TRequestStatus>("init");
   const [data, setData] = useState<ICreateLobbyResponse | null>(null);
-  const { player } = useAuth();
+  const { user } = useAuth();
 
   const createLobby = async () => {
-    if (!player) {
+    if (!user) {
       return;
     }
 
     setRequestStatus("pending");
 
-    const data = await createLobbyApi({ userId: player.id });
+    const data = await createLobbyApi({ userId: user.id });
     data ? setRequestStatus("done") : setRequestStatus("error");
 
     setData(data);
@@ -31,16 +31,16 @@ const useCreateLobby = () => {
 const useJoinLobby = () => {
   const [requestStatus, setRequestStatus] = useState<TRequestStatus>("init");
   const [data, setData] = useState<IJoinLobbyResponse | null>(null);
-  const { player } = useAuth();
+  const { user } = useAuth();
 
   const joinLobby = async (link: ICreateLobbyResponse["link"]) => {
-    if (!player) {
+    if (!user) {
       return;
     }
 
     setRequestStatus("pending");
 
-    const data = await joinLobbyApi({ userId: player.id, link });
+    const data = await joinLobbyApi({ userId: user.id, link });
     data ? setRequestStatus("done") : setRequestStatus("error");
 
     setData(data);

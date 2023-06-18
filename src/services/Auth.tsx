@@ -1,39 +1,36 @@
-import { createContext, useContext, useState } from "react";
-import { IPlayer, IPlayerLoginCreds } from "../interfaces";
+import { createContext, useContext } from "react";
+import { IUser, IUserLoginCreds } from "../interfaces";
 import { signIn as apiSignIn } from "../api";
 import { useLocalStorage } from ".";
 
 interface IAuthContext {
-  player: IPlayer | null;
-  signIn: (playerCreds: IPlayerLoginCreds, callback: VoidFunction) => void;
+  user: IUser | null;
+  signIn: (userCreds: IUserLoginCreds, callback: VoidFunction) => void;
   signOut: (callback: VoidFunction) => void;
 }
 
 const AuthContext = createContext<IAuthContext>(null!);
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [storedPlayer, setStoredPlayer] = useLocalStorage<IPlayer | null>(
-    "player",
+  const [storedUser, setStoredUser] = useLocalStorage<IUser | null>(
+    "user",
     null
   );
-  const signIn = async (
-    playerCreds: IPlayerLoginCreds,
-    callback: VoidFunction
-  ) => {
-    const apiPlayer = await apiSignIn(playerCreds);
-    if (!apiPlayer) {
+  const signIn = async (userCreds: IUserLoginCreds, callback: VoidFunction) => {
+    const apiUser = await apiSignIn(userCreds);
+    if (!apiUser) {
       return;
     }
-    setStoredPlayer(apiPlayer);
+    setStoredUser(apiUser);
     callback();
   };
 
   const signOut = (callback: VoidFunction) => {
-    setStoredPlayer(null);
+    setStoredUser(null);
     callback();
   };
 
-  const value = { player: storedPlayer, signIn, signOut };
+  const value = { user: storedUser, signIn, signOut };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

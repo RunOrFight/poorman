@@ -1,14 +1,12 @@
-import { IPlayer, IPlayerLoginCreds } from "../interfaces";
+import { IUser, IUserLoginCreds } from "../interfaces";
 
 const getBaseUrl = (endPoint: string) =>
   `http://localhost:5157/auth/${endPoint}`;
 
-const signIn = async (
-  playerCreds: IPlayerLoginCreds
-): Promise<void | IPlayer> => {
+const signIn = async (userCreds: IUserLoginCreds): Promise<void | IUser> => {
   const res = await fetch(getBaseUrl("signIn"), {
     method: "POST",
-    body: JSON.stringify(playerCreds),
+    body: JSON.stringify(userCreds),
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json; charset=utf-8",
