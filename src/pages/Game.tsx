@@ -1,7 +1,8 @@
 import { DndContext } from "@dnd-kit/core";
-import { Card, Hand, Progress, Side, Hero, Field } from "../components";
+import { Card, Hand, Progress, Side, Hero, Field } from "../ui";
 import { useEffect, useState } from "react";
 import useWebSocket from "react-use-websocket";
+import EndTurnButton from "../widgets/EndTurnButton";
 
 const WS_URL = "ws://localhost:5157";
 
@@ -56,8 +57,11 @@ const GamePage = () => {
               <Card id="cat-4" />
             </Hand>
           </div>
-          <Side extraClassName="justify-start">
+          <Side extraClassName="justify-start items-center">
             <Hero />
+            <div className="h-full flex items-center">
+              <EndTurnButton />
+            </div>
           </Side>
         </div>
       </DndContext>

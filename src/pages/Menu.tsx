@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Button, Input } from "../components";
+import { Button, Input } from "../ui";
 import { createLobby as createLobbyApi } from "../api/LobbyApi";
 import { useAuth } from "../services";
 

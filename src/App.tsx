@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthPage, GamePage, MenuPage } from "./pages";
 import { AuthProvider } from "./services";
-import { RequireAuth } from "./components";
+import { RequireAuth } from "./widgets";
 
 const App = () => (
   <AuthProvider>
