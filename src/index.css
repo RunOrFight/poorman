@@ -127,3 +127,8 @@ h6 {
     url("../src/assets/cat4@2x.png") 2x,
   );
 }
+
+@keyframes progress{
+  from {transform: scaleX(5%) translateX(-5%);}
+  to {transform: scaleX(75%) translateX(130%);}
+}

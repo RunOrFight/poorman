@@ -6,4 +6,6 @@ export { default as FieldsContainer } from "./FieldsContainer.js";
 export { default as Field } from "./Field.js";
 export { default as Hero } from "./Hero.js";
 export { default as Input } from "./Input.js";
-export { default as Button } from "./Button/Button.js";
+export { default as Button } from "./Button/Button";
+export { default as Window } from "./Window";
+export { default as InfiniteProgress } from "./InfiniteProgress";

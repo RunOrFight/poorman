@@ -1,10 +1,7 @@
 import { DndContext } from "@dnd-kit/core";
 import { Card, Hand, Progress, Side, Hero, Field } from "../ui";
-import { useEffect, useState } from "react";
-import useWebSocket from "react-use-websocket";
+import { useState } from "react";
 import EndTurnButton from "../widgets/EndTurnButton";
-
-const WS_URL = "ws://localhost:5157";
 
 const GamePage = () => {
   const [isDropped, setIsDropped] = useState(false);
@@ -14,12 +11,6 @@ const GamePage = () => {
       setIsDropped(true);
     }
   };
-
-  useWebSocket(WS_URL, {
-    onOpen: () => {
-      console.log("WebSocket connection established.");
-    },
-  });
 
   return (
     <div id="bg" className="bg-contain w-full h-full">
