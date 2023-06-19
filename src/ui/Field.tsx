@@ -1,18 +1,22 @@
-import {useDroppable} from "@dnd-kit/core";
+import { useDroppable } from "@dnd-kit/core";
 import { FC, PropsWithChildren } from "react";
 
-const Field:FC<PropsWithChildren> = ({children}) => {
-    const {setNodeRef} = useDroppable({
-        id: 'droppable',
+interface IFieldProps extends PropsWithChildren {
+  id: string;
+}
 
-    });
+const Field: FC<IFieldProps> = ({ children, id }) => {
+  const { setNodeRef } = useDroppable({ id });
 
-    return (
-        <div className="w-44 h-72" ref={setNodeRef}>
-            {children  || <img src="src/assets/field.png"/>}
-        </div>
-            
-    );
+  return (
+    <div
+      className="w-44 h-72 bg-cover bg-no-repeat flex items-center justify-center"
+      id="field"
+      ref={setNodeRef}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default Field;
