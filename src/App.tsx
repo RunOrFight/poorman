@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthPage, GamePage, MenuPage } from "./pages";
-import { AuthProvider } from "./services";
+import { AuthProvider, SignalRProvider } from "./services";
 import { RequireAuth } from "./widgets";
 
 const App = () => (
@@ -9,10 +9,12 @@ const App = () => (
       <Route path="/login" element={<AuthPage type="login" />} />
 
       <Route
-        path="/game"
+        path="/game/:id"
         element={
           <RequireAuth>
-            <GamePage />
+            <SignalRProvider>
+              <GamePage />
+            </SignalRProvider>
           </RequireAuth>
         }
       />
@@ -22,7 +24,9 @@ const App = () => (
         path="*"
         element={
           <RequireAuth>
-            <MenuPage />
+            <SignalRProvider>
+              <MenuPage />
+            </SignalRProvider>
           </RequireAuth>
         }
       />
