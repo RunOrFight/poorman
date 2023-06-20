@@ -22,7 +22,7 @@ const LoginForm = () => {
       .unwrap()
       .then(() => {
         // navigate(from, { replace: true });
-        navigate("/menu");
+        navigate("/");
       });
   };
 
