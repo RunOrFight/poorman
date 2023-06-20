@@ -1,21 +1,24 @@
-import {useDraggable} from '@dnd-kit/core';
-import {FC} from "react";
+import { useDraggable } from "@dnd-kit/core";
+import { FC } from "react";
+import { CSS } from "@dnd-kit/utilities";
 
-interface CardProps{
-    id: string
+interface CardProps {
+  id: number;
+  disabled?: boolean
 }
-const Card: FC<CardProps> = ({id}) => {
+const Card: FC<CardProps> = ({ id , disabled = false}) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id , disabled});
+  const style = { transform: CSS.Translate.toString(transform) };
 
-    const {attributes, listeners, setNodeRef, transform} = useDraggable({
-        id,
-    });
-    const style = transform ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    } : undefined;
-
-    return (
-        <div id={id} ref={setNodeRef} style={style} {...listeners} {...attributes} className="w-40 h-60  bg-contain bg-no-repeat bg-center"/>
-    );
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className="w-40 h-60  bg-contain bg-no-repeat bg-center bg-red-200 rounded"
+    />
+  );
 };
 
 export default Card;

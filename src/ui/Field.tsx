@@ -1,18 +1,25 @@
-import {useDroppable} from "@dnd-kit/core";
-import { FC, PropsWithChildren } from "react";
+import { useDroppable } from "@dnd-kit/core";
+import { FC } from "react";
+import {Card} from "./index.ts";
 
-const Field:FC<PropsWithChildren> = ({children}) => {
-    const {setNodeRef} = useDroppable({
-        id: 'droppable',
+interface IFieldProps {
+  id: string;
+  card: null | {id: number}
+}
 
-    });
+const Field: FC<IFieldProps> = ({id , card}) => {
+  const { setNodeRef, isOver } = useDroppable({ id, data: {card} });
 
-    return (
-        <div className="w-44 h-72" ref={setNodeRef}>
-            {children  || <img src="src/assets/field.png"/>}
-        </div>
-            
-    );
+  const bgStyle = isOver ? card ? "border-red-300"  : "border-green-300"  : "border-grey-300"
+  return (
+    <div
+      className={`w-44 h-72 bg-cover bg-no-repeat flex items-center justify-center border ${bgStyle} `}
+      id="field"
+      ref={setNodeRef}
+    >
+      {card && <Card id={card.id} disabled={true}/>}
+    </div>
+  );
 };
 
 export default Field;

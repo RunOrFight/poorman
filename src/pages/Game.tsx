@@ -1,61 +1,41 @@
-import { DndContext } from "@dnd-kit/core";
-import { Card, Hand, Progress, Side, Hero, Field } from "../ui";
-import { useState } from "react";
-import EndTurnButton from "../widgets/EndTurnButton";
+import { Side} from "../ui";
+import { EndTurnButton, Player } from "../widgets";
+import {usePlayerSelector, useEnemySelector} from "../store";
 
 const GamePage = () => {
-  const [isDropped, setIsDropped] = useState(false);
-
-  const handleDragEnd = (event: any) => {
-    if (event.over && event.over.id === "droppable") {
-      setIsDropped(true);
-    }
-  };
+  const playerName = usePlayerSelector().name
+  const playerHp = usePlayerSelector().hp
+  const enemyName = useEnemySelector().name
+  const enemyHp = useEnemySelector().hp
 
   return (
     <div id="bg" className="bg-contain w-full h-full">
-      <DndContext onDragEnd={handleDragEnd}>
-        <div className="flex w-full h-full">
-          <Side extraClassName="justify-end">
-            <Hero />
-          </Side>
-          <div className="w-full h-full flex flex-col">
-            <Hand />
+      <div className="flex w-full h-full">
+        <Side extraClassName="justify-end">
+            <div className="text-xl">{playerName}</div>
+            <div className="text-xl">{playerHp}</div>
+          {/*<Hero />*/}
+        </Side>
 
-            <div className="w-full h-full flex">
-              <Progress />
-              <div className="h-full w-full flex flex-col">
-                <div className="h-full w-full flex justify-center items-center">
-                  <Field />
-                  <Field />
-                  <Field />
-                </div>
-                <div>
-                  <img src="src/assets/devider.png" />
-                </div>
-                <div className="h-full w-full flex justify-center items-center">
-                  <Field />
-                  <Field />
-                  <Field />
-                </div>
-              </div>
-            </div>
+        <div className="flex flex-col h-full w-full">
+          <div className="h-full w-full"></div>
 
-            <Hand>
-              <Card id="cat-1" />
-              <Card id="cat-2" />
-              <Card id="cat-3" />
-              <Card id="cat-4" />
-            </Hand>
+          <div className="w-full h-10">
+            <img src="src/assets/devider.png" />
           </div>
-          <Side extraClassName="justify-start items-center">
-            <Hero />
-            <div className="h-full flex items-center">
-              <EndTurnButton />
-            </div>
-          </Side>
+
+          <Player />
         </div>
-      </DndContext>
+
+        <Side extraClassName="justify-start items-center">
+          {/*<Hero />*/}
+          <div className="text-xl">{enemyName}</div>
+          <div className="text-xl">{enemyHp}</div>
+          <div className="h-full flex items-center">
+            <EndTurnButton />
+          </div>
+        </Side>
+      </div>
     </div>
   );
 };

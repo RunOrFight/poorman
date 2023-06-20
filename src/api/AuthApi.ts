@@ -1,4 +1,5 @@
 import { IUser, IUserLoginCreds } from "../interfaces";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const getBaseUrl = (endPoint: string) =>
   `http://localhost:5157/auth/${endPoint}`;
@@ -20,5 +21,23 @@ const signIn = async (userCreds: IUserLoginCreds): Promise<void | IUser> => {
     return data;
   }
 };
+
+
+export const AuthApi = createApi({
+  reducerPath: 'auth',
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5157/auth/' }),
+  endpoints: builder => ({
+    signIn: builder.mutation<void, IUserLoginCreds>({
+      query: userCreds => ({
+        method: "POST",
+        url: "/signIn",
+        body: userCreds
+      })
+    })
+
+  })
+})
+
+export const {useSignInMutation} = AuthApi
 
 export { signIn };
