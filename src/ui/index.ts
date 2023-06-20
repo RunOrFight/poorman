@@ -1,4 +1,4 @@
-export { default as Card } from "./Card.js";
+export { default as Card } from "./Card/Card.tsx";
 export { default as Hand } from "./Hand.js";
 export { default as Side } from "./Side.js";
 export { default as Progress } from "./Progress.js";

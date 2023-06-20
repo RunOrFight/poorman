@@ -17,13 +17,13 @@ const Player = () => {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="h-full w-full flex flex-col">
+      <div className="h-full w-full flex flex-col p-2.5">
         <div className="flex justify-center">
           {fields.map((field) => (
             <Field id={field.id} key={field.id} card={field.data}/>
           ))}
         </div>
-        <div className="w-full h-full border flex gap-2 items-center">
+        <div className="w-full h-full border flex gap-2.5 items-center p-2.5">
           {cardsInHand.map((card)=>(<Card key={card.id} id={card.id}/>))}
         </div>
       </div>
