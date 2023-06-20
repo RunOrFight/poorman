@@ -1,18 +1,27 @@
-import { Card, Field} from "../ui";
+import { Card, Field } from "../ui";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
-import {movePlayerCardToField, useAppDispatch, usePlayerFieldsSelector, usePlayerSelector,} from "../store";
-
+import {
+  movePlayerCardToField,
+  useAppDispatch,
+  useAppSelector,
+  usePlayerFieldsSelector,
+  usePlayerSelector,
+} from "../store";
 
 const Player = () => {
-    const dispatch = useAppDispatch()
-    const cardsInHand = usePlayerSelector().cardsInHand
-   const fields = usePlayerFieldsSelector()
+  const dispatch = useAppDispatch();
+  const cardsInHand = usePlayerSelector().cardsInHand;
+  const fields = usePlayerFieldsSelector();
   const handleDragEnd = ({ over, active }: DragEndEvent) => {
-        console.log(over)
-        if(!over?.id || over.data.current?.card){
-            return
-        }
-      dispatch(movePlayerCardToField({fieldId: over.id as string, cardId: active.id as number}))
+    if (!over?.id || over.data.current?.card) {
+      return;
+    }
+    dispatch(
+      movePlayerCardToField({
+        fieldId: over.id as string,
+        cardId: active.id as number,
+      })
+    );
   };
 
   return (
@@ -20,11 +29,13 @@ const Player = () => {
       <div className="h-full w-full flex flex-col p-2.5">
         <div className="flex justify-center">
           {fields.map((field) => (
-            <Field id={field.id} key={field.id} card={field.data}/>
+            <Field id={field.id} key={field.id} card={field.data} />
           ))}
         </div>
         <div className="w-full h-full border flex gap-2.5 items-center p-2.5">
-          {cardsInHand.map((card)=>(<Card key={card.id} id={card.id}/>))}
+          {cardsInHand.map((card) => (
+            <Card key={card.id} id={card.id} />
+          ))}
         </div>
       </div>
     </DndContext>

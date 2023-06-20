@@ -9,21 +9,23 @@ import {
   useState,
   useCallback,
 } from "react";
-import { useAuth } from ".";
 import { InfiniteProgress } from "../ui";
+import { useAuthSelector } from "../store";
+import { IUser } from "../interfaces";
 
 const SignalRContext = createContext<HubConnection>(null!);
 
 const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
   const connection = useRef<HubConnection | null>(null);
-  const { user } = useAuth();
+  const { user } = useAuthSelector() as { user: IUser };
+
   const startConnection = useCallback(
     async (connection: HubConnection) => {
       try {
         await connection.start();
         console.log("Connected to the server.");
-        await connection.invoke("SetUserId", user?.id);
+        await connection.invoke("SetUserId", user.id);
         console.log("SetUserId invoked successfully.");
         setIsConnected(true);
       } catch (error) {

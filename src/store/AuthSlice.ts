@@ -1,16 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import { AuthApi } from "../api";
+import { IUser } from "../interfaces";
+import { useAppSelector } from ".";
 
 const initialState = {
-  name: "",
-
+  isAutorized: false,
+  user: null as IUser | null,
 };
 
-const AuthSlice =  createSlice({
-  name: 'auth',
+const AuthSlice = createSlice({
+  name: "auth",
   initialState,
-  reducers: {
-
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      AuthApi.endpoints.signIn.matchFulfilled,
+      (state, { payload }) => {
+        state.isAutorized = true;
+        state.user = payload;
+        return state;
+      }
+    );
   },
 });
 
-export default AuthSlice
+export const { reducer: AuthReducer, actions } = AuthSlice;
+
+export const useAuthSelector = () => {
+  return useAppSelector((state) => {
+    return state.auth;
+  });
+};

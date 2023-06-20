@@ -1,16 +1,22 @@
 import { FC, PropsWithChildren } from "react";
-import { useAuth } from "../services";
-import { Navigate, useLocation } from "react-router-dom";
+import { SignalRProvider } from "../services";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuthSelector } from "../store";
 
 const RequireAuth: FC<PropsWithChildren> = ({ children }) => {
-  const { user } = useAuth();
+  const isAutorized = useAuthSelector().isAutorized;
+
   const location = useLocation();
 
-  if (!user) {
+  if (!isAutorized) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  return (
+    <SignalRProvider>
+      <Outlet />
+    </SignalRProvider>
+  );
 };
 
 export default RequireAuth;

@@ -1,44 +1,21 @@
-import {Route, Routes} from "react-router-dom";
-import {AuthPage, GamePage, MenuPage} from "./pages";
-import {AuthProvider, SignalRProvider, GameProvider} from "./services";
-import {RequireAuth} from "./widgets";
-import {Provider} from "react-redux";
-import {setupStore} from "./store";
+import { Route, Routes } from "react-router-dom";
+import { AuthPage, GamePage, MenuPage } from "./pages";
+import { RequireAuth } from "./widgets";
+import { Provider } from "react-redux";
+import { setupStore } from "./store";
 
-const store = setupStore()
+const store = setupStore();
 const App = () => (
-    <Provider store={store}>
-            <AuthProvider>
-                <SignalRProvider>
-                <Routes>
-                    <Route path="/login" element={<AuthPage type="login"/>}/>
-
-                    <Route
-                        path="/game/:id"
-                        element={
-                            //<RequireAuth>
-                            <GameProvider>
-                                <GamePage/>
-                            </GameProvider>
-                            //</RequireAuth>
-                        }
-                    />
-
-                    <Route
-                        index
-                        path="*"
-                        element={
-                            <RequireAuth>
-                                <GameProvider>
-                                    <MenuPage/>
-                                </GameProvider>
-                            </RequireAuth>
-                        }
-                    />
-                </Routes>
-        </SignalRProvider>
-    </AuthProvider>
-    </Provider>
+  <Provider store={store}>
+    <Routes>
+      <Route path="/login" element={<AuthPage type="login" />} />
+      <Route path="*" element={<div>No Page</div>} />
+      <Route path="/" element={<RequireAuth />}>
+        <Route index path="menu" element={<MenuPage />} />
+        <Route path="game/:id" element={<GamePage />} />
+      </Route>
+    </Routes>
+  </Provider>
 );
 
 export default App;
