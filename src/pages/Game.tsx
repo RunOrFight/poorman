@@ -1,12 +1,27 @@
 import { Side} from "../ui";
 import {EndTurnButton, Player, SpaceBg} from "../widgets";
 import {usePlayerSelector, useEnemySelector} from "../store";
+import {useGame, useSignalR} from "../services";
+import {useEffect} from "react";
 
 const GamePage = () => {
+  const connection = useSignalR();
+  const { playerId, gameId, loadGame } = useGame();
   const playerName = usePlayerSelector().name
   const playerHp = usePlayerSelector().hp
   const enemyName = useEnemySelector().name
   const enemyHp = useEnemySelector().hp
+
+  useEffect(() => {
+    console.log(connection);
+    connection.on('update_game_data', (data: IGameData) => {
+      console.log(data, 'HERE DATA');
+    });
+
+    loadGame(playerId, gameId).then(response => {
+      console.log(response, 'Resoinse from server')
+    })
+  }, [])
 
   return (
       <SpaceBg>
