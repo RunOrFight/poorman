@@ -1,11 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AuthApi } from "../api";
-import { IUser } from "../interfaces";
 import { useAppSelector } from ".";
 
-const initialState = {
-  isAutorized: false,
-  user: null as IUser | null,
+const initialState = () => {
+  const userString = localStorage.getItem("user");
+
+  return userString
+    ? {
+        isAutorized: true,
+        user: JSON.parse(userString),
+      }
+    : {
+        isAutorized: false,
+        user: null,
+      };
 };
 
 const AuthSlice = createSlice({
@@ -18,6 +26,7 @@ const AuthSlice = createSlice({
       (state, { payload }) => {
         state.isAutorized = true;
         state.user = payload;
+        localStorage.setItem("user", JSON.stringify(payload));
         return state;
       }
     );
