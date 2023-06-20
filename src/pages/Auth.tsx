@@ -1,7 +1,7 @@
 import { FC, FormEventHandler, useState } from "react";
 import { Button, Input } from "../ui";
-import { useAuth } from "../services";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSignInMutation } from "../api";
 
 interface IAuthPageProps {
   type: "login" | "register";
@@ -11,24 +11,36 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const { signIn } = useAuth();
+  // const location = useLocation();
+  const [signIn, { isError }] = useSignInMutation();
 
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from?.pathname || "/";
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    signIn({ email: email.trimEnd(), password: password.trimEnd() }, () => {
-      navigate(from, { replace: true });
-    });
+    signIn({ email: email.trimEnd(), password: password.trimEnd() })
+      .unwrap()
+      .then(() => {
+        // navigate(from, { replace: true });
+        navigate("/menu");
+      });
   };
 
   return (
     <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+      {isError && <div className="text-red-600">Invalid login or password</div>}
       <label>Email</label>
-      <Input onChange={(e) => setEmail(e.target.value)} value={email} />
+      <Input
+        type="text"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
       <label>Password</label>
-      <Input onChange={(e) => setPassword(e.target.value)} value={password} />
+      <Input
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
       <Button type="submit">Ok</Button>
     </form>
   );

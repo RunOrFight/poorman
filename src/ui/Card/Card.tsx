@@ -1,6 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import { FC } from "react";
 import { CSS } from "@dnd-kit/utilities";
+import classes from  "./Card.module.css"
 
 interface CardProps {
   id: number;
@@ -16,7 +17,7 @@ const Card: FC<CardProps> = ({ id , disabled = false}) => {
       style={style}
       {...listeners}
       {...attributes}
-      className="w-40 h-60  bg-contain bg-no-repeat bg-center bg-red-200 rounded"
+      className={classes.card}
     />
   );
 };

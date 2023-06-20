@@ -1,34 +1,38 @@
-import { Side} from "../ui";
-import { EndTurnButton, Player } from "../widgets";
-import {usePlayerSelector, useEnemySelector} from "../store";
-import {useGame, useSignalR} from "../services";
-import {useEffect} from "react";
+import { Side } from "../ui";
+import { EndTurnButton, Player, SpaceBg } from "../widgets";
+import { usePlayerSelector, useEnemySelector, useAppSelector } from "../store";
+import { useSignalR } from "../services";
+import { useEffect } from "react";
+import { IGameData } from "../interfaces";
+import { useLoadGameMutation } from "../api";
 
 const GamePage = () => {
   const connection = useSignalR();
-  const { playerId, gameId, loadGame } = useGame();
-  const playerName = usePlayerSelector().name
-  const playerHp = usePlayerSelector().hp
-  const enemyName = useEnemySelector().name
-  const enemyHp = useEnemySelector().hp
+  const playerName = usePlayerSelector().name;
+  const playerHp = usePlayerSelector().hp;
+  const enemyName = useEnemySelector().name;
+  const enemyHp = useEnemySelector().hp;
+
+  const [loadGame] = useLoadGameMutation();
+  const gameId = useAppSelector((state) => state.game.gameId!);
+  const playerId = useAppSelector((state) => state.game.playerId!);
 
   useEffect(() => {
-    console.log(connection);
-    connection.on('update_game_data', (data: IGameData) => {
-      console.log(data, 'HERE DATA');
+    connection.on("update_game_data", (data: IGameData) => {
+      console.log(data, "HERE DATA");
     });
 
-    loadGame(playerId, gameId).then(response => {
-      console.log(response, 'Resoinse from server')
-    })
-  }, [])
+    loadGame({ gameId, playerId }).then((response) => {
+      console.log(response, "Resoinse from server");
+    });
+  }, []);
 
   return (
-    <div id="bg" className="bg-contain w-full h-full">
+    <SpaceBg>
       <div className="flex w-full h-full">
         <Side extraClassName="justify-end">
-            <div className="text-xl">{playerName}</div>
-            <div className="text-xl">{playerHp}</div>
+          <div className="text-xl">{playerName}</div>
+          <div className="text-xl">{playerHp}</div>
           {/*<Hero />*/}
         </Side>
 
@@ -51,7 +55,7 @@ const GamePage = () => {
           </div>
         </Side>
       </div>
-    </div>
+    </SpaceBg>
   );
 };
 

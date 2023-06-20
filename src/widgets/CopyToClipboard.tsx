@@ -1,14 +1,15 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { Button } from "../ui";
+import { useAppSelector } from "../store";
 
-interface ICopyToClipboardProps {
-  text: string;
-}
-
-const CopyToClipboard: FC<ICopyToClipboardProps> = ({ text }) => {
+const CopyToClipboard = () => {
+  const text = useAppSelector((state) => state.game.link);
   const [copySuccess, setCopySuccess] = useState(false);
 
-  const copyToClipboard = async (text: string) => {
+  const copyToClipboard = async (text: string | null) => {
+    if (!text) {
+      return;
+    }
     try {
       await navigator.clipboard.writeText(text);
       setCopySuccess(true);
