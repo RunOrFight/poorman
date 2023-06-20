@@ -1,45 +1,43 @@
-import { Route, Routes } from "react-router-dom";
-import { AuthPage, GamePage, MenuPage } from "./pages";
-import { AuthProvider, SignalRProvider, GameProvider } from "./services";
-import { RequireAuth } from "./widgets";
+import {Route, Routes} from "react-router-dom";
+import {AuthPage, GamePage, MenuPage} from "./pages";
+import {AuthProvider, SignalRProvider, GameProvider} from "./services";
+import {RequireAuth} from "./widgets";
 import {Provider} from "react-redux";
 import {setupStore} from "./store";
 
 const store = setupStore()
 const App = () => (
     <Provider store={store}>
-  <AuthProvider>
-    <Routes>
-      <Route path="/login" element={<AuthPage type="login" />} />
+            <AuthProvider>
+                <SignalRProvider>
+                <Routes>
+                    <Route path="/login" element={<AuthPage type="login"/>}/>
 
-      <Route
-        path="/game/:id"
-        element={
-          //<RequireAuth>
-            //<SignalRProvider>
+                    <Route
+                        path="/game/:id"
+                        element={
+                            //<RequireAuth>
+                            <GameProvider>
+                                <GamePage/>
+                            </GameProvider>
+                            //</RequireAuth>
+                        }
+                    />
 
-                    <GamePage />
-
-           // </SignalRProvider>
-          //</RequireAuth>
-        }
-      />
-
-      <Route
-        index
-        path="*"
-        element={
-          <RequireAuth>
-            <SignalRProvider>
-                <GameProvider>
-              <MenuPage />
-                </GameProvider>
-            </SignalRProvider>
-          </RequireAuth>
-        }
-      />
-    </Routes>
-  </AuthProvider>
+                    <Route
+                        index
+                        path="*"
+                        element={
+                            <RequireAuth>
+                                <GameProvider>
+                                    <MenuPage/>
+                                </GameProvider>
+                            </RequireAuth>
+                        }
+                    />
+                </Routes>
+        </SignalRProvider>
+    </AuthProvider>
     </Provider>
 );
 

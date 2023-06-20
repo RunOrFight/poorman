@@ -55,7 +55,7 @@ function GameProvider({ children }: { children: React.ReactNode }) {
 
   const loadGame = async (playerId: number, gameId: number) => {
 
-    const data = await joinLobbyApi({ playerId, gameId });
+    const data = await loadGameApi({ playerId, gameId });
     if (!data) {
       return;
     }
