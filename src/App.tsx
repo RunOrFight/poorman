@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthPage, GamePage, MenuPage } from "./pages";
-import { AuthProvider, SignalRProvider } from "./services";
+import { AuthProvider, SignalRProvider, GameProvider } from "./services";
 import { RequireAuth } from "./widgets";
 import {Provider} from "react-redux";
 import {setupStore} from "./store";
@@ -31,7 +31,9 @@ const App = () => (
         element={
           <RequireAuth>
             <SignalRProvider>
+                <GameProvider>
               <MenuPage />
+                </GameProvider>
             </SignalRProvider>
           </RequireAuth>
         }

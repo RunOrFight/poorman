@@ -23,10 +23,11 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
         .withUrl("http://localhost:5157/socket")
         .withAutomaticReconnect()
         .build();
-      connection.current
+      connection.current!
         .start()
         .then(() => {
           console.log("Connected to the server.");
+          console.log(user?.id, 'HQWERQWDASD')
           connection
             .current!.invoke("SetUserId", user?.id)
             .then(() => {

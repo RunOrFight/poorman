@@ -1,39 +1,45 @@
 import { useNavigate } from "react-router-dom";
 import { Button, InfiniteProgress, Input, Window } from "../ui";
-import { useAuth, useCreateLobby, useJoinLobby, useSignalR } from "../services";
+import { useAuth, useSignalR, useGame } from "../services";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { WaitForLobby } from "../widgets";
-import { IAllUsersJoinedLobbyResponse } from "../interfaces/SignalR";
-
-// const WS_URL = "ws://localhost:3000/socket.io";
+import {IAllUsersJoinedLobbyResponse, ICreateLobbyResponse} from "../interfaces";
 
 const MenuPage = () => {
   const navigate = useNavigate();
+  const [requestStatus, setRequestStatus] = useState('');
+  const [data, setData] = useState<ICreateLobbyResponse>(null);
   const [isWindowVisible, setIsWindowVisible] = useState(false);
   const lobbyIdInput = useRef<HTMLInputElement>(null);
-  const { data, requestStatus, createLobby } = useCreateLobby();
-  const { joinLobby } = useJoinLobby();
+  const { createLobby, joinLobby } = useGame();
 
   const { user } = useAuth();
 
   const connection = useSignalR();
   useEffect(() => {
+    console.log('IN USE EFFECT')
     connection.on(
       "all_users_joined_lobby",
       ([{ gameId }]: [IAllUsersJoinedLobbyResponse]) => {
-        console.log("ok");
+        console.log('All users joined lobby')
         navigate(`game/${gameId}`);
       }
     );
   }, []);
 
-  const handleCreateLobbyButtonClick = useCallback(() => {
+  const handleCreateLobbyButtonClick = useCallback(async() => {
     setIsWindowVisible(true);
-    createLobby();
+      const response = await createLobby(user.id);
+      console.log(response);
+      setData(response);
+      setRequestStatus('done');
   }, []);
 
-  const handleJoinLobbyButtonClick = useCallback(() => {
-    lobbyIdInput.current?.value && joinLobby(lobbyIdInput.current.value);
+  const handleJoinLobbyButtonClick = useCallback(async () => {
+    if (lobbyIdInput.current?.value) {
+      const response = await joinLobby(user.id, lobbyIdInput.current.value);
+      console.log(response);
+    }
   }, []);
 
   return (
