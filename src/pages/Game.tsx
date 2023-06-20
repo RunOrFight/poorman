@@ -1,5 +1,5 @@
 import { Side} from "../ui";
-import { EndTurnButton, Player } from "../widgets";
+import {EndTurnButton, Player, SpaceBg} from "../widgets";
 import {usePlayerSelector, useEnemySelector} from "../store";
 
 const GamePage = () => {
@@ -9,7 +9,7 @@ const GamePage = () => {
   const enemyHp = useEnemySelector().hp
 
   return (
-    <div id="bg" className="bg-contain w-full h-full">
+      <SpaceBg>
       <div className="flex w-full h-full">
         <Side extraClassName="justify-end">
             <div className="text-xl">{playerName}</div>
@@ -36,7 +36,7 @@ const GamePage = () => {
           </div>
         </Side>
       </div>
-    </div>
+     </SpaceBg>
   );
 };
 
