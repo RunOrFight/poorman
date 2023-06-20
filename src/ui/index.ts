@@ -2,7 +2,6 @@ export { default as Card } from "./Card.js";
 export { default as Hand } from "./Hand.js";
 export { default as Side } from "./Side.js";
 export { default as Progress } from "./Progress.js";
-export { default as FieldsContainer } from "./FieldsContainer.js";
 export { default as Field } from "./Field.js";
 export { default as Hero } from "./Hero.js";
 export { default as Input } from "./Input.js";

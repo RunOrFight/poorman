@@ -88,11 +88,11 @@ h6 {
 @tailwind utilities;
 
 #bg{
-  background-image: url(assets/bg.png);
+  /*background-image: url(assets/bg.png);*/
 }
 
 #hand{
-  background-image: url(assets/hand.png);
+  /*background-image: url(assets/hand.png);*/
 }
 
 #root{
@@ -100,39 +100,39 @@ h6 {
   height: 100vh;
 }
 
-#cat-1{
-  background-image: image-set(
-    url("../src/assets/cat1.png") 1x,
-    url("../src/assets/cat1@2x.png") 2x,
-  );
-}
+/*#cat-1{*/
+/*  background-image: image-set(*/
+/*    url("../src/assets/cat1.png") 1x,*/
+/*    url("../src/assets/cat1@2x.png") 2x,*/
+/*  );*/
+/*}*/
 
-#cat-2{
-  background-image: image-set(
-    url("../src/assets/cat2.png") 1x,
-    url("../src/assets/cat2@2x.png") 2x,
-  );
-}
+/*#cat-2{*/
+/*  background-image: image-set(*/
+/*    url("../src/assets/cat2.png") 1x,*/
+/*    url("../src/assets/cat2@2x.png") 2x,*/
+/*  );*/
+/*}*/
 
-#cat-3{
-  background-image: image-set(
-    url("../src/assets/cat3.png") 1x,
-    url("../src/assets/cat3@2x.png") 2x,
-  );
-}
+/*#cat-3{*/
+/*  background-image: image-set(*/
+/*    url("../src/assets/cat3.png") 1x,*/
+/*    url("../src/assets/cat3@2x.png") 2x,*/
+/*  );*/
+/*}*/
 
-#cat-4{
-  background-image: image-set(
-    url("../src/assets/cat4.png") 1x,
-    url("../src/assets/cat4@2x.png") 2x,
-  );
-}
+/*#cat-4{*/
+/*  background-image: image-set(*/
+/*    url("../src/assets/cat4.png") 1x,*/
+/*    url("../src/assets/cat4@2x.png") 2x,*/
+/*  );*/
+/*}*/
 
-#field{
-  background-image: image-set(
-    url("../src/assets/field.png") 1x,
-  );
-}
+/*#field{*/
+/*  background-image: image-set(*/
+/*    url("../src/assets/field.png") 1x,*/
+/*  );*/
+/*}*/
 
 @keyframes progress{
   from {transform: scaleX(5%) translateX(-5%);}

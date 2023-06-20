@@ -15,13 +15,13 @@ const App = () => (
       <Route
         path="/game/:id"
         element={
-          <RequireAuth>
-            <SignalRProvider>
+          //<RequireAuth>
+            //<SignalRProvider>
 
                     <GamePage />
 
-            </SignalRProvider>
-          </RequireAuth>
+           // </SignalRProvider>
+          //</RequireAuth>
         }
       />
 

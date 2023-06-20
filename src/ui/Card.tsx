@@ -3,15 +3,15 @@ import { FC } from "react";
 import { CSS } from "@dnd-kit/utilities";
 
 interface CardProps {
-  id: string;
+  id: number;
+  disabled?: boolean
 }
-const Card: FC<CardProps> = ({ id }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
+const Card: FC<CardProps> = ({ id , disabled = false}) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id , disabled});
   const style = { transform: CSS.Translate.toString(transform) };
 
   return (
     <div
-      id={id}
       ref={setNodeRef}
       style={style}
       {...listeners}

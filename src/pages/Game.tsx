@@ -1,17 +1,20 @@
-import { Card, Hand, Progress, Side, Hero, Field } from "../ui";
-import { useState } from "react";
+import { Side} from "../ui";
 import { EndTurnButton, Player } from "../widgets";
-
-const CardsInHand = [{ id: "1" }, { id: "2" }, { id: "3" }];
+import {usePlayerSelector, useEnemySelector} from "../store";
 
 const GamePage = () => {
-  const [isDropped, setIsDropped] = useState(false);
+  const playerName = usePlayerSelector().name
+  const playerHp = usePlayerSelector().hp
+  const enemyName = useEnemySelector().name
+  const enemyHp = useEnemySelector().hp
 
   return (
     <div id="bg" className="bg-contain w-full h-full">
       <div className="flex w-full h-full">
         <Side extraClassName="justify-end">
-          <Hero />
+            <div className="text-xl">{playerName}</div>
+            <div className="text-xl">{playerHp}</div>
+          {/*<Hero />*/}
         </Side>
 
         <div className="flex flex-col h-full w-full">
@@ -25,7 +28,9 @@ const GamePage = () => {
         </div>
 
         <Side extraClassName="justify-start items-center">
-          <Hero />
+          {/*<Hero />*/}
+          <div className="text-xl">{enemyName}</div>
+          <div className="text-xl">{enemyHp}</div>
           <div className="h-full flex items-center">
             <EndTurnButton />
           </div>
