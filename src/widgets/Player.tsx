@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { Card, Field, Hand } from "../ui";
+import { Card, Field} from "../ui";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 
 const fields = ["A", "B", "C"];

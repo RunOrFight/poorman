@@ -6,8 +6,7 @@ interface IGameData {
 interface IPlayerData {
     name: string;
     hp: number;
-    mana: number;
-    cardsInHand: IPlayerCard[];
+     cardsInHand: IPlayerCard[];
     field1: IPlayerCard;
     field2: IPlayerCard;
     field3: IPlayerCard;
