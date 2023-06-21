@@ -3,7 +3,7 @@ import { SignalRProvider } from "../services";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuthSelector } from "../store";
 
-const RequireAuth: FC<PropsWithChildren> = ({ children }) => {
+const RequireAuth: FC<PropsWithChildren> = () => {
   const isAutorized = useAuthSelector().isAutorized;
 
   const location = useLocation();
