@@ -7,11 +7,11 @@ const initialState = () => {
 
   return userString
     ? {
-        isAutorized: true,
+        isAuthorized: true,
         user: JSON.parse(userString),
       }
     : {
-        isAutorized: false,
+        isAuthorized: false,
         user: null,
       };
 };
@@ -24,7 +24,7 @@ const AuthSlice = createSlice({
     builder.addMatcher(
       AuthApi.endpoints.signIn.matchFulfilled,
       (state, { payload }) => {
-        state.isAutorized = true;
+        state.isAuthorized = true;
         state.user = payload;
         localStorage.setItem("user", JSON.stringify(payload));
         return state;

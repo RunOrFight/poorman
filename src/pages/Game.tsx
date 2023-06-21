@@ -40,7 +40,7 @@ const GamePage = () => {
           <div className="h-full w-full"></div>
 
           <div className="w-full h-10">
-            <img src="src/assets/devider.png" />
+            <img src="/src/assets/divider.png" />
           </div>
 
           <Player />

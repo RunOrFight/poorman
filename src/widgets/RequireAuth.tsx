@@ -4,11 +4,11 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuthSelector } from "../store";
 
 const RequireAuth: FC<PropsWithChildren> = ({ children }) => {
-  const isAutorized = useAuthSelector().isAutorized;
+  const { isAuthorized } = useAuthSelector();
 
   const location = useLocation();
 
-  if (!isAutorized) {
+  if (!isAuthorized) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
