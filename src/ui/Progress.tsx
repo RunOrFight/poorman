@@ -13,6 +13,7 @@ const Progress = () => {
         const zIndex = `${50 - index}`;
         return (
           <img
+              key={bottom}
             style={{ bottom, zIndex }}
             src={piece}
             className={`object-contain w-[66px] absolute ${zIndex}`}
