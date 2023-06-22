@@ -1,19 +1,24 @@
-import { useNavigate } from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import { Button, InfiniteProgress, Input, Window } from "../ui";
 import { useSignalR } from "../services";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CopyToClipboard } from "../widgets";
 import { IAllUsersJoinedLobbyResponse, IUser } from "../interfaces";
-import { useAuthSelector } from "../store";
+import {useAppSelector, useAuthSelector} from "../store";
 import { useCreateGameMutation, useJoinGameMutation } from "../api";
+import {unwrapResult} from "@reduxjs/toolkit";
 
 const MenuPage = () => {
   const navigate = useNavigate();
 
+  const [allUsersJoinedGame, setAllUsersJoinedGame] = useState(false)
   const [isWindowVisible, setIsWindowVisible] = useState(false);
   const lobbyIdInput = useRef<HTMLInputElement>(null);
   const [createGame, { isLoading, isSuccess }] = useCreateGameMutation();
   const [joinLobby] = useJoinGameMutation();
+  const playerId = useAppSelector(state => state.game.playerId);
+  const gameId = useAppSelector(state => state.game.gameId);
+
 
   const { user } = useAuthSelector() as { user: IUser };
 
@@ -24,7 +29,8 @@ const MenuPage = () => {
       "all_users_joined_lobby",
       ([{ gameId }]: [IAllUsersJoinedLobbyResponse]) => {
         console.log("All users joined lobby");
-        navigate(`/game/${gameId}`);
+        // navigate(`/game/${gameId}`);
+        setAllUsersJoinedGame(true);
       }
     );
   }, []);
@@ -38,8 +44,12 @@ const MenuPage = () => {
     if (!lobbyIdInput.current?.value) {
       return;
     }
-    joinLobby({ link: lobbyIdInput.current.value, userId: user.id });
+    joinLobby({ link: lobbyIdInput.current.value, userId: user.id })
   }, []);
+
+  if (allUsersJoinedGame && playerId && gameId) {
+    return <Navigate to={`/game/${gameId}`} />;
+  }
 
   return (
     <div className="flex justify-center flex-col items-center h-full gap-2">
