@@ -3,7 +3,6 @@ import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import {
   movePlayerCardToField,
   useAppDispatch,
-  useAppSelector,
   usePlayerFieldsSelector,
   usePlayerSelector,
 } from "../store";
@@ -11,8 +10,8 @@ import {
 const Player = () => {
   const dispatch = useAppDispatch();
   const cardsInHand = usePlayerSelector().cardsInHand;
-  console.log(cardsInHand, 'QWEQEQWE')
   const fields = usePlayerFieldsSelector();
+
   const handleDragEnd = ({ over, active }: DragEndEvent) => {
     if (!over?.id || over.data.current?.card) {
       return;
@@ -28,7 +27,7 @@ const Player = () => {
   return (
     <DndContext onDragEnd={handleDragEnd}>
       <div className="h-full w-full flex flex-col p-2.5">
-        <div className="flex justify-center">
+        <div className="flex h-full justify-center">
           {fields.map((field) => (
             <Field id={field.id} key={field.id} card={field.data} />
           ))}
