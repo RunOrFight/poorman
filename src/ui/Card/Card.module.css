@@ -5,21 +5,19 @@
 } */
 
 .card {
-  --card-height: 232px;
-  --card-width: 170px;
-  width: var(--card-width);
-  height:var(--card-height);
-  padding: 3px;
+  width: 120px;
+  height: 165px;
+  padding: 2px;
   position: relative;
   justify-content: center;
   align-items: center;
   text-align: center;
   display: flex;
-  font-size: 1.5em;
+  font-size: 20px;
   cursor: pointer;
 }
 
-/* .card::before {
+  /* .card::before {
   content: "";
   width: 104%;
   height: 102%;

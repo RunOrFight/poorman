@@ -44,7 +44,7 @@ const GamePage = () => {
           <Enemy />
 
           <div className="w-full h-10">
-            <img src={divider} />
+            <img src={divider} className="w-full h-full object-contain" />
           </div>
 
           <Player />

@@ -34,13 +34,7 @@ const Card: FC<IPlayerCard> = ({ id, type, name, ...rest }) => {
   }
 
   return id ? (
-    <div
-      className={clsx(
-        classes.card,
-        typeBg,
-        " bg-opacity-50 border-2  border-purple"
-      )}
-    >
+    <div className={clsx(classes.card, typeBg, " bg-opacity-50 ")}>
       <div className="text-white ">{name}</div>
     </div>
   ) : (
