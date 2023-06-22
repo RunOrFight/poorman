@@ -18,8 +18,11 @@ const GamePage = () => {
   const playerId = useAppSelector((state) => state.game.playerId!);
 
   useEffect(() => {
+    if (!connection) {
+      return;
+    }
     connection.on("update_game_data", (data: string) => {
-      const parsedData: IGameData = JSON.parse(data)
+      const parsedData: IGameData = JSON.parse(data);
       console.log(parsedData, "HERE DATA");
     });
     loadGame({ gameId, playerId }).then((response) => {
