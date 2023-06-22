@@ -1,5 +1,12 @@
 import { Side } from "../ui";
-import { EndTurnButton, Player, SpaceBg } from "../widgets";
+import {
+  EndTurnButton,
+  EnemyHero,
+  LeftSide,
+  Player,
+  PlayerHero,
+  SpaceBg,
+} from "../widgets";
 import { usePlayerSelector, useEnemySelector, useAppSelector } from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
@@ -8,10 +15,6 @@ import { useLoadGameMutation } from "../api";
 
 const GamePage = () => {
   const connection = useSignalR();
-  const playerName = usePlayerSelector().name;
-  const playerHp = usePlayerSelector().hp;
-  const enemyName = useEnemySelector().name;
-  const enemyHp = useEnemySelector().hp;
 
   const [loadGame] = useLoadGameMutation();
   const gameId = useAppSelector((state) => state.game.gameId!);
@@ -32,12 +35,8 @@ const GamePage = () => {
 
   return (
     <SpaceBg>
-      <div className="flex w-full h-full">
-        <Side extraClassName="justify-end">
-          <div className="text-xl">{playerName}</div>
-          <div className="text-xl">{playerHp}</div>
-          {/*<Hero />*/}
-        </Side>
+      <div className="flex w-full h-full max-w-[1250px] m-auto">
+        <LeftSide />
 
         <div className="flex flex-col h-full w-full">
           <div className="h-full w-full"></div>
@@ -46,13 +45,11 @@ const GamePage = () => {
             <img src="/src/assets/divider.png" />
           </div>
 
-          <Player />
+          {/* <Player /> */}
         </div>
 
         <Side extraClassName="justify-start items-center">
-          {/*<Hero />*/}
-          <div className="text-xl">{enemyName}</div>
-          <div className="text-xl">{enemyHp}</div>
+          <EnemyHero />
           <div className="h-full flex items-center">
             <EndTurnButton />
           </div>
