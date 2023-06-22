@@ -5,7 +5,7 @@ import {
   IJoinGamePayload,
   IJoinGameResponse,
   ILoadGamePayload,
-  ILoadGameResponse,
+  ILoadGameResponse, IThrowCartPayload, IThrowCartResponse,
 } from "../interfaces";
 
 export const GameApi = createApi({
@@ -35,6 +35,13 @@ export const GameApi = createApi({
         body: payload,
       }),
     }),
+    throwCard: builder.mutation<IThrowCartResponse, IThrowCartPayload>({
+      query: (payload) => ({
+        url: "card-thrown",
+        method: "POST",
+        body: payload,
+      }),
+    }),
   }),
 });
 
@@ -42,4 +49,5 @@ export const {
   useCreateGameMutation,
   useJoinGameMutation,
   useLoadGameMutation,
+  useThrowCardMutation,
 } = GameApi;
