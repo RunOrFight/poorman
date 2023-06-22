@@ -8,6 +8,7 @@ interface CardProps {
   disabled?: boolean
 }
 const Card: FC<CardProps> = ({ id , disabled = false}) => {
+  console.log(id)
   const { attributes, listeners, setNodeRef, transform } = useDraggable({ id , disabled});
   const style = { transform: CSS.Translate.toString(transform) };
 

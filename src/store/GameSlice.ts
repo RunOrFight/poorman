@@ -46,6 +46,13 @@ const GameSlice = createSlice({
       );
       return state;
     },
+    setGameData: (state, action: PayloadAction<any>) => {
+      console.log(action.payload);
+      return {
+        ...state,
+        ...action.payload,
+      };
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(
@@ -76,8 +83,8 @@ const GameSlice = createSlice({
 });
 
 const { reducer: GameReducer, actions } = GameSlice;
-const { movePlayerCardToField } = actions;
-export { GameReducer, movePlayerCardToField };
+const { movePlayerCardToField, setGameData } = actions;
+export { GameReducer, movePlayerCardToField, setGameData };
 export const usePlayerSelector = () => {
   return useAppSelector((state) => state.game.playerData);
 };
