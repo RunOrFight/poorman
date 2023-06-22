@@ -8,22 +8,23 @@ export interface IGameData {
 export interface IPlayerData {
   name: string;
   hp: number;
+  mana: number;
   cardsInHand: IPlayerCard[];
-  field1: IPlayerCard;
-  field2: IPlayerCard;
-  field3: IPlayerCard;
-  field4: IPlayerCard;
+  field1: IPlayerCard | null;
+  field2: IPlayerCard | null;
+  field3: IPlayerCard | null;
+  field4: IPlayerCard | null;
 }
 
 export interface IEnemyData {
   name: string;
   hp: number;
   mana: number;
-  cardsInHandCount: number;
-  field1: IPlayerCard;
-  field2: IPlayerCard;
-  field3: IPlayerCard;
-  field4: IPlayerCard;
+  cardsInHand: IPlayerCard[];
+  field1: IPlayerCard | null;
+  field2: IPlayerCard | null;
+  field3: IPlayerCard | null;
+  field4: IPlayerCard | null;
 }
 
 export interface IPlayerCard {
@@ -134,7 +135,7 @@ export interface ILoadGameResponse {
 export interface IThrowCartPayload {
   playerId: IPlayer["id"];
   cardId: IPlayerCard["id"];
-  field: CardIn
+  field: CardIn;
 }
 
 export interface IThrowCartResponse {

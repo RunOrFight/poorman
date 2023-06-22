@@ -2,16 +2,18 @@ import { Card, Field } from "../ui";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import {
   movePlayerCardToField,
-  useAppDispatch, useAppSelector,
+  useAppDispatch,
+  useAppSelector,
   usePlayerFieldsSelector,
   usePlayerSelector,
 } from "../store";
-import {useThrowCardMutation} from '../api'
+import { useThrowCardMutation } from "../api";
+import { DraggableCard } from ".";
 
 const Player = () => {
   const dispatch = useAppDispatch();
   const cardsInHand = usePlayerSelector().cardsInHand;
-  const playerId = useAppSelector(state => state.game.playerId);
+  const playerId = useAppSelector((state) => state.game.playerId);
   const fields = usePlayerFieldsSelector();
   const [throwCard] = useThrowCardMutation();
 
@@ -25,8 +27,7 @@ const Player = () => {
         cardId: active.id as number,
       })
     );
-    throwCard({playerId, cardId: active.id, field: over.id})
-
+    throwCard({ playerId, cardId: active.id, field: over.id });
   };
 
   return (
@@ -39,7 +40,7 @@ const Player = () => {
         </div>
         <div className="w-full h-full border flex gap-2.5 items-center p-2.5">
           {cardsInHand.map((card) => (
-            <Card key={card.id} id={card.id} />
+            <DraggableCard key={card.id} {...card} />
           ))}
         </div>
       </div>
