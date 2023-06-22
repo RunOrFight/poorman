@@ -2,6 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { FC } from "react";
 import { Card } from "./index.ts";
 import { IPlayerCard } from "../interfaces/Game.ts";
+import { field } from "../assets/index.ts";
 
 interface IFieldProps {
   id: string;
@@ -16,9 +17,11 @@ const Field: FC<IFieldProps> = ({ id, card }) => {
       ? "border-red-300"
       : "border-green-300"
     : "border-grey-300";
+
   return (
     <div
-      className={`w-44 h-full bg-cover bg-no-repeat flex items-center justify-center border ${bgStyle} `}
+      style={{ backgroundImage: `url(${field})` }}
+      className={`h-[165px] w-[120px] bg-center bg-contain bg-no-repeat ${bgStyle}`}
       id="field"
       ref={setNodeRef}
     >
