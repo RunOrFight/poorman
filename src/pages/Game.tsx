@@ -4,20 +4,15 @@ import {
   EnemyHero,
   LeftSide,
   Player,
-  PlayerHero,
   SpaceBg,
 } from "../widgets";
-import {
-  usePlayerSelector,
-  useEnemySelector,
-  useAppSelector,
-  useAppDispatch,
-  setGameData,
-} from "../store";
+import { useAppSelector, useAppDispatch, setGameData } from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
 import { IGameData } from "../interfaces";
 import { useLoadGameMutation } from "../api";
+import Enemy from "../widgets/Enemy";
+import { divider } from "../assets";
 
 const GamePage = () => {
   const connection = useSignalR();
@@ -42,17 +37,17 @@ const GamePage = () => {
 
   return (
     <SpaceBg>
-      <div className="flex w-full h-full max-w-[1250px] m-auto">
+      <div className="flex w-full h-full max-w-[1250px] m-auto text-white">
         <LeftSide />
 
         <div className="flex flex-col h-full w-full">
-          <div className="h-full w-full"></div>
+          <Enemy />
 
           <div className="w-full h-10">
-            <img src="/src/assets/divider.png" />
+            <img src={divider} />
           </div>
 
-          {/* <Player /> */}
+          <Player />
         </div>
 
         <Side extraClassName="justify-start items-center">

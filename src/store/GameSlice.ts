@@ -11,7 +11,7 @@ const initialState = {
     mana: 0,
     name: "Sasha",
     hp: 30,
-    cardsInHand: [{ id: 1, name: "Hello" }, { id: 2 }, { id: 3 }],
+    cardsInHand: [{ id: 1 }, { id: 2 }, { id: 3 }],
     field1: null,
     field2: null,
     field3: null,
@@ -21,7 +21,7 @@ const initialState = {
     mana: 0,
     name: "Ignat",
     hp: 30,
-    cardsInHand: [],
+    cardsInHand: [{ id: 4 }, { id: 5 }, { id: 6 }],
     field1: null,
     field2: null,
     field3: null,
@@ -100,5 +100,14 @@ export const usePlayerFieldsSelector = () => {
     { id: "field2", data: usePlayerSelector().field2 },
     { id: "field3", data: usePlayerSelector().field3 },
     { id: "field4", data: usePlayerSelector().field4 },
+  ];
+};
+
+export const useEnemyFieldsSelector = () => {
+  return [
+    { id: "field1", data: useEnemySelector().field1 },
+    { id: "field2", data: useEnemySelector().field2 },
+    { id: "field3", data: useEnemySelector().field3 },
+    { id: "field4", data: useEnemySelector().field4 },
   ];
 };
