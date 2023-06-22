@@ -12,6 +12,7 @@ import {
 import { InfiniteProgress } from "../ui";
 import { useAuthSelector } from "../store";
 import { IUser } from "../interfaces";
+import { useNavigate } from "react-router-dom";
 
 const SignalRContext = createContext<HubConnection>(null!);
 
@@ -19,6 +20,7 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);
   const connection = useRef<HubConnection | null>(null);
   const { user } = useAuthSelector() as { user: IUser };
+  const navigate = useNavigate();
 
   const startConnection = useCallback(
     async (connection: HubConnection) => {
@@ -30,6 +32,8 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
         setIsConnected(true);
       } catch (error) {
         console.error("Failed to start or invoke SetUserId:", error);
+        connection.stop();
+        navigate("/login");
       }
     },
     [user?.id]

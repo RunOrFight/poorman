@@ -5,10 +5,19 @@ import { useAppSelector } from ".";
 const initialState = () => {
   const userString = localStorage.getItem("user");
 
-  return userString
+  let user = null;
+  if (userString) {
+    try {
+      user = JSON.parse(userString);
+    } catch (error) {
+      localStorage.removeItem("user");
+    }
+  }
+
+  return user
     ? {
         isAuthorized: true,
-        user: JSON.parse(userString),
+        user,
       }
     : {
         isAuthorized: false,
