@@ -8,6 +8,7 @@ const initialState = {
   playerId: null as number | null,
   isGameLoaded: false,
   playerData: {
+    mana: 0,
     name: "Sasha",
     hp: 30,
     cardsInHand: [{ id: 1, name: "Hello" }, { id: 2 }, { id: 3 }],
@@ -17,6 +18,7 @@ const initialState = {
     field4: null,
   },
   enemyData: {
+    mana: 0,
     name: "Ignat",
     hp: 30,
     cardsInHand: [],

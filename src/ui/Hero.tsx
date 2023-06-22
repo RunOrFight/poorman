@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { hero } from "../assets";
 
 interface IHeroProps {
   hp: number;
@@ -11,7 +12,7 @@ const Hero: FC<IHeroProps> = ({ hp, name }) => {
       <span>{name}</span>
       <span>{hp}</span>
       <img
-        src="src/assets/hero.png"
+        src={hero}
         alt="hero"
         className=" object-cover absolute top-0 left-0 w-full h-full"
       />
