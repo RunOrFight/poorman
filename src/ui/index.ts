@@ -8,3 +8,4 @@ export { default as Input } from "./Input.js";
 export { default as Button } from "./Button/Button";
 export { default as Window } from "./Window";
 export { default as InfiniteProgress } from "./InfiniteProgress";
+export { default as PAlert } from "./PAlert";

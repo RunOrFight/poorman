@@ -3,7 +3,10 @@ export interface IUserLoginCreds {
   password: string;
 }
 
-export interface IUser extends Omit<IUserLoginCreds, "password"> {
-  name: string;
-  id: number;
+export interface IUserRegisterCreds extends IUserLoginCreds{
+  name: string
+}
+
+export interface IUser extends Omit<IUserRegisterCreds, "password">{
+  id: number
 }
