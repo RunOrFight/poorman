@@ -5,22 +5,18 @@
 } */
 
 .card {
-    --card-height: 200px;
-  --card-width: calc(var(--card-height) / 1.5);
-  background: #191c29;
+  --card-height: 232px;
+  --card-width: 170px;
   width: var(--card-width);
   height:var(--card-height);
   padding: 3px;
   position: relative;
-  border-radius: 6px;
   justify-content: center;
   align-items: center;
   text-align: center;
   display: flex;
   font-size: 1.5em;
-  color: rgb(88 199 250 / 0%);
   cursor: pointer;
-  font-family: cursive;
 }
 
 /* .card::before {
