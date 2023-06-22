@@ -10,7 +10,9 @@ import {
 
 export const GameApi = createApi({
   reducerPath: "gameApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5157/game/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${import.meta.env.VITE_SERVER_URL}/game/`,
+  }),
   endpoints: (builder) => ({
     createGame: builder.mutation<ICreateGameResponse, ICreteGamePayload>({
       query: (payload) => ({
