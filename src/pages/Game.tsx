@@ -1,6 +1,6 @@
 import { Side } from "../ui";
 import { EndTurnButton, Player, SpaceBg } from "../widgets";
-import { usePlayerSelector, useEnemySelector, useAppSelector } from "../store";
+import {usePlayerSelector, useEnemySelector, useAppSelector, useAppDispatch, setGameData} from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
 import { IGameData } from "../interfaces";
@@ -16,13 +16,15 @@ const GamePage = () => {
   const [loadGame] = useLoadGameMutation();
   const gameId = useAppSelector((state) => state.game.gameId!);
   const playerId = useAppSelector((state) => state.game.playerId!);
-
+const dispatch = useAppDispatch()
+  const gameData = useAppSelector(state => state.game)
   useEffect(() => {
     if (!connection) {
       return;
     }
     connection.on("update_game_data", (data: string) => {
       const parsedData: IGameData = JSON.parse(data);
+      dispatch(setGameData(parsedData))
       console.log(parsedData, "HERE DATA");
     });
     loadGame({ gameId, playerId }).then((response) => {
@@ -32,6 +34,7 @@ const GamePage = () => {
 
   return (
     <SpaceBg>
+      <pre>{JSON.stringify(gameData, null, 2)}</pre>
       <div className="flex w-full h-full">
         <Side extraClassName="justify-end">
           <div className="text-xl">{playerName}</div>
