@@ -11,6 +11,7 @@ import {
 const Player = () => {
   const dispatch = useAppDispatch();
   const cardsInHand = usePlayerSelector().cardsInHand;
+  console.log(cardsInHand, 'QWEQEQWE')
   const fields = usePlayerFieldsSelector();
   const handleDragEnd = ({ over, active }: DragEndEvent) => {
     if (!over?.id || over.data.current?.card) {
