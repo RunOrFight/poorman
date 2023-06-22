@@ -18,12 +18,12 @@ const GamePage = () => {
   const playerId = useAppSelector((state) => state.game.playerId!);
 
   useEffect(() => {
-    connection.on("update_game_data", (data: IGameData) => {
-      console.log(data, "HERE DATA");
+    connection.on("update_game_data", (data: string) => {
+      const parsedData: IGameData = JSON.parse(data)
+      console.log(parsedData, "HERE DATA");
     });
-
     loadGame({ gameId, playerId }).then((response) => {
-      console.log(response, "Resoinse from server");
+      console.log(response, "Response from server");
     });
   }, []);
 
