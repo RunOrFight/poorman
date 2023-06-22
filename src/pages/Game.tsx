@@ -1,6 +1,19 @@
 import { Side } from "../ui";
-import { EndTurnButton, Player, SpaceBg } from "../widgets";
-import {usePlayerSelector, useEnemySelector, useAppSelector, useAppDispatch, setGameData} from "../store";
+import {
+  EndTurnButton,
+  EnemyHero,
+  LeftSide,
+  Player,
+  PlayerHero,
+  SpaceBg,
+} from "../widgets";
+import {
+  usePlayerSelector,
+  useEnemySelector,
+  useAppSelector,
+  useAppDispatch,
+  setGameData,
+} from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
 import { IGameData } from "../interfaces";
@@ -8,23 +21,18 @@ import { useLoadGameMutation } from "../api";
 
 const GamePage = () => {
   const connection = useSignalR();
-  const playerName = usePlayerSelector().name;
-  const playerHp = usePlayerSelector().hp;
-  const enemyName = useEnemySelector().name;
-  const enemyHp = useEnemySelector().hp;
 
   const [loadGame] = useLoadGameMutation();
   const gameId = useAppSelector((state) => state.game.gameId!);
   const playerId = useAppSelector((state) => state.game.playerId!);
-const dispatch = useAppDispatch()
-  const gameData = useAppSelector(state => state.game)
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (!connection) {
       return;
     }
     connection.on("update_game_data", (data: string) => {
       const parsedData: IGameData = JSON.parse(data);
-      dispatch(setGameData(parsedData))
+      dispatch(setGameData(parsedData));
       console.log(parsedData, "HERE DATA");
     });
     loadGame({ gameId, playerId }).then((response) => {
@@ -34,13 +42,8 @@ const dispatch = useAppDispatch()
 
   return (
     <SpaceBg>
-      <pre>{JSON.stringify(gameData, null, 2)}</pre>
-      <div className="flex w-full h-full">
-        <Side extraClassName="justify-end">
-          <div className="text-xl">{playerName}</div>
-          <div className="text-xl">{playerHp}</div>
-          {/*<Hero />*/}
-        </Side>
+      <div className="flex w-full h-full max-w-[1250px] m-auto">
+        <LeftSide />
 
         <div className="flex flex-col h-full w-full">
           <div className="h-full w-full"></div>
@@ -49,13 +52,11 @@ const dispatch = useAppDispatch()
             <img src="/src/assets/divider.png" />
           </div>
 
-          <Player />
+          {/* <Player /> */}
         </div>
 
         <Side extraClassName="justify-start items-center">
-          {/*<Hero />*/}
-          <div className="text-xl">{enemyName}</div>
-          <div className="text-xl">{enemyHp}</div>
+          <EnemyHero />
           <div className="h-full flex items-center">
             <EndTurnButton />
           </div>
