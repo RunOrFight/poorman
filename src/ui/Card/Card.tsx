@@ -1,28 +1,37 @@
-import { useDraggable } from "@dnd-kit/core";
 import { FC } from "react";
-import { CSS } from "@dnd-kit/utilities";
 import classes from "./Card.module.css";
+import { IPlayerCard, CardType } from "../../interfaces";
+import clsx from "clsx";
 
-interface CardProps {
-  id: number;
-  disabled?: boolean;
-}
-const Card: FC<CardProps> = ({ id, disabled = false }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id,
-    disabled,
-  });
-  const style = { transform: CSS.Translate.toString(transform) };
+const Card: FC<IPlayerCard> = ({ id, type, name, ...rest }) => {
+  let typeBg;
+
+  switch (type) {
+    case CardType.All:
+      typeBg = "bg-yellow-400";
+      break;
+    case CardType.Left:
+      typeBg = "bg-blue-400";
+      break;
+    case CardType.Right:
+      typeBg = "bg-green-400";
+      break;
+    case CardType.Straight:
+      typeBg = "bg-red-400";
+      break;
+    default:
+      typeBg = "bg-grey-400";
+  }
 
   return (
     <div
-      ref={setNodeRef}
-      style={style}
-      {...listeners}
-      {...attributes}
-      className={classes.card}
+      className={clsx(
+        classes.card,
+        typeBg,
+        " bg-opacity-50 border-2  border-purple"
+      )}
     >
-      id: {id}
+      <div className="text-white ">{name}</div>
     </div>
   );
 };

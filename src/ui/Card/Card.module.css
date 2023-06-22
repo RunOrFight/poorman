@@ -1,8 +1,8 @@
-@property --rotate {
+/* @property --rotate {
   syntax: "<angle>";
   initial-value: 132deg;
   inherits: false;
-}
+} */
 
 .card {
     --card-height: 200px;
@@ -23,7 +23,7 @@
   font-family: cursive;
 }
 
-.card::before {
+/* .card::before {
   content: "";
   width: 104%;
   height: 102%;
@@ -66,4 +66,4 @@
   100% {
     --rotate: 360deg;
   }
-}
+} */

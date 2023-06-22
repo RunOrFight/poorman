@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "./index.ts";
 import { GameApi } from "../api/GameApi.ts";
+import { IEnemyData, IPlayerData } from "../interfaces/Game.ts";
 
 const initialState = {
   link: null as string | null,
@@ -9,24 +10,24 @@ const initialState = {
   isGameLoaded: false,
   playerData: {
     mana: 0,
-    name: "Sasha",
-    hp: 30,
-    cardsInHand: [{ id: 1 }, { id: 2 }, { id: 3 }],
+    name: "",
+    hp: 0,
+    cardsInHand: [],
     field1: null,
     field2: null,
     field3: null,
     field4: null,
-  },
+  } as IPlayerData,
   enemyData: {
     mana: 0,
-    name: "Ignat",
-    hp: 30,
-    cardsInHand: [{ id: 4 }, { id: 5 }, { id: 6 }],
+    name: "",
+    hp: 0,
+    cardsInHand: [],
     field1: null,
     field2: null,
     field3: null,
     field4: null,
-  },
+  } as IEnemyData,
 };
 
 interface IMoveCardToFieldPayload {

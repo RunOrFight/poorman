@@ -1,10 +1,11 @@
 import { useDroppable } from "@dnd-kit/core";
 import { FC } from "react";
 import { Card } from "./index.ts";
+import { IPlayerCard } from "../interfaces/Game.ts";
 
 interface IFieldProps {
   id: string;
-  card: null | { id: number };
+  card: null | IPlayerCard;
 }
 
 const Field: FC<IFieldProps> = ({ id, card }) => {
@@ -21,7 +22,7 @@ const Field: FC<IFieldProps> = ({ id, card }) => {
       id="field"
       ref={setNodeRef}
     >
-      {card && <Card id={card.id} disabled={true} />}
+      {card && <Card {...card} />}
     </div>
   );
 };
