@@ -140,3 +140,11 @@ export interface IThrowCartPayload {
 export interface IThrowCartResponse {
   success: boolean;
 }
+
+export interface IEndTurnPayload {
+  playerId: IPlayer["id"];
+}
+
+export interface IEndTurnResponse {
+  success: boolean;
+}
