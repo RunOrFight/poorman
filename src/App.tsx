@@ -9,6 +9,7 @@ const App = () => (
   <Provider store={store}>
     <Routes>
       <Route path="/login" element={<AuthPage type="login" />} />
+        <Route path="/register" element={<AuthPage type="register" />} />
       <Route path="*" element={<div>No Page</div>} />
       <Route path="/" element={<RequireAuth />}>
         <Route index element={<MenuPage />} />
