@@ -130,3 +130,13 @@ export interface ILoadGamePayload {
 export interface ILoadGameResponse {
   success: boolean;
 }
+
+export interface IThrowCartPayload {
+  playerId: IPlayer["id"];
+  cardId: IPlayerCard["id"];
+  field: CardIn
+}
+
+export interface IThrowCartResponse {
+  success: boolean;
+}

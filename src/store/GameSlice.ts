@@ -96,18 +96,18 @@ export const useEnemySelector = () => {
 
 export const usePlayerFieldsSelector = () => {
   return [
-    { id: "field1", data: usePlayerSelector().field1 },
-    { id: "field2", data: usePlayerSelector().field2 },
-    { id: "field3", data: usePlayerSelector().field3 },
-    { id: "field4", data: usePlayerSelector().field4 },
+    { id: "Field1", data: usePlayerSelector().field1 },
+    { id: "Field2", data: usePlayerSelector().field2 },
+    { id: "Field3", data: usePlayerSelector().field3 },
+    { id: "Field4", data: usePlayerSelector().field4 },
   ];
 };
 
 export const useEnemyFieldsSelector = () => {
   return [
-    { id: "field1", data: useEnemySelector().field1 },
-    { id: "field2", data: useEnemySelector().field2 },
-    { id: "field3", data: useEnemySelector().field3 },
-    { id: "field4", data: useEnemySelector().field4 },
+    { id: "Field1", data: useEnemySelector().field1 },
+    { id: "Field2", data: useEnemySelector().field2 },
+    { id: "Field3", data: useEnemySelector().field3 },
+    { id: "Field4", data: useEnemySelector().field4 },
   ];
 };

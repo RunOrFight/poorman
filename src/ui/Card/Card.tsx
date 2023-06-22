@@ -21,7 +21,9 @@ const Card: FC<CardProps> = ({ id, disabled = false }) => {
       {...listeners}
       {...attributes}
       className={classes.card}
-    />
+    >
+      id: {id}
+    </div>
   );
 };
 
