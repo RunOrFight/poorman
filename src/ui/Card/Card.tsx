@@ -9,7 +9,7 @@ import {
   yellow_card_back,
 } from "../../assets";
 
-const Card: FC<IPlayerCard> = ({ id, type, name, ...rest }) => {
+const Card: FC<IPlayerCard> = ({ id, type, name, manacost, ...rest }) => {
   let typeBg;
   let backUrl;
   switch (type) {
@@ -34,8 +34,15 @@ const Card: FC<IPlayerCard> = ({ id, type, name, ...rest }) => {
   }
 
   return id ? (
-    <div className={clsx(classes.card, typeBg, " bg-opacity-50 ")}>
+    <div
+      className={clsx(
+        classes.card,
+        typeBg,
+        " bg-opacity-50 flex flex-col text-sm"
+      )}
+    >
       <div className="text-white ">{name}</div>
+      <div className="text-white ">{manacost}</div>
     </div>
   ) : (
     <div
