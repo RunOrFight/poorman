@@ -28,7 +28,7 @@ const EndTurnButton = () => {
     <div className="flex flex-col items-center gap-2">
       {/*<div className="text-white font-sans text-xl">{timeLeft} sec</div>*/}
       <Button disabled={isTurnEnd} onClick={handleClick}>
-        {isTurnEnd ? "Waiting for battle" : "End Turn"}
+        {isTurnEnd ? "Wait for battle" : "End Turn"}
       </Button>
     </div>
   );
