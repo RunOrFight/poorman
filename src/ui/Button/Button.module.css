@@ -1,6 +1,6 @@
 .button {
     padding: 10px 20px;
-    background-color: #8d57b4!important;
+    background-color: #8d57b4;
     border: none;
     border-radius: 50px;
     color: #fff;
@@ -11,6 +11,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     height: 50px;
+}
+
+
+.button[type='button'], .button[type='reset'], .button[type='submit']{
+    background-color: #8d57b4;
 }
 
 .button:hover {
