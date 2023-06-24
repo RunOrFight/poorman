@@ -42,22 +42,22 @@ const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
       typeBg = "bg-grey-400";
   }
 
-  // useEffect(() => {
-  //   anime({
-  //     // targets: ".card",
-  //     translateX: 250,
-  //     rotate: "1turn",
-  //     backgroundColor: "#FFF",
-  //     duration: 800,
-  //     complete: function (anim) {
-  //       console.log("animation", anim);
-  //     },
-  //   });
-  //   return () => {};
-  // }, []);
+  useEffect(() => {
+    anime({
+      targets: ".card",
+      translateX: -1000,
+      duration: 800,
+      rotate: "1turn",
+      easing: "spring(1, 80, 15 , 0)",
+      complete: function (anim) {
+        console.log("animation", anim);
+      },
+    });
+    return () => {};
+  }, []);
 
   return id ? (
-    <div className={clsx(classes.card, typeBg, " bg-opacity-50 ", "relative")}>
+    <div className="card">
       <div className="text-white ">{name}</div>
       <div
         className={"absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"}

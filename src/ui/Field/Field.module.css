@@ -1,7 +1,4 @@
 .field {
-
-  outline: 1px dashed white;
-
   position: relative;
   width: 170px;
   height: 232px;
@@ -12,6 +9,7 @@
   display: flex;
   font-size: 20px;
   cursor: pointer;
+  mix-blend-mode: color;
 }
 
 .field:after {
