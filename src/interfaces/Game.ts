@@ -8,7 +8,8 @@ export interface IGameData {
 export interface IPlayerData {
   name: string;
   hp: number;
-  mana: number;
+  manaCommon: number;
+  manaCurrent: number;
   cardsInHand: IPlayerCard[];
   field1: IPlayerCard | null;
   field2: IPlayerCard | null;
@@ -19,7 +20,7 @@ export interface IPlayerData {
 export interface IEnemyData {
   name: string;
   hp: number;
-  mana: number;
+  manaCommon: number;
   cardsInHand: IPlayerCard[];
   field1: IPlayerCard | null;
   field2: IPlayerCard | null;
@@ -40,6 +41,7 @@ export interface IPlayerCard {
   damage: number;
   name: string;
   type: CardType;
+  imageUrl: string;
 }
 
 export interface IPlayer {
@@ -51,7 +53,8 @@ export interface IPlayer {
   isLoaded: boolean;
   turnEnded: boolean;
   hp: number;
-  mana: number;
+  manaCommon: number;
+  manaCurrent: number;
   cards: IPlayerCard[];
 }
 
@@ -74,6 +77,7 @@ export interface ICard {
   manacost: number;
   hp: number;
   damage: number;
+  imageUrl: string;
 }
 
 export interface ICardAttack {
