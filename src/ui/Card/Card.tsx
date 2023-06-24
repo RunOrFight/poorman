@@ -9,40 +9,64 @@ import {
   yellow_card_back,
 } from "../../assets";
 
-const Card: FC<IPlayerCard> = ({ id, type, name, manacost, ...rest }) => {
+import { Color } from "../../utils/constants";
+import { DamageIcon, MpIcon, HpIcon } from "../";
+
+const Card: FC<IPlayerCard> = ({
+  id,
+  type,
+  name,
+  damage,
+  hp,
+  manacost,
+  ...rest
+}) => {
   let typeBg;
   let backUrl;
+  let color;
   switch (type) {
     case CardType.All:
       typeBg = "bg-yellow-400";
       backUrl = yellow_card_back;
+      color = Color.YELLOW;
       break;
     case CardType.Left:
       typeBg = "bg-blue-400";
       backUrl = blue_card_back;
+      color = Color.BLUE;
       break;
     case CardType.Right:
       typeBg = "bg-green-400";
       backUrl = green_card_back;
+      color = Color.GREEN;
       break;
     case CardType.Straight:
       typeBg = "bg-red-400";
       backUrl = red_card_back;
+      color = Color.RED;
       break;
     default:
       typeBg = "bg-grey-400";
   }
 
   return id ? (
-    <div
-      className={clsx(
-        classes.card,
-        typeBg,
-        " bg-opacity-50 flex flex-col text-sm"
-      )}
-    >
+    <div className={clsx(classes.card, typeBg, " bg-opacity-50 ", "relative")}>
       <div className="text-white ">{name}</div>
-      <div className="text-white ">{manacost}</div>
+      <div
+        className={"absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"}
+      >
+        <MpIcon value={manacost} color={color} />
+      </div>
+      <div
+        className={"absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"}
+      >
+        <DamageIcon value={damage} color={color} />
+      </div>
+      <div
+        className={"absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"}
+      >
+        <HpIcon value={hp} color={color} />
+      </div>
     </div>
   ) : (
     <div

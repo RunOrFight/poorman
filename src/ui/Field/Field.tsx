@@ -1,15 +1,19 @@
-import { useDroppable } from "@dnd-kit/core";
 import { FC } from "react";
-import { Card } from "./index.ts";
-import { IPlayerCard } from "../interfaces/Game.ts";
-import { field } from "../assets/index.ts";
+import clsx from "clsx";
+import { useDroppable } from "@dnd-kit/core";
+
+import { Card } from "../index.ts";
+import { IPlayerCard } from "../../interfaces/Game.ts";
+
+import classes from "./Field.module.css";
 
 interface IFieldProps {
   id: string;
   card: null | IPlayerCard;
+  isEnemy: boolean
 }
 
-const Field: FC<IFieldProps> = ({ id, card }) => {
+const Field: FC<IFieldProps> = ({ id, card , isEnemy = false }) => {
   const { setNodeRef, isOver } = useDroppable({ id, data: { card } });
 
   const bgStyle = isOver
@@ -20,8 +24,9 @@ const Field: FC<IFieldProps> = ({ id, card }) => {
 
   return (
     <div
-      style={{ backgroundImage: `url(${field})` }}
-      className={`h-[165px] w-[120px] bg-center bg-contain bg-no-repeat ${bgStyle}`}
+      className={clsx(classes.field, bgStyle, {
+        [classes.rotate]: isEnemy,
+      })}
       id="field"
       ref={setNodeRef}
     >
