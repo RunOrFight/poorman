@@ -12,15 +12,7 @@ import {
 import { Color } from "../../utils/constants";
 import { DamageIcon, MpIcon, HpIcon } from "../";
 
-const Card: FC<IPlayerCard> = ({
-  id,
-  type,
-  name,
-  damage,
-  hp,
-  manacost,
-  ...rest
-}) => {
+const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
   let typeBg;
   let backUrl;
   let color;
@@ -55,17 +47,17 @@ const Card: FC<IPlayerCard> = ({
       <div
         className={"absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"}
       >
-        <MpIcon value={manacost} color={color} />
+        <MpIcon value={manacost} color={color!} />
       </div>
       <div
         className={"absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"}
       >
-        <DamageIcon value={damage} color={color} />
+        <DamageIcon value={damage} color={color!} />
       </div>
       <div
         className={"absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"}
       >
-        <HpIcon value={hp} color={color} />
+        <HpIcon value={hp} color={color!} />
       </div>
     </div>
   ) : (
