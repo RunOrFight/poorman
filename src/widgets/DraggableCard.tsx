@@ -11,7 +11,7 @@ const DraggableCard: FC<IPlayerCard> = (card) => {
   const style = { transform: CSS.Translate.toString(transform) };
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div className={"relative"} ref={setNodeRef} style={style} {...listeners} {...attributes}>
       <Card {...card} />
     </div>
   );

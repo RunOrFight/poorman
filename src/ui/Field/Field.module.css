@@ -1,0 +1,33 @@
+.field {
+
+  outline: 1px dashed white;
+
+  position: relative;
+  width: 170px;
+  height: 232px;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.field:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 170px;
+  height: 275px;
+  background: url("/src/assets/field.svg") no-repeat center;
+  transform: translate(-50%, 0%);
+}
+
+.rotate:after {
+  bottom: 0;
+  top: auto;
+  transform: translate(-50%, 0%) rotate(180deg);
+}
+

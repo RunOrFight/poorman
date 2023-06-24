@@ -14,7 +14,7 @@ const Enemy = () => {
       </div>
       <div className="flex justify-center h-full gap-[30px] items-center">
         {fields.map((field) => (
-          <Field id={field.id} key={`enemy_${field.id}`} card={field.data} />
+          <Field id={field.id} key={`enemy_${field.id}`} card={field.data} isEnemy={true} />
         ))}
       </div>
     </div>

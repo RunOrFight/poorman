@@ -6,7 +6,6 @@ import blue_card_back from "../assets/blue_card_back.png";
 import green_card_back from "../assets/green_card_back.png";
 import red_card_back from "../assets/red_card_back.png";
 import yellow_card_back from "../assets/yellow_card_back.png";
-import field from "../assets/field.png";
 import button from "../assets/button.png";
 
 export {
@@ -18,6 +17,5 @@ export {
   green_card_back,
   red_card_back,
   yellow_card_back,
-  field,
   button,
 };
