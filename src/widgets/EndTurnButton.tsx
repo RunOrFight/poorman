@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {useSignalR, useTimer} from "../services";
 import { Button } from "../ui";
 import { useAppSelector } from "../store";
 import { useEndTurnMutation } from "../api";
@@ -8,10 +9,15 @@ const EndTurnButton = () => {
   const [isTurnEnd, setIsTurnEnd] = useState(false);
   const playerId = useAppSelector((state) => state.game.playerId);
   const [endTurn] = useEndTurnMutation();
+  const connection = useSignalR();
 
-  // useEffect(() => {
-  //   startTimer();
-  // }, []);
+  useEffect(() => {
+    // startTimer();
+    connection.on('turn_start', () => {
+      console.log("turn STARTED EVENT");
+      setIsTurnEnd(false);
+    })
+  }, []);
 
   // useEffect(() => {
   //   isTimeOver && setIsTurnEnd(true);
