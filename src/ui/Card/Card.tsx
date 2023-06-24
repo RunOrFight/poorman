@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import classes from "./Card.module.css";
 import { IPlayerCard, CardType } from "../../interfaces";
 import clsx from "clsx";
@@ -11,6 +11,7 @@ import {
 
 import { Color } from "../../utils/constants";
 import { DamageIcon, MpIcon, HpIcon } from "../";
+import anime from "animejs/lib/anime.es.js";
 
 const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
   let typeBg;
@@ -40,6 +41,20 @@ const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
     default:
       typeBg = "bg-grey-400";
   }
+
+  // useEffect(() => {
+  //   anime({
+  //     // targets: ".card",
+  //     translateX: 250,
+  //     rotate: "1turn",
+  //     backgroundColor: "#FFF",
+  //     duration: 800,
+  //     complete: function (anim) {
+  //       console.log("animation", anim);
+  //     },
+  //   });
+  //   return () => {};
+  // }, []);
 
   return id ? (
     <div className={clsx(classes.card, typeBg, " bg-opacity-50 ", "relative")}>

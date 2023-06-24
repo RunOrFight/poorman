@@ -50,7 +50,6 @@ const GameSlice = createSlice({
       return state;
     },
     setGameData: (state, action: PayloadAction<any>) => {
-      console.log(action.payload);
       return {
         ...state,
         ...action.payload,

@@ -33,6 +33,9 @@ const GamePage = () => {
     loadGame({ gameId, playerId }).then((response) => {
       console.log(response, "Response from server");
     });
+    connection.on("card_attack", (card) => {
+      console.log(card);
+    });
   }, []);
 
   return (
