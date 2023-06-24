@@ -39,7 +39,7 @@ const GamePage = () => {
 
   return (
     <SpaceBg>
-      <div className="flex w-full h-full max-w-[1250px] m-auto text-white">
+      <div className="flex w-full h-full max-w-[1250px] m-auto text-white overflow-hidden">
         <LeftSide />
 
         <div className="flex flex-col h-full w-full">

@@ -1,5 +1,6 @@
-import { Card, Field } from "../ui";
+import { Field } from "../ui";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
+
 import {
   movePlayerCardToField,
   useAppDispatch,
@@ -80,9 +81,9 @@ const Player = () => {
             <Field id={field.id} key={field.id} card={field.data} />
           ))}
         </div>
-        <div className="w-full h-full flex gap-[58px] items-center justify-center p-2.5 overflow-hidden">
+        <div className="w-full h-full flex gap-[58px] items-center justify-center p-2.5 hand">
           {cardsInHand.map((card) => (
-            <Card key={card.id} {...card} />
+            <DraggableCard key={card.id} {...card} />
           ))}
         </div>
       </div>

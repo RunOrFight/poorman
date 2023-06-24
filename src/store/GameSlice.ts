@@ -1,15 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "./index.ts";
 import { GameApi } from "../api/GameApi.ts";
-import { IEnemyData, IPlayerData } from "../interfaces/Game.ts";
+import { IEnemyData, IGameData, IPlayerData } from "../interfaces/Game.ts";
 
 const initialState = {
+  playedAnimations: {
+    cardInHand: [] as any[],
+  },
   link: null as string | null,
   gameId: null as number | null,
   playerId: null as number | null,
   isGameLoaded: false,
   playerData: {
-    mana: 0,
+    manaCommon: 0,
+    manaCurrent: 0,
     name: "",
     hp: 0,
     cardsInHand: [],
@@ -19,7 +23,8 @@ const initialState = {
     field4: null,
   } as IPlayerData,
   enemyData: {
-    mana: 0,
+    manaCommon: 0,
+    manaCurrent: 0,
     name: "",
     hp: 0,
     cardsInHand: [],
@@ -49,11 +54,20 @@ const GameSlice = createSlice({
       );
       return state;
     },
-    setGameData: (state, action: PayloadAction<any>) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
+    setGameData: (state, action: PayloadAction<IGameData>) => {
+      const { enemyData, playerData } = action.payload;
+      state.enemyData = enemyData;
+      state.playerData = playerData;
+      return state;
+    },
+    playAnimation: (
+      state,
+      action: PayloadAction<{
+        type: keyof typeof initialState.playedAnimations;
+        actor: any;
+      }>
+    ) => {
+      state.playedAnimations[action.payload.type].push(action.payload.actor);
     },
   },
   extraReducers: (builder) => {
@@ -85,8 +99,10 @@ const GameSlice = createSlice({
 });
 
 const { reducer: GameReducer, actions } = GameSlice;
-const { movePlayerCardToField, setGameData } = actions;
-export { GameReducer, movePlayerCardToField, setGameData };
+const { movePlayerCardToField, setGameData, playAnimation } = actions;
+
+export { GameReducer, movePlayerCardToField, setGameData, playAnimation };
+
 export const usePlayerSelector = () => {
   return useAppSelector((state) => state.game.playerData);
 };
