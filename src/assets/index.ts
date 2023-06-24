@@ -7,6 +7,10 @@ import green_card_back from "../assets/green_card_back.png";
 import red_card_back from "../assets/red_card_back.png";
 import yellow_card_back from "../assets/yellow_card_back.png";
 import button from "../assets/button.png";
+import nola from "../assets/nola.png";
+import yellow_sfinx from "../assets/yellow_sfinx.png";
+import green_haski from "../assets/green_haski.png";
+import blue_cat from "../assets/blue_cat.png";
 
 export {
   piece,
@@ -18,4 +22,8 @@ export {
   red_card_back,
   yellow_card_back,
   button,
+  nola,
+  yellow_sfinx,
+  green_haski,
+  blue_cat,
 };

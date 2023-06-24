@@ -4,10 +4,10 @@
   inherits: false;
 } */
 
-:global(.card) {
+.card {
   z-index: 2;
-  width: 100px;
-  height: 160px;
+  width: 170px;
+  height: 232px;
   padding: 2px;
   position: relative;
   justify-content: center;
@@ -16,9 +16,17 @@
   display: flex;
   font-size: 20px;
   cursor: pointer;
-  background-color: rgb(250 204 21 / 0.5);
-  left: 1000px;
 }
+
+
+
+@media (max-width: 1199px) {
+  .card{
+    width: 120px;
+    height: 166px;
+  }
+}
+
 
   /* .card::before {
   content: "";

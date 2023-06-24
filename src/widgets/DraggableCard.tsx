@@ -6,7 +6,7 @@ import { IPlayerCard } from "../interfaces";
 import { usePlayerSelector } from "../store";
 
 const DraggableCard: FC<IPlayerCard> = (card) => {
-  const mana = usePlayerSelector().mana;
+  const mana = usePlayerSelector().manaCurrent;
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: card.id,
     disabled: card.manacost > mana,
@@ -14,7 +14,13 @@ const DraggableCard: FC<IPlayerCard> = (card) => {
   const style = { transform: CSS.Translate.toString(transform) };
 
   return (
-    <div className={"relative"} ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div
+      className={"relative"}
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+    >
       <Card {...card} />
     </div>
   );
