@@ -80,9 +80,9 @@ const Player = () => {
             <Field id={field.id} key={field.id} card={field.data} />
           ))}
         </div>
-        <div className="w-full h-full flex gap-[58px] items-center justify-center p-2.5">
+        <div className="w-full h-full flex gap-[58px] items-center justify-center p-2.5 overflow-hidden">
           {cardsInHand.map((card) => (
-            <DraggableCard key={card.id} {...card} />
+            <Card key={card.id} {...card} />
           ))}
         </div>
       </div>

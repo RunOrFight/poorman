@@ -4,9 +4,10 @@
   inherits: false;
 } */
 
-.card {
-  width: 170px;
-  height: 232px;
+:global(.card) {
+  z-index: 2;
+  width: 100px;
+  height: 160px;
   padding: 2px;
   position: relative;
   justify-content: center;
@@ -15,6 +16,8 @@
   display: flex;
   font-size: 20px;
   cursor: pointer;
+  background-color: rgb(250 204 21 / 0.5);
+  left: 1000px;
 }
 
   /* .card::before {

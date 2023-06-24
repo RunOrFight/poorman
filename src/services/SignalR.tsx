@@ -1,4 +1,4 @@
-import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
+import { HubConnectionBuilder, HubConnection } from "@microsoft/signalr";
 import {
   FC,
   PropsWithChildren,
@@ -11,10 +11,10 @@ import {
 } from "react";
 import { InfiniteProgress } from "../ui";
 import { useAuthSelector } from "../store";
-import { IUser } from "../interfaces";
+import { ExtendedConnection, IUser } from "../interfaces";
 import { useNavigate } from "react-router-dom";
 
-const SignalRContext = createContext<HubConnection>(null!);
+const SignalRContext = createContext<ExtendedConnection>(null!);
 
 const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
   const [isConnected, setIsConnected] = useState(false);

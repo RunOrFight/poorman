@@ -28,10 +28,12 @@ const GamePage = () => {
     connection.on("update_game_data", (data: string) => {
       const parsedData: IGameData = JSON.parse(data);
       dispatch(setGameData(parsedData));
-      console.log(parsedData, "HERE DATA");
     });
     loadGame({ gameId, playerId }).then((response) => {
       console.log(response, "Response from server");
+    });
+    connection.on("card_attack", (card) => {
+      console.log(card, "card_attack");
     });
   }, []);
 

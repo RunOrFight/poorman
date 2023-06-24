@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {useSignalR, useTimer} from "../services";
+import { useSignalR, useTimer } from "../services";
 import { Button } from "../ui";
 import { useAppSelector } from "../store";
 import { useEndTurnMutation } from "../api";
@@ -13,10 +13,10 @@ const EndTurnButton = () => {
 
   useEffect(() => {
     // startTimer();
-    connection.on('turn_start', () => {
+    connection.on("turn_start", () => {
       console.log("turn STARTED EVENT");
       setIsTurnEnd(false);
-    })
+    });
   }, []);
 
   // useEffect(() => {
