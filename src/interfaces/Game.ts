@@ -82,15 +82,15 @@ export interface ICard {
 
 export interface ICardAttack {
   field: number;
-  attackingPlayer: IPlayer;
+  attackingPlayerId: IPlayer["id"];
   attackingCard: IPlayerCard;
-  playerUnderAttack: IPlayer;
-  cardUnderAttack: IPlayerCard[];
+  playerUnderAttackId: IPlayer["id"];
+  fieldsUnderAttack: IPlayerCard[];
 }
 
 export interface ICardIsDead {
   field: number;
-  playerUnderAttack: IPlayer;
+  playerId: IPlayer["id"];
 }
 
 export enum CardIn {
