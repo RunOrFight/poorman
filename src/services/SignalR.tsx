@@ -13,6 +13,7 @@ import { InfiniteProgress } from "../ui";
 import { useAuthSelector } from "../store";
 import { ExtendedConnection, IUser } from "../interfaces";
 import { useNavigate } from "react-router-dom";
+import {apiUrl} from "./constants";
 
 const SignalRContext = createContext<ExtendedConnection>(null!);
 
@@ -42,7 +43,7 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (!connection.current) {
       connection.current = new HubConnectionBuilder()
-        .withUrl("http://localhost/socket")
+        .withUrl(`${apiUrl}/socket`)
         .withAutomaticReconnect()
         .build();
       connection.current.onclose(() => {
