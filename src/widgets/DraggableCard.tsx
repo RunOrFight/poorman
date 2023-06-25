@@ -15,7 +15,7 @@ const DraggableCard: FC<IPlayerCard> = (card) => {
 
   return (
     <div
-      className={"relative"}
+      className={"relative grow max-w-[170px]"}
       ref={setNodeRef}
       style={style}
       {...listeners}

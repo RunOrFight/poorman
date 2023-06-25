@@ -82,29 +82,44 @@ const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
     return () => {};
   }, []);
 
+  const getCardProperties = () => {
+    return (
+        <>
+          <div className={"absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"}>
+            <MpIcon value={manacost} color={color} />
+          </div>
+          <div className={"absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"}>
+            <DamageIcon value={damage} color={color} />
+          </div>
+          <div className={"absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"}>
+            <HpIcon value={hp} color={color} />
+          </div>
+        </>
+    )
+  }
+
+  const dataForColor = {
+    border: `2px solid ${color}`,
+    backgroundColor: "rgba(78, 71, 6, 1)", //color,
+  }
+
   return id ? (
-    <div ref={ref} className={clsx(classes.card, typeBg)}>
-      <img
-        src={imgSrc}
-        alt="nola"
-        className="w-full h-full object-cover select-none pointer-events-none "
-      />
-      <div
-        className={"absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"}
-      >
-        <MpIcon value={manacost} color={color!} />
+      <div ref={ref} className={classes.card} style={dataForColor}>
+        <div className={classes.front}>
+          <div className={classes.img} style={{
+            backgroundImage: `url(${imgSrc})`,
+            ...dataForColor
+          }}>
+            {getCardProperties()}
+          </div>
+          <div className="123">{name}</div>
+
+        </div>
+
+        <div className={classes.back} style={{ backgroundImage: `url(${backUrl})` }} >
+
+        </div>
       </div>
-      <div
-        className={"absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2"}
-      >
-        <DamageIcon value={damage} color={color!} />
-      </div>
-      <div
-        className={"absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2"}
-      >
-        <HpIcon value={hp} color={color!} />
-      </div>
-    </div>
   ) : (
     <div
       className={clsx(classes.card, "bg-no-repeat bg-contain bg-transparent")}
