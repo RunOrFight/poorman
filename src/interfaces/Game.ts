@@ -1,5 +1,28 @@
 import { IUser } from ".";
 
+export enum SideState {
+  Back,
+  Front,
+}
+
+export interface IEnemyCardHidden {
+  id: number;
+  type: CardType;
+  // sideState: SideState;
+}
+
+export interface IPlayerCard extends IEnemyCardHidden {
+  playerId: number;
+  isDead: boolean;
+  manacost: number;
+  hp: number;
+  damage: number;
+  name: string;
+  imageUrl: string;
+}
+
+export interface IEnemyCardOpen extends IPlayerCard {}
+
 export interface IGameData {
   playerData: IPlayerData;
   enemyData: IEnemyData;
@@ -21,27 +44,11 @@ export interface IEnemyData {
   name: string;
   hp: number;
   manaCommon: number;
-  cardsInHand: IPlayerCard[];
-  field1: IPlayerCard | null;
-  field2: IPlayerCard | null;
-  field3: IPlayerCard | null;
-  field4: IPlayerCard | null;
-}
-
-export interface IPlayerCard {
-  id: number;
-  playerId: number;
-  player: IPlayer;
-  cardId: number;
-  card: ICard;
-  cardIn: CardIn;
-  isDead: boolean;
-  manacost: number;
-  hp: number;
-  damage: number;
-  name: string;
-  type: CardType;
-  imageUrl: string;
+  cardsInHand: IEnemyCardHidden[];
+  field1: IEnemyCardHidden | IEnemyCardOpen | null;
+  field2: IEnemyCardHidden | IEnemyCardOpen | null;
+  field3: IEnemyCardHidden | IEnemyCardOpen | null;
+  field4: IEnemyCardHidden | IEnemyCardOpen | null;
 }
 
 export interface IPlayer {
@@ -68,16 +75,6 @@ export interface IGame {
   link: string;
   players: IPlayer[];
   isFinished: boolean;
-}
-
-export interface ICard {
-  id: number;
-  name: string;
-  type: CardType;
-  manacost: number;
-  hp: number;
-  damage: number;
-  imageUrl: string;
 }
 
 export interface ICardAttack {

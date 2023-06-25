@@ -13,6 +13,9 @@ const EndTurnButton = () => {
 
   useEffect(() => {
     // startTimer();
+    if (!connection) {
+      return;
+    }
     connection.on("turn_start", () => {
       console.log("turn STARTED EVENT");
       setIsTurnEnd(false);

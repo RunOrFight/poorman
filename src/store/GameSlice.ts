@@ -1,7 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "./index.ts";
 import { GameApi } from "../api/GameApi.ts";
-import { IEnemyData, IGameData, IPlayerData } from "../interfaces/Game.ts";
+import {
+  CardType,
+  IEnemyData,
+  IGameData,
+  IPlayerData,
+  SideState,
+} from "../interfaces/Game.ts";
 
 const initialState = {
   link: null as string | null,
@@ -13,8 +19,30 @@ const initialState = {
     manaCurrent: 0,
     name: "",
     hp: 0,
-    cardsInHand: [],
-    field1: null,
+    cardsInHand: [
+      {
+        id: 11,
+        damage: 1,
+        hp: 2,
+        manacost: 1,
+        type: CardType.All,
+        name: "Sasha",
+        imageUrl: "",
+        isDead: false,
+        playerId: 12,
+      },
+    ],
+    field1: {
+      id: 12,
+      damage: 1,
+      hp: 2,
+      manacost: 1,
+      type: CardType.Left,
+      name: "Sasha",
+      imageUrl: "",
+      isDead: false,
+      playerId: 12,
+    },
     field2: null,
     field3: null,
     field4: null,
@@ -24,9 +52,22 @@ const initialState = {
     manaCurrent: 0,
     name: "",
     hp: 0,
-    cardsInHand: [],
-    field1: null,
-    field2: null,
+    cardsInHand: [{ id: 12, type: CardType.Left }],
+    field1: {
+      id: 55,
+      damage: 1,
+      hp: 2,
+      manacost: 1,
+      type: CardType.Left,
+      name: "Sasha",
+      imageUrl: "",
+      isDead: false,
+      playerId: 13,
+    },
+    field2: {
+      id: 66,
+      type: CardType.Straight,
+    },
     field3: null,
     field4: null,
   } as IEnemyData,
@@ -45,11 +86,15 @@ const GameSlice = createSlice({
       state,
       action: PayloadAction<IMoveCardToFieldPayload>
     ) => {
-      state.playerData[action.payload.fieldId] = { id: action.payload.cardId };
-      state.playerData.cardsInHand = state.playerData.cardsInHand.filter(
-        (card) => card.id !== action.payload.cardId
-      );
-      return state;
+      return {
+        ...state,
+        playerData: {
+          ...state.playerData,
+          cardsInHand: state.playerData.cardsInHand.filter(
+            (card) => card.id !== action.payload.cardId
+          ),
+        },
+      };
     },
     setGameData: (state, action: PayloadAction<IGameData>) => {
       const { enemyData, playerData } = action.payload;

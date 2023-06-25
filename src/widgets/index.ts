@@ -6,4 +6,4 @@ export { default as SpaceBg } from "./SpaceBg";
 export { default as EnemyHero } from "./EnemyHero";
 export { default as PlayerHero } from "./PlayerHero";
 export { default as LeftSide } from "./LeftSide";
-export { default as DraggableCard } from "./DraggableCard";
+export { default as PlayerCard } from "./PlayerCard";
