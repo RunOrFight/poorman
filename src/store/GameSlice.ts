@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "./index.ts";
 import { GameApi } from "../api/GameApi.ts";
-import { IEnemyData, IGameData, IPlayerData } from "../interfaces/Game.ts";
+import {
+  CardType,
+  IEnemyData,
+  IGameData,
+  IPlayerData,
+} from "../interfaces/Game.ts";
+import { useMemo } from "react";
 
 const initialState = {
-  playedAnimations: {
-    cardInHand: [] as any[],
-  },
   link: null as string | null,
   gameId: null as number | null,
   playerId: null as number | null,
@@ -27,47 +30,52 @@ const initialState = {
     manaCurrent: 0,
     name: "",
     hp: 0,
-    cardsInHand: [],
-    field1: null,
-    field2: null,
+    cardsInHand: [{ id: 12, type: CardType.Left }],
+    field1: {
+      id: 55,
+      damage: 1,
+      hp: 2,
+      manacost: 1,
+      type: CardType.Left,
+      name: "Sasha",
+      imageUrl: "",
+      isDead: false,
+      playerId: 13,
+    },
+    field2: {
+      id: 66,
+      type: CardType.Straight,
+    },
     field3: null,
     field4: null,
   } as IEnemyData,
 };
 
-interface IMoveCardToFieldPayload {
-  cardId: number;
-  fieldId: string;
-}
-
 const GameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    movePlayerCardToField: (
-      state,
-      action: PayloadAction<IMoveCardToFieldPayload>
-    ) => {
-      state.playerData[action.payload.fieldId] = { id: action.payload.cardId };
-      state.playerData.cardsInHand = state.playerData.cardsInHand.filter(
-        (card) => card.id !== action.payload.cardId
-      );
-      return state;
-    },
     setGameData: (state, action: PayloadAction<IGameData>) => {
       const { enemyData, playerData } = action.payload;
-      state.enemyData = enemyData;
-      state.playerData = playerData;
+
+      state.enemyData.field1 = enemyData.field1;
+      state.enemyData.field2 = enemyData.field2;
+      state.enemyData.field3 = enemyData.field3;
+      state.enemyData.field4 = enemyData.field4;
+      state.enemyData.name = enemyData.name;
+      state.enemyData.hp = enemyData.hp;
+      state.enemyData.cardsInHand = enemyData.cardsInHand;
+
+      state.playerData.field1 = playerData.field1;
+      state.playerData.field2 = playerData.field2;
+      state.playerData.field3 = playerData.field3;
+      state.playerData.field4 = playerData.field4;
+      state.playerData.manaCurrent = playerData.manaCurrent;
+      state.playerData.hp = playerData.hp;
+      state.playerData.name = playerData.name;
+      state.playerData.cardsInHand = playerData.cardsInHand;
+
       return state;
-    },
-    playAnimation: (
-      state,
-      action: PayloadAction<{
-        type: keyof typeof initialState.playedAnimations;
-        actor: any;
-      }>
-    ) => {
-      state.playedAnimations[action.payload.type].push(action.payload.actor);
     },
   },
   extraReducers: (builder) => {
@@ -99,10 +107,9 @@ const GameSlice = createSlice({
 });
 
 const { reducer: GameReducer, actions } = GameSlice;
-const { movePlayerCardToField, setGameData, playAnimation } = actions;
+const { setGameData } = actions;
 
-export { GameReducer, movePlayerCardToField, setGameData, playAnimation };
-
+export { GameReducer, setGameData };
 export const usePlayerSelector = () => {
   return useAppSelector((state) => state.game.playerData);
 };
@@ -111,19 +118,33 @@ export const useEnemySelector = () => {
 };
 
 export const usePlayerFieldsSelector = () => {
-  return [
-    { id: "Field1", data: usePlayerSelector().field1 },
-    { id: "Field2", data: usePlayerSelector().field2 },
-    { id: "Field3", data: usePlayerSelector().field3 },
-    { id: "Field4", data: usePlayerSelector().field4 },
-  ];
+  const field1 = usePlayerSelector().field1;
+  const field2 = usePlayerSelector().field2;
+  const field3 = usePlayerSelector().field3;
+  const field4 = usePlayerSelector().field4;
+  return useMemo(
+    () => [
+      { id: "Field1", data: field1 },
+      { id: "Field2", data: field2 },
+      { id: "Field3", data: field3 },
+      { id: "Field4", data: field4 },
+    ],
+    [field1, field2, field3, field4]
+  );
 };
 
 export const useEnemyFieldsSelector = () => {
-  return [
-    { id: "Field1", data: useEnemySelector().field1 },
-    { id: "Field2", data: useEnemySelector().field2 },
-    { id: "Field3", data: useEnemySelector().field3 },
-    { id: "Field4", data: useEnemySelector().field4 },
-  ];
+  const field1 = useEnemySelector().field1;
+  const field2 = useEnemySelector().field2;
+  const field3 = useEnemySelector().field3;
+  const field4 = useEnemySelector().field4;
+  return useMemo(
+    () => [
+      { id: "Field1", data: field1 },
+      { id: "Field2", data: field2 },
+      { id: "Field3", data: field3 },
+      { id: "Field4", data: field4 },
+    ],
+    [field1, field2, field3, field4]
+  );
 };

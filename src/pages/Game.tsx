@@ -1,4 +1,4 @@
-import { Side } from "../ui";
+import { Button, Card, PAlert, Side } from "../ui";
 import {
   EndTurnButton,
   EnemyHero,
@@ -9,35 +9,59 @@ import {
 import { useAppSelector, useAppDispatch, setGameData } from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
-import { IGameData } from "../interfaces";
+import { CardType, ICardAttack, IGameData } from "../interfaces";
 import { useLoadGameMutation } from "../api";
-import Enemy from "../widgets/Enemy";
+import { Enemy } from "../widgets";
 import { divider } from "../assets";
-
+import anime from "animejs/lib/anime.es.js";
+let lastData: string;
 const GamePage = () => {
   const connection = useSignalR();
-
-  const [loadGame] = useLoadGameMutation();
+  const [loadGame, { isSuccess }] = useLoadGameMutation();
   const gameId = useAppSelector((state) => state.game.gameId!);
   const playerId = useAppSelector((state) => state.game.playerId!);
+  const isGameLoaded = useAppSelector((state) => state.game.isGameLoaded!);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (!connection) {
-      return;
+    if (connection) {
+      connection.off("update_game_data");
+      connection.on("update_game_data", (data: string) => {
+        if (data !== lastData) {
+          const parsedData: IGameData = JSON.parse(data);
+          console.log("UDATE_GAME_DATA");
+          dispatch(setGameData(parsedData));
+        }
+        lastData = data;
+      });
+      connection.off("card_attack");
+      connection.on("card_attack", (data) => {
+        console.log("CARD_ATTACK");
+        const parsedData: ICardAttack = JSON.parse(data);
+        anime({
+          targets: `#card_${parsedData.attackingCard.id}`,
+          translateY: [
+            { value: 100, duration: 500 },
+            { value: -50, duration: 200 },
+            { value: 0, duration: 500 },
+          ],
+          scale: [
+            { value: 1.2, duration: 500 },
+            { value: 1, duration: 200 },
+          ],
+          easing: "easeOutElastic(1, .8)",
+        });
+      });
+      if (!isGameLoaded) {
+        loadGame({ gameId, playerId });
+      }
     }
-    connection.on("update_game_data", (data: string) => {
-      const parsedData: IGameData = JSON.parse(data);
-      dispatch(setGameData(parsedData));
-    });
-    loadGame({ gameId, playerId }).then((response) => {
-      console.log(response, "Response from server");
-    });
-    connection.on("card_attack", (card) => {
-      console.log(card, "card_attack");
-    });
+    () => {
+      connection.off("update_game_data");
+      connection.off("card_attack");
+    };
   }, []);
 
-  return (
+  return isSuccess ? (
     <SpaceBg>
       <div className="flex w-full h-full max-w-[1250px] m-auto text-white overflow-hidden">
         <LeftSide />
@@ -60,6 +84,10 @@ const GamePage = () => {
         </Side>
       </div>
     </SpaceBg>
+  ) : (
+    <div className="h-full w-full flex justify-center items-center">
+      <PAlert>Game is not loaded</PAlert>
+    </div>
   );
 };
 
