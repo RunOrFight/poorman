@@ -6,8 +6,8 @@ import {
   IEnemyData,
   IGameData,
   IPlayerData,
-  SideState,
 } from "../interfaces/Game.ts";
+import { useMemo } from "react";
 
 const initialState = {
   link: null as string | null,
@@ -19,30 +19,8 @@ const initialState = {
     manaCurrent: 0,
     name: "",
     hp: 0,
-    cardsInHand: [
-      {
-        id: 11,
-        damage: 1,
-        hp: 2,
-        manacost: 1,
-        type: CardType.All,
-        name: "Sasha",
-        imageUrl: "",
-        isDead: false,
-        playerId: 12,
-      },
-    ],
-    field1: {
-      id: 12,
-      damage: 1,
-      hp: 2,
-      manacost: 1,
-      type: CardType.Left,
-      name: "Sasha",
-      imageUrl: "",
-      isDead: false,
-      playerId: 12,
-    },
+    cardsInHand: [],
+    field1: null,
     field2: null,
     field3: null,
     field4: null,
@@ -73,37 +51,31 @@ const initialState = {
   } as IEnemyData,
 };
 
-interface IMoveCardToFieldPayload {
-  cardId: number;
-  fieldId: string;
-}
-
 const GameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    movePlayerCardToField: (
-      state,
-      action: PayloadAction<IMoveCardToFieldPayload>
-    ) => {
-      return {
-        ...state,
-        playerData: {
-          ...state.playerData,
-          cardsInHand: state.playerData.cardsInHand.filter(
-            (card) => card.id !== action.payload.cardId
-          ),
-        },
-      };
-    },
     setGameData: (state, action: PayloadAction<IGameData>) => {
       const { enemyData, playerData } = action.payload;
-      const newState = {
-        ...state,
-        enemyData: { ...enemyData, cardsInHand: enemyData.cardsInHand },
-        playerData: { ...playerData, cardsInHand: playerData.cardsInHand },
-      };
-      return newState;
+
+      state.enemyData.field1 = enemyData.field1;
+      state.enemyData.field2 = enemyData.field2;
+      state.enemyData.field3 = enemyData.field3;
+      state.enemyData.field4 = enemyData.field4;
+      state.enemyData.name = enemyData.name;
+      state.enemyData.hp = enemyData.hp;
+      state.enemyData.cardsInHand = enemyData.cardsInHand;
+
+      state.playerData.field1 = playerData.field1;
+      state.playerData.field2 = playerData.field2;
+      state.playerData.field3 = playerData.field3;
+      state.playerData.field4 = playerData.field4;
+      state.playerData.manaCurrent = playerData.manaCurrent;
+      state.playerData.hp = playerData.hp;
+      state.playerData.name = playerData.name;
+      state.playerData.cardsInHand = playerData.cardsInHand;
+
+      return state;
     },
   },
   extraReducers: (builder) => {
@@ -135,10 +107,9 @@ const GameSlice = createSlice({
 });
 
 const { reducer: GameReducer, actions } = GameSlice;
-const { movePlayerCardToField, setGameData } = actions;
+const { setGameData } = actions;
 
-export { GameReducer, movePlayerCardToField, setGameData };
-
+export { GameReducer, setGameData };
 export const usePlayerSelector = () => {
   return useAppSelector((state) => state.game.playerData);
 };
@@ -147,19 +118,33 @@ export const useEnemySelector = () => {
 };
 
 export const usePlayerFieldsSelector = () => {
-  return [
-    { id: "Field1", data: usePlayerSelector().field1 },
-    { id: "Field2", data: usePlayerSelector().field2 },
-    { id: "Field3", data: usePlayerSelector().field3 },
-    { id: "Field4", data: usePlayerSelector().field4 },
-  ];
+  const field1 = usePlayerSelector().field1;
+  const field2 = usePlayerSelector().field2;
+  const field3 = usePlayerSelector().field3;
+  const field4 = usePlayerSelector().field4;
+  return useMemo(
+    () => [
+      { id: "Field1", data: field1 },
+      { id: "Field2", data: field2 },
+      { id: "Field3", data: field3 },
+      { id: "Field4", data: field4 },
+    ],
+    [field1, field2, field3, field4]
+  );
 };
 
 export const useEnemyFieldsSelector = () => {
-  return [
-    { id: "Field1", data: useEnemySelector().field1 },
-    { id: "Field2", data: useEnemySelector().field2 },
-    { id: "Field3", data: useEnemySelector().field3 },
-    { id: "Field4", data: useEnemySelector().field4 },
-  ];
+  const field1 = useEnemySelector().field1;
+  const field2 = useEnemySelector().field2;
+  const field3 = useEnemySelector().field3;
+  const field4 = useEnemySelector().field4;
+  return useMemo(
+    () => [
+      { id: "Field1", data: field1 },
+      { id: "Field2", data: field2 },
+      { id: "Field3", data: field3 },
+      { id: "Field4", data: field4 },
+    ],
+    [field1, field2, field3, field4]
+  );
 };

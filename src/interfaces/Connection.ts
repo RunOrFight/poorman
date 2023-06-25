@@ -1,11 +1,11 @@
 import { HubConnection } from "@microsoft/signalr";
-import { ICardAttack, IGame } from ".";
+import { IGame } from ".";
 
 interface Envents {
   all_users_joined_lobby: [{ gameId: IGame["id"] }];
   turn_start: [];
   update_game_data: [data: string];
-  card_attack: [cardAttack: ICardAttack];
+  card_attack: [data: string];
 }
 
 export interface ExtendedConnection extends HubConnection {

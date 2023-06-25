@@ -7,3 +7,4 @@ export { default as EnemyHero } from "./EnemyHero";
 export { default as PlayerHero } from "./PlayerHero";
 export { default as LeftSide } from "./LeftSide";
 export { default as PlayerCard } from "./PlayerCard";
+export { default as Enemy } from "./Enemy";

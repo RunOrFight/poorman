@@ -2,12 +2,12 @@ import { Field } from "../ui";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 
 import {
-  useAppSelector,
   usePlayerFieldsSelector,
+  useAppSelector,
   usePlayerSelector,
 } from "../store";
 import { useThrowCardMutation } from "../api";
-import PlayerCard from "./PlayerCard";
+import { PlayerCard } from ".";
 import { CardIn } from "../interfaces";
 
 const Player = () => {
