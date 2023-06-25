@@ -10,10 +10,10 @@ import classes from "./Field.module.css";
 interface IFieldProps {
   id: string;
   card: null | IPlayerCard;
-  isEnemy: boolean
+  isEnemy: boolean;
 }
 
-const Field: FC<IFieldProps> = ({ id, card , isEnemy = false }) => {
+const Field: FC<IFieldProps> = ({ id, card, isEnemy = false }) => {
   const { setNodeRef, isOver } = useDroppable({ id, data: { card } });
 
   const bgStyle = isOver
@@ -24,13 +24,13 @@ const Field: FC<IFieldProps> = ({ id, card , isEnemy = false }) => {
 
   return (
     <div
-      className={clsx(classes.field, bgStyle, {
-        [classes.rotate]: isEnemy,
-      })}
+      className={clsx(classes.field, bgStyle, isEnemy && classes.rotate)}
       id="field"
       ref={setNodeRef}
     >
-      {card && <Card {...card} />}
+      {card && (
+        <Card card={card} location={isEnemy ? "enemyField" : "playerField"} />
+      )}
     </div>
   );
 };

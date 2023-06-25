@@ -21,7 +21,7 @@ const DraggableCard: FC<IPlayerCard> = (card) => {
       {...listeners}
       {...attributes}
     >
-      <Card {...card} />
+      <Card card={card} location="playerHand" />
     </div>
   );
 };

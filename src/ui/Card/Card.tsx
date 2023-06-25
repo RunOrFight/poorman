@@ -1,6 +1,6 @@
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useEffect, useRef } from "react";
 import classes from "./Card.module.css";
-import { IPlayerCard, CardType } from "../../interfaces";
+import { CardType, ICard } from "../../interfaces";
 import clsx from "clsx";
 import {
   blue_card_back,
@@ -16,21 +16,15 @@ import {
 import { Color } from "../../utils/constants";
 import { DamageIcon, MpIcon, HpIcon } from "../";
 import anime from "animejs/lib/anime.es.js";
-import { useDispatch } from "react-redux";
-import { playAnimation, useAppSelector } from "../../store";
 
-const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
-  const dispatch = useDispatch();
-  const playedAnimations = useAppSelector(
-    (state) => state.game.playedAnimations.cardInHand
-  );
+interface ICardProps {
+  card: ICard;
+  location: string;
+}
 
-  const isCardsInHandPlayed = useMemo(
-    () => playedAnimations.includes(id),
-    [id, playedAnimations]
-  );
-
-  const ref = useRef(null!);
+const Card: FC<ICardProps> = ({ card, location }) => {
+  const { id, type, damage, hp, manacost } = card;
+  const ref = useRef<HTMLDivElement | null>(null!);
 
   let typeBg;
   let backUrl;
@@ -66,16 +60,21 @@ const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
   }
 
   useEffect(() => {
-    if (!isCardsInHandPlayed) {
+    if (ref.current?.classList.contains("playerHand")) {
       anime({
         targets: ref.current,
         translateX: [1000, 0],
         duration: 800,
         rotate: "1turn",
         easing: "spring(1, 80, 15 , 0)",
-        complete: () => {
-          dispatch(playAnimation({ type: "cardInHand", actor: id }));
-        },
+      });
+    } else if (ref.current?.classList.contains("enemyHand")) {
+      anime({
+        targets: ref.current,
+        translateX: [-1000, 0],
+        duration: 800,
+        rotate: "1turn",
+        easing: "spring(1, 80, 15 , 0)",
       });
     }
 
@@ -83,7 +82,7 @@ const Card: FC<IPlayerCard> = ({ id, type, name, damage, hp, manacost }) => {
   }, []);
 
   return id ? (
-    <div ref={ref} className={clsx(classes.card, typeBg)}>
+    <div ref={ref} className={clsx(classes.card, typeBg, location)}>
       <img
         src={imgSrc}
         alt="nola"

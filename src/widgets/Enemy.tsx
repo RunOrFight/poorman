@@ -8,7 +8,7 @@ const Enemy = () => {
     <div className="h-full w-full flex flex-col p-2.5">
       <div className="w-full h-full flex gap-2.5 items-center p-2.5 hand">
         {cardsInHand.map((card, index) => (
-          <Card key={card.id || index} {...card} />
+          <Card key={card.id || index} card={card} location="enemyHand" />
         ))}
       </div>
       <div className="flex justify-center h-full gap-[30px] items-center">

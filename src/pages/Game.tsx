@@ -38,28 +38,28 @@ const GamePage = () => {
   }, []);
 
   return (
-    <SpaceBg>
-      <div className="flex w-full h-full max-w-[1250px] m-auto text-white overflow-hidden">
-        <LeftSide />
+    // <SpaceBg>
+    <div className="flex w-full h-full max-w-[1250px] m-auto text-white overflow-hidden">
+      <LeftSide />
 
-        <div className="flex flex-col h-full w-full">
-          <Enemy />
+      <div className="flex flex-col h-full w-full">
+        <Enemy />
 
-          <div className="w-full h-10">
-            <img src={divider} className="w-full h-full object-contain" />
-          </div>
-
-          <Player />
+        <div className="w-full h-10">
+          <img src={divider} className="w-full h-full object-contain" />
         </div>
 
-        <Side extraClassName="justify-start items-center">
-          <EnemyHero />
-          <div className="h-full flex items-center">
-            <EndTurnButton />
-          </div>
-        </Side>
+        <Player />
       </div>
-    </SpaceBg>
+
+      <Side extraClassName="justify-start items-center">
+        <EnemyHero />
+        <div className="h-full flex items-center">
+          <EndTurnButton />
+        </div>
+      </Side>
+    </div>
+    // </SpaceBg>
   );
 };
 

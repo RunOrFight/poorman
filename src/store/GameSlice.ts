@@ -4,9 +4,6 @@ import { GameApi } from "../api/GameApi.ts";
 import { IEnemyData, IGameData, IPlayerData } from "../interfaces/Game.ts";
 
 const initialState = {
-  playedAnimations: {
-    cardInHand: [] as any[],
-  },
   link: null as string | null,
   gameId: null as number | null,
   playerId: null as number | null,
@@ -56,18 +53,12 @@ const GameSlice = createSlice({
     },
     setGameData: (state, action: PayloadAction<IGameData>) => {
       const { enemyData, playerData } = action.payload;
-      state.enemyData = enemyData;
-      state.playerData = playerData;
-      return state;
-    },
-    playAnimation: (
-      state,
-      action: PayloadAction<{
-        type: keyof typeof initialState.playedAnimations;
-        actor: any;
-      }>
-    ) => {
-      state.playedAnimations[action.payload.type].push(action.payload.actor);
+      const newState = {
+        ...state,
+        enemyData: { ...enemyData, cardsInHand: enemyData.cardsInHand },
+        playerData: { ...playerData, cardsInHand: playerData.cardsInHand },
+      };
+      return newState;
     },
   },
   extraReducers: (builder) => {
@@ -99,9 +90,9 @@ const GameSlice = createSlice({
 });
 
 const { reducer: GameReducer, actions } = GameSlice;
-const { movePlayerCardToField, setGameData, playAnimation } = actions;
+const { movePlayerCardToField, setGameData } = actions;
 
-export { GameReducer, movePlayerCardToField, setGameData, playAnimation };
+export { GameReducer, movePlayerCardToField, setGameData };
 
 export const usePlayerSelector = () => {
   return useAppSelector((state) => state.game.playerData);
