@@ -53,8 +53,7 @@ const Card = memo(
         ></div>
       );
     }
-  ),
-  (prev, cur) => prev.id === cur.id
+  )
 );
 
 export default Card;
