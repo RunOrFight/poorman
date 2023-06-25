@@ -1,4 +1,4 @@
-import { Side } from "../ui";
+import { PAlert, Side } from "../ui";
 import {
   EndTurnButton,
   EnemyHero,
@@ -9,35 +9,46 @@ import {
 import { useAppSelector, useAppDispatch, setGameData } from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
-import { IGameData } from "../interfaces";
+import { ICardAttack, IGameData } from "../interfaces";
 import { useLoadGameMutation } from "../api";
-import Enemy from "../widgets/Enemy";
+import { Enemy } from "../widgets";
 import { divider } from "../assets";
-
+import anime from "animejs/lib/anime.es.js";
+let lastData: string;
 const GamePage = () => {
   const connection = useSignalR();
-
-  const [loadGame] = useLoadGameMutation();
+  const [loadGame, { isSuccess }] = useLoadGameMutation();
   const gameId = useAppSelector((state) => state.game.gameId!);
   const playerId = useAppSelector((state) => state.game.playerId!);
+  const isGameLoaded = useAppSelector((state) => state.game.isGameLoaded!);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (!connection) {
       return;
     }
     connection.on("update_game_data", (data: string) => {
-      const parsedData: IGameData = JSON.parse(data);
-      dispatch(setGameData(parsedData));
+      if (data !== lastData) {
+        const parsedData: IGameData = JSON.parse(data);
+        dispatch(setGameData(parsedData));
+      }
+      lastData = data;
     });
-    loadGame({ gameId, playerId }).then((response) => {
-      console.log(response, "Response from server");
+
+    connection.on("card_attack", (data) => {
+      const parsedData: ICardAttack = JSON.parse(data);
+      anime({
+        targets: `#${parsedData.attackingCard.id}`,
+        translateY: [100, 0],
+        duration: 800,
+        easing: "linear",
+      });
     });
-    connection.on("card_attack", (card) => {
-      console.log(card, "card_attack");
-    });
+    if (!isGameLoaded) {
+      loadGame({ gameId, playerId });
+    }
   }, []);
 
-  return (
+  return isSuccess ? (
     <SpaceBg>
       <div className="flex w-full h-full max-w-[1250px] m-auto text-white overflow-hidden">
         <LeftSide />
@@ -60,6 +71,8 @@ const GamePage = () => {
         </Side>
       </div>
     </SpaceBg>
+  ) : (
+    <PAlert>Game is not loaded</PAlert>
   );
 };
 
