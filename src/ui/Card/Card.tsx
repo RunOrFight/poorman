@@ -19,7 +19,7 @@ const Card = memo(
       return isPlayerCard ? (
         <div ref={ref} className={classes.card} id={`card_${card.id}`}>
           <img
-            src={imgSrc}
+            src={card.imageUrl}
             alt="nola"
             className="w-full h-full object-cover select-none pointer-events-none "
           />
