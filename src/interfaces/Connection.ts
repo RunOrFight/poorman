@@ -7,6 +7,7 @@ interface Envents {
   update_game_data: [data: string];
   card_attack: [data: string];
   start_battle: [];
+  player_win: [data: string];
 }
 
 export interface ExtendedConnection extends HubConnection {

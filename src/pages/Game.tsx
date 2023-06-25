@@ -111,7 +111,7 @@ const GamePage = () => {
 
 export default GamePage;
 
-async function playAnimation(data) {
+async function playAnimation(data: any) {
   await new Promise((complete) => {
     anime({
       targets: `.player #card_${data.attackingCard.id}`,
