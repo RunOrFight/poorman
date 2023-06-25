@@ -1,4 +1,4 @@
-import { Button, Card, PAlert, Side } from "../ui";
+import { PAlert, Side } from "../ui";
 import {
   EndTurnButton,
   EnemyHero,
@@ -8,13 +8,14 @@ import {
 } from "../widgets";
 import { useAppSelector, useAppDispatch, setGameData } from "../store";
 import { useSignalR } from "../services";
-import { useEffect } from "react";
-import { CardType, ICardAttack, IGameData } from "../interfaces";
+import { useEffect, useState } from "react";
+import { ICardAttack, IGameData } from "../interfaces";
 import { useLoadGameMutation } from "../api";
 import { Enemy } from "../widgets";
 import { divider } from "../assets";
 import anime from "animejs/lib/anime.es.js";
 let lastData: string;
+
 const GamePage = () => {
   const connection = useSignalR();
   const [loadGame, { isSuccess }] = useLoadGameMutation();
@@ -22,13 +23,18 @@ const GamePage = () => {
   const playerId = useAppSelector((state) => state.game.playerId!);
   const isGameLoaded = useAppSelector((state) => state.game.isGameLoaded!);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (connection) {
+      connection.on("start_battle", () => {
+        console.log("START_BATTLE");
+      });
+
       connection.off("update_game_data");
       connection.on("update_game_data", (data: string) => {
         if (data !== lastData) {
+          console.log("UPDATE_DATA");
           const parsedData: IGameData = JSON.parse(data);
-          console.log("UDATE_GAME_DATA");
           dispatch(setGameData(parsedData));
         }
         lastData = data;
@@ -38,7 +44,7 @@ const GamePage = () => {
         console.log("CARD_ATTACK");
         const parsedData: ICardAttack = JSON.parse(data);
         anime({
-          targets: `#card_${parsedData.attackingCard.id}`,
+          targets: `.player #card_${parsedData.attackingCard.id}`,
           translateY: [
             { value: 100, duration: 500 },
             { value: -50, duration: 200 },
@@ -50,11 +56,26 @@ const GamePage = () => {
           ],
           easing: "easeOutElastic(1, .8)",
         });
+        anime({
+          targets: `.enemy #card_${parsedData.attackingCard.id}`,
+          translateY: [
+            { value: -100, duration: 500 },
+            { value: 50, duration: 200 },
+            { value: 0, duration: 500 },
+          ],
+          scale: [
+            { value: 1.2, duration: 500 },
+            { value: 1, duration: 200 },
+          ],
+          delay: 100,
+          easing: "easeOutElastic(1, .8)",
+        });
       });
       if (!isGameLoaded) {
         loadGame({ gameId, playerId });
       }
     }
+
     () => {
       connection.off("update_game_data");
       connection.off("card_attack");
