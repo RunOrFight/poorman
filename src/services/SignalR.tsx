@@ -42,7 +42,7 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     if (!connection.current) {
       connection.current = new HubConnectionBuilder()
-        .withUrl("http://localhost:5157/socket")
+        .withUrl("http://localhost/socket")
         .withAutomaticReconnect()
         .build();
       connection.current.onclose(() => {
