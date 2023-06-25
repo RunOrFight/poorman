@@ -1,4 +1,4 @@
-import { PAlert, Side } from "../ui";
+import { Button, Card, PAlert, Side } from "../ui";
 import {
   EndTurnButton,
   EnemyHero,
@@ -9,7 +9,7 @@ import {
 import { useAppSelector, useAppDispatch, setGameData } from "../store";
 import { useSignalR } from "../services";
 import { useEffect } from "react";
-import { ICardAttack, IGameData } from "../interfaces";
+import { CardType, ICardAttack, IGameData } from "../interfaces";
 import { useLoadGameMutation } from "../api";
 import { Enemy } from "../widgets";
 import { divider } from "../assets";
@@ -23,29 +23,42 @@ const GamePage = () => {
   const isGameLoaded = useAppSelector((state) => state.game.isGameLoaded!);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (!connection) {
-      return;
-    }
-    connection.on("update_game_data", (data: string) => {
-      if (data !== lastData) {
-        const parsedData: IGameData = JSON.parse(data);
-        dispatch(setGameData(parsedData));
-      }
-      lastData = data;
-    });
-
-    connection.on("card_attack", (data) => {
-      const parsedData: ICardAttack = JSON.parse(data);
-      anime({
-        targets: `#${parsedData.attackingCard.id}`,
-        translateY: [100, 0],
-        duration: 800,
-        easing: "linear",
+    if (connection) {
+      connection.off("update_game_data");
+      connection.on("update_game_data", (data: string) => {
+        if (data !== lastData) {
+          const parsedData: IGameData = JSON.parse(data);
+          console.log("UDATE_GAME_DATA");
+          dispatch(setGameData(parsedData));
+        }
+        lastData = data;
       });
-    });
-    if (!isGameLoaded) {
-      loadGame({ gameId, playerId });
+      connection.off("card_attack");
+      connection.on("card_attack", (data) => {
+        console.log("CARD_ATTACK");
+        const parsedData: ICardAttack = JSON.parse(data);
+        anime({
+          targets: `#card_${parsedData.attackingCard.id}`,
+          translateY: [
+            { value: 100, duration: 500 },
+            { value: -50, duration: 200 },
+            { value: 0, duration: 500 },
+          ],
+          scale: [
+            { value: 1.2, duration: 500 },
+            { value: 1, duration: 200 },
+          ],
+          easing: "easeOutElastic(1, .8)",
+        });
+      });
+      if (!isGameLoaded) {
+        loadGame({ gameId, playerId });
+      }
     }
+    () => {
+      connection.off("update_game_data");
+      connection.off("card_attack");
+    };
   }, []);
 
   return isSuccess ? (
@@ -72,7 +85,9 @@ const GamePage = () => {
       </div>
     </SpaceBg>
   ) : (
-    <PAlert>Game is not loaded</PAlert>
+    <div className="h-full w-full flex justify-center items-center">
+      <PAlert>Game is not loaded</PAlert>
+    </div>
   );
 };
 

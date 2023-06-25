@@ -24,6 +24,9 @@ const MenuPage = () => {
     connection.on("all_users_joined_lobby", () => {
       setAllUsersJoinedGame(true);
     });
+    () => {
+      connection.off("all_users_joined_lobby");
+    };
   }, []);
 
   const handleCreateLobbyButtonClick = useCallback(async () => {

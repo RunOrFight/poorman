@@ -17,7 +17,7 @@ const Card = memo(
         "hp" in card && "damage" in card && "manacost" in card;
 
       return isPlayerCard ? (
-        <div ref={ref} className={classes.card} id={`${card.id}`}>
+        <div ref={ref} className={classes.card} id={`card_${card.id}`}>
           <img
             src={imgSrc}
             alt="nola"
@@ -47,7 +47,7 @@ const Card = memo(
         </div>
       ) : (
         <div
-          id={`${card.id}`}
+          id={`card_${card.id}`}
           className={classes.card}
           style={{ backgroundImage: `url(${backUrl})` }}
         ></div>
