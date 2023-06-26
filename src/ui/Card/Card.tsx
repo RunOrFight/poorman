@@ -40,7 +40,7 @@ const Card = memo(
 
       return isPlayerCard ? (
         <div ref={ref} className={clsx(classes.card, {
-            [classes.closed]: false, // todo sasha для возможности переворачивания
+            [classes.cardClosed]: false, // todo sasha для возможности переворачивания
         })} id={`card_${card.id}`}>
           <div className={classes.front} style={dataForColor}>
             <div className={classes.img} style={{

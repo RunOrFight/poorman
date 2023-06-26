@@ -54,11 +54,11 @@
   padding: 0 2em;
 }
 
-.card.closed .front {
+.card.cardClosed .front {
   transform: rotateY(180deg);
 }
 
-.card.closed .back {
+.card.cardClosed .back {
   transform: rotateY(0deg);
 }
 
