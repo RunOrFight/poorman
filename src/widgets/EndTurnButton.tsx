@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useSignalR } from "../services";
-import { Button } from "../ui";
-import { useAppSelector } from "../store";
-import { useEndTurnMutation } from "../api";
+import { useEffect, useState } from 'react';
+import { useSignalR } from '../services';
+import { Button } from '../ui';
+import { useAppSelector } from '../store';
+import { useEndTurnMutation } from '../api';
 
 const EndTurnButton = () => {
   // const { timeLeft, isTimeOver, startTimer, stopTimer } = useTimer(30);
@@ -16,10 +16,10 @@ const EndTurnButton = () => {
     if (!connection) {
       return;
     }
-    connection.on("turn_start", () => {
+    connection.on('turn_start', () => {
       setIsTurnEnd(false);
     });
-  }, []);
+  });
 
   // useEffect(() => {
   //   isTimeOver && setIsTurnEnd(true);
@@ -35,7 +35,7 @@ const EndTurnButton = () => {
     <div className="flex flex-col items-center gap-2">
       {/*<div className="text-white font-sans text-xl">{timeLeft} sec</div>*/}
       <Button disabled={isTurnEnd} onClick={handleClick}>
-        {isTurnEnd ? "Wait for battle" : "End Turn"}
+        {isTurnEnd ? 'Wait for battle' : 'End Turn'}
       </Button>
     </div>
   );

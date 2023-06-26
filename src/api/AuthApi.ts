@@ -1,24 +1,24 @@
-import { IUser, IUserLoginCreds, IUserRegisterCreds } from "../interfaces";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {apiUrl} from "../services/constants";
+import { IUser, IUserLoginCreds, IUserRegisterCreds } from '../interfaces';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { apiUrl } from '../services/constants';
 
 export const AuthApi = createApi({
-  reducerPath: "authApi",
+  reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${apiUrl}/api/auth/`,
   }),
   endpoints: (builder) => ({
     signIn: builder.mutation<IUser, IUserLoginCreds>({
       query: (userCreds) => ({
-        method: "POST",
-        url: "/signIn",
+        method: 'POST',
+        url: '/signIn',
         body: userCreds,
       }),
     }),
     signUp: builder.mutation<IUser, IUserRegisterCreds>({
       query: (userCreds) => ({
-        method: "POST",
-        url: "/signUp",
+        method: 'POST',
+        url: '/signUp',
         body: userCreds,
       }),
     }),

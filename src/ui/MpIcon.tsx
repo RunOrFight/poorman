@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 interface DamageIconProps {
   value: number;
@@ -67,11 +67,7 @@ const MpIcon: FC<DamageIconProps> = ({ value, color }) => {
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feGaussianBlur in="BackgroundImageFix" stdDeviation="3.30315" />
-          <feComposite
-            in2="SourceAlpha"
-            operator="in"
-            result="effect1_backgroundBlur_771_1940"
-          />
+          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_771_1940" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -84,11 +80,9 @@ const MpIcon: FC<DamageIconProps> = ({ value, color }) => {
   );
 
   return (
-    <div className={"relative"}>
+    <div className={'relative'}>
       {svg}
-      <div className={"absolute top-[16px] left-0 right-[3px] text-xl"}>
-        {value}
-      </div>
+      <div className={'absolute top-[16px] left-0 right-[3px] text-xl'}>{value}</div>
     </div>
   );
 };

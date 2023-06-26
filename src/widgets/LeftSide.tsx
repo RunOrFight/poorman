@@ -1,5 +1,5 @@
-import { PlayerHero } from ".";
-import { Progress } from "../ui";
+import { PlayerHero } from '.';
+import { Progress } from '../ui';
 
 const LeftSide = () => {
   return (

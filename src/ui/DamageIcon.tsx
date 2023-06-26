@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 
 interface DamageIconProps {
   value: number;
@@ -21,11 +21,7 @@ const DamageIcon: FC<DamageIconProps> = ({ value, color }) => {
         strokeWidth="1.65"
         strokeLinecap="round"
       />
-      <path
-        d="M20.0117 1L1.01172 38.5"
-        strokeWidth="1.65"
-        strokeLinecap="round"
-      />
+      <path d="M20.0117 1L1.01172 38.5" strokeWidth="1.65" strokeLinecap="round" />
       <path
         d="M21.0117 60H32.5433C32.8401 60 33.1216 59.8682 33.3116 59.6402L40.2799 51.2781C40.4297 51.0984 40.5117 50.8719 40.5117 50.638V48.5"
         strokeWidth="1.65"
@@ -55,11 +51,7 @@ const DamageIcon: FC<DamageIconProps> = ({ value, color }) => {
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feGaussianBlur in="BackgroundImageFix" stdDeviation="3.30315" />
-          <feComposite
-            in2="SourceAlpha"
-            operator="in"
-            result="effect1_backgroundBlur_771_1954"
-          />
+          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_771_1954" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -72,11 +64,9 @@ const DamageIcon: FC<DamageIconProps> = ({ value, color }) => {
   );
 
   return (
-    <div className={"relative"}>
+    <div className={'relative'}>
       {svg}
-      <div className={"absolute top-[30px] left-0 right-0 text-xl"}>
-        {value}
-      </div>
+      <div className={'absolute top-[30px] left-0 right-0 text-xl'}>{value}</div>
     </div>
   );
 };

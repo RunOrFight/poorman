@@ -1,4 +1,4 @@
-import { Dispatch, FC, PropsWithChildren, SetStateAction } from "react";
+import { Dispatch, FC, PropsWithChildren, SetStateAction } from 'react';
 
 interface IWindowProps extends PropsWithChildren {
   isVisible: boolean;

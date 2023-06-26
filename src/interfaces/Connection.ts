@@ -1,8 +1,8 @@
-import { HubConnection } from "@microsoft/signalr";
-import { IGame } from ".";
+import { HubConnection } from '@microsoft/signalr';
+import { IGame } from '.';
 
-interface Envents {
-  all_users_joined_lobby: [{ gameId: IGame["id"] }];
+interface Events {
+  all_users_joined_lobby: [{ gameId: IGame['id'] }];
   turn_start: [];
   update_game_data: [data: string];
   card_attack: [data: string];
@@ -11,8 +11,5 @@ interface Envents {
 }
 
 export interface ExtendedConnection extends HubConnection {
-  on: <T extends keyof Envents>(
-    methodName: T,
-    newMethod: (...args: Envents[T]) => any
-  ) => void;
+  on: <T extends keyof Events>(methodName: T, newMethod: (...args: Events[T]) => void) => void;
 }
