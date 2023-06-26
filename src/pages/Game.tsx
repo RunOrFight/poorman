@@ -9,6 +9,7 @@ import { divider } from '../assets';
 import anime from 'animejs/lib/anime.es.js';
 import { Navigate } from 'react-router-dom';
 import { ICardAttack, ICardIsDead, IGameData } from '../interfaces';
+import { isGameOnlyMode } from '../constants';
 
 let eventStack: { eventName: string; data: ICardAttack | IGameData | ICardIsDead }[] = [];
 
@@ -73,11 +74,11 @@ const GamePage = () => {
     }
   });
 
-  if (!connection) {
+  if (!connection && !isGameOnlyMode) {
     return <Navigate to="/" />;
   }
 
-  return isSuccess ? (
+  return isSuccess || isGameOnlyMode ? (
     <SpaceBg>
       <div className="flex w-full h-full max-w-[1250px] m-auto text-white overflow-hidden">
         <LeftSide />

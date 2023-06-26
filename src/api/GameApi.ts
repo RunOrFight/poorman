@@ -11,7 +11,7 @@ import {
   IThrowCartPayload,
   IThrowCartResponse,
 } from '../interfaces';
-import { apiUrl } from '../services/constants';
+import { apiUrl } from '../constants';
 
 export const GameApi = createApi({
   reducerPath: 'gameApi',

@@ -14,7 +14,7 @@ import { InfiniteProgress } from '../ui';
 import { useAuthSelector } from '../store';
 import { ExtendedConnection, IUser } from '../interfaces';
 import { useNavigate } from 'react-router-dom';
-import { apiUrl } from './constants';
+import { apiUrl } from '../constants';
 
 const SignalRContext = createContext<ExtendedConnection>(null!);
 
