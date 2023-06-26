@@ -13,7 +13,7 @@
   outline: 1px solid grey;
 }
 
-/* .field:after {
+.field:after {
   content: "";
   position: absolute;
   top: 0;
@@ -22,7 +22,7 @@
   height: 275px;
   background: url("/src/assets/field.svg") no-repeat center;
   transform: translate(-50%, 0%);
-} */
+}
 
 @media (max-width: 1199px) {
   .field {

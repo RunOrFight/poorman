@@ -5,30 +5,95 @@
 } */
 
 .card {
-  z-index: 2;
-  width: 170px;
-  height: 232px;
-  padding: 2px;
   position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 170px;
+  padding-bottom: 136.47%; /* 232/170 * 100% = 136.47% */
   justify-content: center;
   align-items: center;
   text-align: center;
   display: flex;
   font-size: 20px;
   cursor: pointer;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-size: cover;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: rotate ease-in-out 500ms;
 }
 
+.back, .front {
+  display: flex;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  /*transition: ease-in-out 600ms;*/
+  top: 0;
+  left: 0;
+}
 
+.front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
 
+.back {
+  transform: rotateY(-180deg);
+  padding: 0 2em;
+}
+
+.card.cardClosed .front {
+  transform: rotateY(180deg);
+}
+
+.card.cardClosed .back {
+  transform: rotateY(0deg);
+}
+
+/*!*todo sasha рубашка *!*/
+/*.card:hover .back {*/
+/*  transform: rotateY(0deg);*/
+/*}*/
+
+/*.card:hover .front {*/
+/*  transform: rotateY(180deg);*/
+/*}*/
+
+.img {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 50%;
+  padding-bottom: 112.12%; /* 148/132 * 100% = 112.12% */
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.name {
+  font-size: 16px;
+}
+
+/*
 @media (max-width: 1199px) {
   .card{
     width: 120px;
     height: 166px;
   }
 }
+ */
 
 
   /* .card::before {

@@ -30,7 +30,7 @@ const PlayerCard: FC<IPlayerCardProps> = ({ card }) => {
   }, []);
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes} className={"relative grow max-w-[170px]"}>
       <Card {...card} ref={ref} />
     </div>
   );
