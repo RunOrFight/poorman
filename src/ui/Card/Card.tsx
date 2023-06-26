@@ -1,4 +1,4 @@
-import {forwardRef, memo, useEffect, useState} from "react";
+import { forwardRef, memo } from "react";
 import classes from "./Card.module.css";
 import {
   IEnemyCardHidden,
@@ -44,12 +44,12 @@ const Card = memo(
         })} id={`card_${card.id}`}>
           <div className={classes.front} style={dataForColor}>
             <div className={classes.img} style={{
-              backgroundImage: `url(${imgSrc})`,
+              backgroundImage: `url(${card.imageUrl})`,
               ...dataForColor
             }}>
               {getCardProperties(card)}
             </div>
-            <div className={classes.name}>{card.name}123</div>
+            <div className={classes.name}>{card.name}</div>
 
           </div>
 
