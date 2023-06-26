@@ -1,9 +1,8 @@
 import { piece, progress } from '../assets';
-// import { usePlayerSelector } from "../store";
+import { usePlayerSelector } from '../store';
 
 const Progress = () => {
-  // const manaCurrent = usePlayerSelector().manaCurrent;
-  const manaCurrent = 7;
+  const manaCurrent = usePlayerSelector().manaCurrent;
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="text-white text-2xl">{manaCurrent}</div>

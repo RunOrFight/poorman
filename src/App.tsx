@@ -3,11 +3,10 @@ import { AuthPage, GamePage, MenuPage } from './pages';
 import { RequireAuth } from './widgets';
 import { Provider } from 'react-redux';
 import { setupStore } from './store';
+import { isGameOnlyMode } from './constants';
 
 const store = setupStore();
 const App = () => {
-  const isGameOnlyMode = import.meta.env.MODE === 'game';
-
   return (
     <Provider store={store}>
       <Routes>

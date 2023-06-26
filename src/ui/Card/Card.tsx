@@ -1,31 +1,36 @@
-import { forwardRef, memo } from 'react';
+import { FC, forwardRef, memo } from 'react';
 import classes from './Card.module.css';
 import { IEnemyCardHidden, IEnemyCardOpen, IPlayerCard } from '../../interfaces';
 
 import { DamageIcon, MpIcon, HpIcon } from '../';
-import { getCardPropertiesByType } from '../../utils/card';
+import { getCardPropertiesByType } from '../../utils';
 import clsx from 'clsx';
+import { Color } from '../../constants';
+
+interface ICardPropertiesProps {
+  card: IPlayerCard;
+  color: (typeof Color)[keyof typeof Color];
+}
+const CardProperties: FC<ICardPropertiesProps> = ({ card, color }) => {
+  return (
+    <>
+      <div className={'absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2'}>
+        <MpIcon value={card.manacost} color={color} />
+      </div>
+      <div className={'absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2'}>
+        <DamageIcon value={card.damage} color={color} />
+      </div>
+      <div className={'absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2'}>
+        <HpIcon value={card.hp} color={color} />
+      </div>
+    </>
+  );
+};
 
 const Card = memo(
   forwardRef<HTMLDivElement, IPlayerCard | IEnemyCardHidden | IEnemyCardOpen>((card, ref) => {
     const { backUrl, color } = getCardPropertiesByType(card.type);
     const isPlayerCard = 'hp' in card && 'damage' in card && 'manacost' in card;
-
-    const getCardProperties = (card) => {
-      return (
-        <>
-          <div className={'absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2'}>
-            <MpIcon value={card.manacost} color={color} />
-          </div>
-          <div className={'absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2'}>
-            <DamageIcon value={card.damage} color={color} />
-          </div>
-          <div className={'absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2'}>
-            <HpIcon value={card.hp} color={color} />
-          </div>
-        </>
-      );
-    };
 
     const dataForColor = {
       border: `2px solid ${color}`,
@@ -48,7 +53,7 @@ const Card = memo(
               ...dataForColor,
             }}
           >
-            {getCardProperties(card)}
+            <CardProperties card={card} color={color} />
           </div>
           <div className={classes.name}>{card.name}</div>
         </div>

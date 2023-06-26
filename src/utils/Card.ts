@@ -9,7 +9,7 @@ import {
   yellow_sfinx,
 } from '../assets';
 import { CardType } from '../interfaces';
-import { Color } from './constants';
+import { Color } from '../constants';
 
 export function getCardPropertiesByType(type: CardType) {
   switch (type) {

@@ -1,6 +1,6 @@
 import { IUser, IUserLoginCreds, IUserRegisterCreds } from '../interfaces';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { apiUrl } from '../services/constants';
+import { apiUrl } from '../constants';
 
 export const AuthApi = createApi({
   reducerPath: 'authApi',
