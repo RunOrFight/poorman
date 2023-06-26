@@ -13,7 +13,7 @@ import clsx from "clsx";
 const Card = memo(
   forwardRef<HTMLDivElement, IPlayerCard | IEnemyCardHidden | IEnemyCardOpen>(
     (card, ref) => {
-      const { backUrl, color, imgSrc } = getCardPropertiesByType(card.type);
+      const { backUrl, color } = getCardPropertiesByType(card.type);
       const isPlayerCard =
         "hp" in card && "damage" in card && "manacost" in card;
 
@@ -63,8 +63,7 @@ const Card = memo(
         ></div>
       );
     }
-  ),
-  (prev, cur) => prev.id === cur.id
+  )
 );
 
 export default Card;

@@ -1,10 +1,11 @@
 import { IUser, IUserLoginCreds, IUserRegisterCreds } from "../interfaces";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {apiUrl} from "../services/constants";
 
 export const AuthApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_SERVER_URL}/auth/`,
+    baseUrl: `${apiUrl}/api/auth/`,
   }),
   endpoints: (builder) => ({
     signIn: builder.mutation<IUser, IUserLoginCreds>({

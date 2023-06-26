@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from "./index.ts";
 import { GameApi } from "../api/GameApi.ts";
 import {
-  CardType,
   IEnemyData,
   IGameData,
   IPlayerData,
@@ -30,22 +29,9 @@ const initialState = {
     manaCurrent: 0,
     name: "",
     hp: 0,
-    cardsInHand: [{ id: 12, type: CardType.Left }],
-    field1: {
-      id: 55,
-      damage: 1,
-      hp: 2,
-      manacost: 1,
-      type: CardType.Left,
-      name: "Sasha",
-      imageUrl: "",
-      isDead: false,
-      playerId: 13,
-    },
-    field2: {
-      id: 66,
-      type: CardType.Straight,
-    },
+    cardsInHand: [],
+    field1: null,
+    field2: null,
     field3: null,
     field4: null,
   } as IEnemyData,

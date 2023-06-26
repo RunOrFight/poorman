@@ -7,7 +7,7 @@ import { useEndTurnMutation } from "../api";
 const EndTurnButton = () => {
   // const { timeLeft, isTimeOver, startTimer, stopTimer } = useTimer(30);
   const [isTurnEnd, setIsTurnEnd] = useState(false);
-  const playerId = useAppSelector((state) => state.game.playerId);
+  const playerId = useAppSelector((state) => state.game.playerId!);
   const [endTurn] = useEndTurnMutation();
   const connection = useSignalR();
 

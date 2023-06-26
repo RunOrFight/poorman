@@ -11,10 +11,11 @@ import {
   IThrowCartPayload,
   IThrowCartResponse,
 } from "../interfaces";
+import {apiUrl} from "../services/constants";
 
 export const GameApi = createApi({
   reducerPath: "gameApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5157/game/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${apiUrl}/api/game/` }),
   endpoints: (builder) => ({
     createGame: builder.mutation<ICreateGameResponse, ICreteGamePayload>({
       query: (payload) => ({

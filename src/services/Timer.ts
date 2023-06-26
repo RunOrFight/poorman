@@ -4,7 +4,7 @@ const useTimer = (start: number) => {
   const [timeLeft, setTimeLeft] = useState(start);
   const [isTimeOver, setIsTimeOver] = useState(false);
 
-  const timer = useRef<number | null>(null);
+  const timer = useRef<any | null>(null);
 
   useEffect(() => {
     if (timeLeft === 0) {
