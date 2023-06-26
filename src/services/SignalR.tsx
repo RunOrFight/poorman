@@ -1,4 +1,5 @@
-import { HubConnectionBuilder, HubConnection } from "@microsoft/signalr";
+/* eslint-disable no-console */
+import { HubConnectionBuilder, HubConnection } from '@microsoft/signalr';
 import {
   FC,
   PropsWithChildren,
@@ -8,12 +9,12 @@ import {
   useRef,
   useState,
   useCallback,
-} from "react";
-import { InfiniteProgress } from "../ui";
-import { useAuthSelector } from "../store";
-import { ExtendedConnection, IUser } from "../interfaces";
-import { useNavigate } from "react-router-dom";
-import {apiUrl} from "./constants";
+} from 'react';
+import { InfiniteProgress } from '../ui';
+import { useAuthSelector } from '../store';
+import { ExtendedConnection, IUser } from '../interfaces';
+import { useNavigate } from 'react-router-dom';
+import { apiUrl } from './constants';
 
 const SignalRContext = createContext<ExtendedConnection>(null!);
 
@@ -27,17 +28,18 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
     async (connection: HubConnection) => {
       try {
         await connection.start();
-        console.log("Connected to the server.");
-        await connection.invoke("SetUserId", user.id);
-        console.log("SetUserId invoked successfully.");
+
+        console.log('Connected to the server.');
+        await connection.invoke('SetUserId', user.id);
+        console.log('SetUserId invoked successfully.');
         setIsConnected(true);
       } catch (error) {
-        console.error("Failed to start or invoke SetUserId:", error);
-        connection.stop();
-        navigate("/login");
+        console.error('Failed to start or invoke SetUserId:', error);
+        await connection.stop();
+        navigate('/login');
       }
     },
-    [user?.id]
+    [user?.id, navigate]
   );
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
         .withAutomaticReconnect()
         .build();
       connection.current.onclose(() => {
-        console.log("Connection closed.");
+        console.log('Connection closed.');
         setIsConnected(false);
       });
     }
@@ -56,7 +58,7 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
 
     return () => {
       connection.current?.stop().then(() => {
-        console.log("Terminated");
+        console.log('Terminated');
       });
     };
   }, [startConnection]);

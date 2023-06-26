@@ -1,10 +1,10 @@
-import { useDraggable } from "@dnd-kit/core";
-import { usePlayerSelector } from "../store";
-import { Card } from "../ui";
-import { CSS } from "@dnd-kit/utilities";
-import { FC, useEffect, useRef } from "react";
-import { IPlayerCard } from "../interfaces";
-import anime from "animejs/lib/anime.es.js";
+import { useDraggable } from '@dnd-kit/core';
+import { usePlayerSelector } from '../store';
+import { Card } from '../ui';
+import { CSS } from '@dnd-kit/utilities';
+import { FC, useEffect, useRef } from 'react';
+import { IPlayerCard } from '../interfaces';
+import anime from 'animejs/lib/anime.es.js';
 
 interface IPlayerCardProps {
   card: IPlayerCard;
@@ -24,13 +24,19 @@ const PlayerCard: FC<IPlayerCardProps> = ({ card }) => {
       targets: ref.current,
       translateX: [1000, 0],
       duration: 800,
-      rotate: "1turn",
-      easing: "spring(1, 80, 15 , 0)",
+      rotate: '1turn',
+      easing: 'spring(1, 80, 15 , 0)',
     });
   }, []);
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes} className={"relative grow max-w-[170px]"}>
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      className={'relative grow max-w-[170px]'}
+    >
       <Card {...card} ref={ref} />
     </div>
   );

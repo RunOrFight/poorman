@@ -1,5 +1,5 @@
-import { useEnemySelector } from "../store";
-import { Hero } from "../ui";
+import { useEnemySelector } from '../store';
+import { Hero } from '../ui';
 
 const EnemyHero = () => {
   const enemyName = useEnemySelector().name;

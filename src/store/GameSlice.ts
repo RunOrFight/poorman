@@ -1,12 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { useAppSelector } from "./index.ts";
-import { GameApi } from "../api/GameApi.ts";
-import {
-  IEnemyData,
-  IGameData,
-  IPlayerData,
-} from "../interfaces/Game.ts";
-import { useMemo } from "react";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { useAppSelector } from './index.ts';
+import { GameApi } from '../api';
+import { IEnemyData, IGameData, IPlayerData } from '../interfaces';
+import { useMemo } from 'react';
 
 const initialState = {
   link: null as string | null,
@@ -16,7 +12,7 @@ const initialState = {
   playerData: {
     manaCommon: 0,
     manaCurrent: 0,
-    name: "",
+    name: '',
     hp: 0,
     cardsInHand: [],
     field1: null,
@@ -27,7 +23,7 @@ const initialState = {
   enemyData: {
     manaCommon: 0,
     manaCurrent: 0,
-    name: "",
+    name: '',
     hp: 0,
     cardsInHand: [],
     field1: null,
@@ -38,7 +34,7 @@ const initialState = {
 };
 
 const GameSlice = createSlice({
-  name: "game",
+  name: 'game',
   initialState,
   reducers: {
     setGameData: (state, action: PayloadAction<IGameData>) => {
@@ -65,30 +61,21 @@ const GameSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(
-      GameApi.endpoints.createGame.matchFulfilled,
-      (state, { payload }) => {
-        state.link = payload.link;
-        state.gameId = payload.gameId;
-        state.playerId = payload.playerId;
-        return state;
-      }
-    );
-    builder.addMatcher(
-      GameApi.endpoints.joinGame.matchFulfilled,
-      (state, { payload }) => {
-        state.gameId = payload.gameId;
-        state.playerId = payload.playerId;
-        return state;
-      }
-    );
-    builder.addMatcher(
-      GameApi.endpoints.loadGame.matchFulfilled,
-      (state, { payload }) => {
-        state.isGameLoaded = payload.success;
-        return state;
-      }
-    );
+    builder.addMatcher(GameApi.endpoints.createGame.matchFulfilled, (state, { payload }) => {
+      state.link = payload.link;
+      state.gameId = payload.gameId;
+      state.playerId = payload.playerId;
+      return state;
+    });
+    builder.addMatcher(GameApi.endpoints.joinGame.matchFulfilled, (state, { payload }) => {
+      state.gameId = payload.gameId;
+      state.playerId = payload.playerId;
+      return state;
+    });
+    builder.addMatcher(GameApi.endpoints.loadGame.matchFulfilled, (state, { payload }) => {
+      state.isGameLoaded = payload.success;
+      return state;
+    });
   },
 });
 
@@ -110,10 +97,10 @@ export const usePlayerFieldsSelector = () => {
   const field4 = usePlayerSelector().field4;
   return useMemo(
     () => [
-      { id: "Field1", data: field1 },
-      { id: "Field2", data: field2 },
-      { id: "Field3", data: field3 },
-      { id: "Field4", data: field4 },
+      { id: 'Field1', data: field1 },
+      { id: 'Field2', data: field2 },
+      { id: 'Field3', data: field3 },
+      { id: 'Field4', data: field4 },
     ],
     [field1, field2, field3, field4]
   );
@@ -126,10 +113,10 @@ export const useEnemyFieldsSelector = () => {
   const field4 = useEnemySelector().field4;
   return useMemo(
     () => [
-      { id: "Field1", data: field1 },
-      { id: "Field2", data: field2 },
-      { id: "Field3", data: field3 },
-      { id: "Field4", data: field4 },
+      { id: 'Field1', data: field1 },
+      { id: 'Field2', data: field2 },
+      { id: 'Field3', data: field3 },
+      { id: 'Field4', data: field4 },
     ],
     [field1, field2, field3, field4]
   );

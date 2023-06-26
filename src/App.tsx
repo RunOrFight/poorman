@@ -1,12 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-import { AuthPage, GamePage, MenuPage } from "./pages";
-import { RequireAuth } from "./widgets";
-import { Provider } from "react-redux";
-import { setupStore } from "./store";
+import { Route, Routes } from 'react-router-dom';
+import { AuthPage, GamePage, MenuPage } from './pages';
+import { RequireAuth } from './widgets';
+import { Provider } from 'react-redux';
+import { setupStore } from './store';
 
 const store = setupStore();
 const App = () => {
-  const isGameOnlyMode = import.meta.env.MODE === "game";
+  const isGameOnlyMode = import.meta.env.MODE === 'game';
 
   return (
     <Provider store={store}>

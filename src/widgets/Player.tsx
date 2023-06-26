@@ -1,14 +1,10 @@
-import { Field } from "../ui";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { Field } from '../ui';
+import { DndContext, DragEndEvent } from '@dnd-kit/core';
 
-import {
-  usePlayerFieldsSelector,
-  useAppSelector,
-  usePlayerSelector,
-} from "../store";
-import { useThrowCardMutation } from "../api";
-import { PlayerCard } from ".";
-import { CardIn } from "../interfaces";
+import { usePlayerFieldsSelector, useAppSelector, usePlayerSelector } from '../store';
+import { useThrowCardMutation } from '../api';
+import { PlayerCard } from '.';
+import { CardIn } from '../interfaces';
 
 const Player = () => {
   const cardsInHand = usePlayerSelector().cardsInHand;

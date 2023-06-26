@@ -1,9 +1,4 @@
-import { IUser } from ".";
-
-export enum SideState {
-  Back,
-  Front,
-}
+import { IUser } from '.';
 
 export interface IEnemyCardHidden {
   id: number;
@@ -21,7 +16,7 @@ export interface IPlayerCard extends IEnemyCardHidden {
   imageUrl: string;
 }
 
-export interface IEnemyCardOpen extends IPlayerCard {}
+export type IEnemyCardOpen = IPlayerCard;
 
 export interface IGameData {
   playerData: IPlayerData;
@@ -79,15 +74,15 @@ export interface IGame {
 
 export interface ICardAttack {
   field: number;
-  attackingPlayerId: IPlayer["id"];
+  attackingPlayerId: IPlayer['id'];
   attackingCard: IPlayerCard;
-  playerUnderAttackId: IPlayer["id"];
+  playerUnderAttackId: IPlayer['id'];
   fieldsUnderAttack: IPlayerCard[];
 }
 
 export interface ICardIsDead {
   field: number;
-  playerId: IPlayer["id"];
+  playerId: IPlayer['id'];
 }
 
 export enum CardIn {
@@ -116,17 +111,17 @@ export interface IJoinGameResponse {
   gameId: number;
 }
 export interface ICreteGamePayload {
-  userId: IUser["id"];
+  userId: IUser['id'];
 }
 
 export interface IJoinGamePayload {
-  userId: IUser["id"];
-  link: ICreateGameResponse["link"];
+  userId: IUser['id'];
+  link: ICreateGameResponse['link'];
 }
 
 export interface ILoadGamePayload {
-  playerId: IPlayer["id"];
-  gameId: IGame["id"];
+  playerId: IPlayer['id'];
+  gameId: IGame['id'];
 }
 
 export interface ILoadGameResponse {
@@ -134,8 +129,8 @@ export interface ILoadGameResponse {
 }
 
 export interface IThrowCartPayload {
-  playerId: IPlayer["id"];
-  cardId: IPlayerCard["id"];
+  playerId: IPlayer['id'];
+  cardId: IPlayerCard['id'];
   field: CardIn;
 }
 
@@ -144,7 +139,7 @@ export interface IThrowCartResponse {
 }
 
 export interface IEndTurnPayload {
-  playerId: IPlayer["id"];
+  playerId: IPlayer['id'];
 }
 
 export interface IEndTurnResponse {
