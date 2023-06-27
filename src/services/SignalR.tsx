@@ -53,19 +53,20 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
         setIsConnected(false);
       });
     }
-
-    startConnection(connection.current);
+    if (!isConnected) {
+      startConnection(connection.current);
+    }
 
     return () => {
       connection.current?.stop().then(() => {
         console.log('Terminated');
       });
     };
-  }, [startConnection]);
+  });
 
   return (
     <SignalRContext.Provider value={connection.current!}>
-      {isConnected ? children : <InfiniteProgress />}
+      {isConnected && connection ? children : <InfiniteProgress />}
     </SignalRContext.Provider>
   );
 };
