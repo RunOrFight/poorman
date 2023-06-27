@@ -9,6 +9,7 @@
   z-index: 2;
   width: 100%;
   max-width: 170px;
+  min-width: 100px;
   padding-bottom: 136.47%; /* 232/170 * 100% = 136.47% */
   justify-content: center;
   align-items: center;
@@ -62,7 +63,6 @@
   transform: rotateY(0deg);
 }
 
-/*!*todo sasha рубашка *!*/
 /*.card:hover .back {*/
 /*  transform: rotateY(0deg);*/
 /*}*/
