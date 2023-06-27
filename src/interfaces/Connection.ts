@@ -12,4 +12,5 @@ interface Events {
 
 export interface ExtendedConnection extends HubConnection {
   on: <T extends keyof Events>(methodName: T, newMethod: (...args: Events[T]) => void) => void;
+  off: (methodName: keyof Events) => void;
 }
