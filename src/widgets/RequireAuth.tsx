@@ -12,13 +12,13 @@ const RequireAuth: FC<PropsWithChildren> = () => {
   const connection = useSignalR();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log('RequireAuth');
+
   useEffect(() => {
     isAuthorized
       ? connection.invoke('SetUserId', user.id).then(() => {
           setIsConnected(true);
         })
-      : navigate(LOGIN_ROUTE, { state: { from: location }, replace: true });
+      : navigate('/game/login', { state: { from: location }, replace: true });
   }, []);
 
   return isConnected ? <Outlet /> : <InfiniteProgress />;
