@@ -2,7 +2,6 @@ import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { useSignalR } from '../services';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthSelector } from '../store';
-import { LOGIN_ROUTE } from '../constants/';
 import { InfiniteProgress } from '../ui';
 
 const RequireAuth: FC<PropsWithChildren> = () => {

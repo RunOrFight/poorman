@@ -36,7 +36,7 @@ const feature = [
 
 const Index = () => {
   const navigate = useNavigate();
-  const secondSection = useRef();
+  const secondSection: any = useRef();
 
   const scrollTo = () => {
     secondSection.current.scrollIntoView({ behavior: 'smooth' });
