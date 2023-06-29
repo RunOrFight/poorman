@@ -1,0 +1,42 @@
+<svg width="159" height="171" viewBox="0 0 159 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Attract New Players_icon">
+<path id="Rectangle 10032" d="M1.63045 165.517L1.63046 165.517L5.82381 169.458C6.19467 169.806 6.68443 170 7.19334 170H151.807C152.316 170 152.805 169.806 153.176 169.458L157.37 165.517C157.772 165.139 158 164.612 158 164.06V6.76506C158 6.19828 157.76 5.65811 157.338 5.27884L156.672 6.01886L157.338 5.27883L153.157 1.51379C152.79 1.18302 152.313 1 151.819 1H7.18113C6.68686 1 6.2101 1.18302 5.8428 1.51377L1.66167 5.27883C1.24048 5.65811 1 6.19829 1 6.76506V164.06C1 164.612 1.22816 165.139 1.63045 165.517Z" fill="#370F4A" stroke="url(#paint0_linear_949_159)" stroke-width="2"/>
+<g id="Group 252">
+<g id="Group 100">
+<g id="Ellipse 32" filter="url(#filter0_b_949_159)">
+<circle cx="29.962" cy="29.962" r="29.962" transform="matrix(0.734414 0.678702 -0.678701 0.734415 76.7949 42.5332)" fill="#D9D9D9" fill-opacity="0.24"/>
+<circle cx="29.962" cy="29.962" r="28.962" transform="matrix(0.734414 0.678702 -0.678701 0.734415 76.7949 42.5332)" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</g>
+<path id="Ellipse 30" d="M100.22 127.864C94.1331 130.877 87.4746 132.56 80.6872 132.799C73.8999 133.038 67.1394 131.829 60.8556 129.253C54.5718 126.676 48.9089 122.79 44.2435 117.855C39.5782 112.919 36.0175 107.047 33.7984 100.628C31.5793 94.2091 30.7527 87.3912 31.3735 80.6281C31.9943 73.865 34.0484 67.3116 37.399 61.4041C40.7496 55.4966 45.3199 50.3704 50.8059 46.3666C56.2918 42.3628 62.5675 39.5733 69.2153 38.1837" stroke="#9134E2" stroke-width="2" stroke-linecap="round"/>
+<path id="Ellipse 31" d="M99.2131 41.4539C105.249 44.2261 110.641 48.2252 115.046 53.1962C119.451 58.1672 122.773 64.0012 124.799 70.3266C126.825 76.6519 127.512 83.3299 126.815 89.9352C126.118 96.5405 124.053 102.928 120.751 108.691" stroke="#9134E2" stroke-width="2" stroke-linecap="round"/>
+</g>
+<g id="Group 246">
+<circle id="Ellipse 33" cx="46.502" cy="46.5005" r="10.5" fill="#5F416D"/>
+<circle id="Ellipse 36" cx="46.502" cy="46.5005" r="9.5" stroke="#C891E2" stroke-opacity="0.5" stroke-width="2"/>
+</g>
+<g id="Group 248">
+<g id="Ellipse 33_2">
+<circle cx="51.502" cy="124.5" r="10.5" fill="#5F416D"/>
+<circle cx="51.502" cy="124.5" r="10" stroke="#C891E2" stroke-opacity="0.5"/>
+</g>
+<circle id="Ellipse 36_2" cx="51.502" cy="124.5" r="9.5" stroke="#C891E2" stroke-opacity="0.5" stroke-width="2"/>
+</g>
+<g id="Group 247">
+<circle id="Ellipse 33_3" cx="117.002" cy="55.0005" r="12" fill="#5F416D"/>
+<circle id="Ellipse 36_3" cx="117.002" cy="55.0005" r="11" stroke="#C891E2" stroke-opacity="0.5" stroke-width="2"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_949_159" x="41.8957" y="48.3044" width="73.1364" height="73.1369" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="3.30315"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_949_159"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_949_159" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_949_159" x1="2" y1="2" x2="157" y2="169" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B936E7"/>
+<stop offset="1" stop-color="#8034E1"/>
+</linearGradient>
+</defs>
+</svg>
