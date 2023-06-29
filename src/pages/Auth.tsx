@@ -27,13 +27,13 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
     isRegister
       ? signUp(data)
           .unwrap()
-          .then(() => navigate(LOGIN_ROUTE))
+          .then(() => navigate('/game/login'))
           .catch(() => alert('Registration not working'))
       : signIn(data)
           .unwrap()
           .then(() => {
             // navigate(from, { replace: true });
-            navigate('/');
+            navigate('/game');
           });
   };
   return (
@@ -69,7 +69,7 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
         <Button type="submit">Ok</Button>
       </form>
       <div className="pt-5 text-blue-grey underline">
-        <Link to={isRegister ? LOGIN_ROUTE : '/register'}>
+        <Link to={isRegister ? '/game/login' : '/game/register'}>
           {isRegister ? 'Log In' : 'Crete a New Account'}
         </Link>
       </div>

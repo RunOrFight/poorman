@@ -4,7 +4,6 @@ import { RequireAuth } from './widgets';
 import { Provider } from 'react-redux';
 import { setupStore } from './store';
 import { isGameOnlyMode } from './constants';
-import { LOGIN_ROUTE, LANDING_ROUTE } from './constants';
 
 const store = setupStore();
 const App = () => {
@@ -15,13 +14,15 @@ const App = () => {
           <Route path="*" element={<GamePage />}></Route>
         ) : (
           <>
-            <Route path={LOGIN_ROUTE} element={<AuthPage type="login" />} />
-            <Route path={LANDING_ROUTE} element={<Landing />} />
-            <Route path="/register" element={<AuthPage type="register" />} />
+            <Route path="/" index element={<Landing />} />
             <Route path="*" element={<div>No Page</div>} />
-            <Route path="/" element={<RequireAuth />}>
-              <Route index element={<MenuPage />} />
-              <Route path="/game/:id" element={<GamePage />} />
+            <Route path="/game">
+              <Route path="register" element={<AuthPage type="register" />} />
+              <Route path="login" element={<AuthPage type="login" />} />
+              <Route path="/game" element={<RequireAuth />}>
+                <Route index element={<MenuPage />} />
+                <Route path="/game/:id" element={<GamePage />} />
+              </Route>
             </Route>
           </>
         )}
