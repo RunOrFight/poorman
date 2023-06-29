@@ -4,7 +4,6 @@ import { IEnemyCardHidden, IEnemyCardOpen, IPlayerCard } from '../../interfaces'
 
 import { DamageIcon, MpIcon, HpIcon } from '../';
 import { getCardPropertiesByType } from '../../utils';
-import clsx from 'clsx';
 import { Color } from '../../constants';
 
 interface ICardPropertiesProps {
@@ -29,20 +28,18 @@ const CardProperties: FC<ICardPropertiesProps> = ({ card, color }) => {
 
 const Card = memo(
   forwardRef<HTMLDivElement, IPlayerCard | IEnemyCardHidden | IEnemyCardOpen>((card, ref) => {
-    const { backUrl, color } = getCardPropertiesByType(card.type);
+    const { backUrl, color, bgColor } = getCardPropertiesByType(card.type);
     const isPlayerCard = 'hp' in card && 'damage' in card && 'manacost' in card;
 
     const dataForColor = {
       border: `2px solid ${color}`,
-      backgroundColor: 'rgba(78, 71, 6, 1)', //color,
+      backgroundColor: bgColor,
     };
 
     return isPlayerCard ? (
       <div
         ref={ref}
-        className={clsx(classes.card, {
-          [classes.cardClosed]: false, // todo sasha для возможности переворачивания
-        })}
+        className={classes.card}
         id={`card_${card.id}`}
       >
         <div className={classes.front} style={dataForColor}>

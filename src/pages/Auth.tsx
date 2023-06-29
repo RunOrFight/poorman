@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSignInMutation, useSignUpMutation } from '../api';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
+import { LOGIN_ROUTE } from '../constants';
 
 interface IAuthPageProps {
   type: 'login' | 'register';
@@ -26,7 +27,7 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
     isRegister
       ? signUp(data)
           .unwrap()
-          .then(() => navigate('/login'))
+          .then(() => navigate(LOGIN_ROUTE))
           .catch(() => alert('Registration not working'))
       : signIn(data)
           .unwrap()
@@ -68,7 +69,7 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
         <Button type="submit">Ok</Button>
       </form>
       <div className="pt-5 text-blue-grey underline">
-        <Link to={isRegister ? '/login' : '/register'}>
+        <Link to={isRegister ? LOGIN_ROUTE : '/register'}>
           {isRegister ? 'Log In' : 'Crete a New Account'}
         </Link>
       </div>

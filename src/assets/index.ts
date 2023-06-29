@@ -11,6 +11,12 @@ import nola from '../assets/nola.png';
 import yellow_sfinx from '../assets/yellow_sfinx.png';
 import green_haski from '../assets/green_haski.png';
 import blue_cat from '../assets/blue_cat.png';
+import pointer_down from '../assets/landing/pointer_down.svg';
+import adv1 from '../assets/landing/adv_1.svg';
+import adv2 from '../assets/landing/adv_2.svg';
+import adv3 from '../assets/landing/adv_3.svg';
+import adv4 from '../assets/landing/adv_4.svg';
+import adv5 from '../assets/landing/adv_5.svg';
 
 export {
   piece,
@@ -26,4 +32,10 @@ export {
   yellow_sfinx,
   green_haski,
   blue_cat,
+  pointer_down,
+  adv1,
+  adv2,
+  adv3,
+  adv4,
+  adv5,
 };

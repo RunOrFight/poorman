@@ -1,0 +1,25 @@
+<svg width="161" height="171" viewBox="0 0 161 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="High-Performing Portfolio_icon">
+<path id="Rectangle 10031" d="M6.85914 170H6.47665L6.19179 169.745L1.33265 165.391L1 165.092V164.646V6.54349V6.10948L1.31702 5.81306L6.17616 1.26958L6.46445 1H6.85914H154.141H154.536L154.824 1.26958L159.683 5.81306L160 6.10948V6.54349V164.646V165.092L159.667 165.391L154.808 169.745L154.523 170H154.141H6.85914Z" fill="#3A0D0D" stroke="url(#paint0_linear_928_9504)" stroke-width="2"/>
+<g id="Fire__yellow">
+<path id="Vector 87" d="M72.5 45L48 95.5169" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector 86" d="M81.8945 127.145H100.881C101.369 127.145 101.833 126.928 102.145 126.553L113.618 112.785C113.865 112.489 114 112.116 114 111.731V103.927" stroke="white" stroke-width="2" stroke-linecap="round"/>
+<g id="Vector 83" filter="url(#filter0_b_928_9504)">
+<path d="M55.5508 95.8849L81.1265 46.4692L97.5349 81.8676L101.5 71.5L108.237 95.8849V106.034L97.5349 119.736H81.1265H63.2235L55.5508 106.034V95.8849Z" fill="#D9D9D9" fill-opacity="0.25"/>
+</g>
+<path id="Vector 82" d="M55.7204 95.5411L79.5535 47.1911C80.1738 45.9327 81.9832 45.9771 82.541 47.2644L96.6792 79.8932C96.9795 80.5863 97.9767 80.5428 98.2155 79.8262L100.803 72.0638C101.06 71.2942 102.157 71.3205 102.376 72.1014L108.999 95.6668C109.039 95.8118 109.06 95.9617 109.06 96.1122V105.468C109.06 105.835 108.937 106.192 108.711 106.481L98.8525 119.103C98.5405 119.503 98.0619 119.736 97.555 119.736H81.1265H64.1885C63.5926 119.736 63.0432 119.414 62.752 118.894L55.7607 106.409C55.6231 106.164 55.5508 105.887 55.5508 105.605V96.269C55.5508 96.0166 55.6088 95.7675 55.7204 95.5411Z" stroke="#FE5200" stroke-width="2"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_928_9504" x="39.8323" y="30.7508" width="84.1224" height="104.703" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="7.85922"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_928_9504"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_928_9504" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_928_9504" x1="159" y1="169" x2="-28.4111" y2="49.8227" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FE0F00"/>
+<stop offset="1" stop-color="#FF5C00"/>
+</linearGradient>
+</defs>
+</svg>

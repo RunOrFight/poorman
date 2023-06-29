@@ -15,6 +15,7 @@ import { useAuthSelector } from '../store';
 import { ExtendedConnection, IUser } from '../interfaces';
 import { useNavigate } from 'react-router-dom';
 import { apiUrl } from '../constants';
+import { LOGIN_ROUTE } from '../constants';
 
 const SignalRContext = createContext<ExtendedConnection>(null!);
 
@@ -36,7 +37,7 @@ const SignalRProvider: FC<PropsWithChildren> = ({ children }) => {
       } catch (error) {
         console.error('Failed to start or invoke SetUserId:', error);
         await connection.stop();
-        navigate('/login');
+        navigate(LOGIN_ROUTE);
       }
     },
     [user?.id, navigate]
