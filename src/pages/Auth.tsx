@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSignInMutation, useSignUpMutation } from '../api';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
-import { LOGIN_ROUTE } from '../constants';
 
 interface IAuthPageProps {
   type: 'login' | 'register';
