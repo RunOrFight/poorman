@@ -5,6 +5,8 @@ import { useSignInMutation, useSignUpMutation } from '../api';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
 import { LOGIN_ROUTE } from '../constants';
+import { useAppDispatch } from '../store';
+import { singInStartAction } from '../store/Auth';
 
 interface IAuthPageProps {
   type: 'login' | 'register';
@@ -19,7 +21,7 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
   const isRegister = type === 'register';
   const navigate = useNavigate();
   // const location = useLocation();
-  const [signIn, { isError }] = useSignInMutation();
+  const dispatch = useAppDispatch();
   const [signUp] = useSignUpMutation();
   // const from = location.state?.from?.pathname || "/";
 
@@ -29,17 +31,12 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
           .unwrap()
           .then(() => navigate('/game/login'))
           .catch(() => alert('Registration not working'))
-      : signIn(data)
-          .unwrap()
-          .then(() => {
-            // navigate(from, { replace: true });
-            navigate('/game');
-          });
+      : dispatch(singInStartAction(data));
   };
   return (
     <div className="flex justify-center items-center h-full flex-col">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-        {isError && <div className="text-red-600">Invalid login or password</div>}
+        {false && <div className="text-red-600">Invalid login or password</div>}
         {isRegister && (
           <>
             <label>Name</label>

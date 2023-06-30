@@ -21,6 +21,9 @@
     "react-hook-form": "^7.45.0",
     "react-redux": "^8.1.0",
     "react-router-dom": "^6.13.0",
+    "redux": "^4.2.1",
+    "redux-observable": "^2.0.0",
+    "rxjs": "^7.8.1",
     "susy": "^3.0.8"
   },
   "devDependencies": {
