@@ -1,34 +1,35 @@
-import { useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 import { Button } from '../ui';
-import { useAppSelector } from '../store';
 
-const CopyToClipboard = () => {
-  const text = useAppSelector((state) => state.game.link);
+interface ICopyToClipboardProps {
+  link: string;
+}
+const CopyToClipboard: FC<ICopyToClipboardProps> = memo(({ link }) => {
   const [copySuccess, setCopySuccess] = useState(false);
 
-  const copyToClipboard = async (text: string | null) => {
-    if (!text) {
+  const copyToClipboard = useCallback(async () => {
+    if (!link) {
       return;
     }
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(link);
       setCopySuccess(true);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error('Failed to copy: ', err);
     }
-  };
+  }, [link]);
 
   return (
     <div className="flex items-center gap-2">
-      <div className="text-xl">{text}</div>
+      <div className="text-xl">{link}</div>
       {copySuccess ? (
         <span style={{ color: 'green' }}>Copied!</span>
       ) : (
-        <Button onClick={() => copyToClipboard(text)}>Copy to clipboard</Button>
+        <Button onClick={() => copyToClipboard()}>Copy to clipboard</Button>
       )}
     </div>
   );
-};
+});
 
 export default CopyToClipboard;

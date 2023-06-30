@@ -28,7 +28,7 @@ const CardProperties: FC<ICardPropertiesProps> = ({ card, color }) => {
 
 const Card = memo(
   forwardRef<HTMLDivElement, IPlayerCard | IEnemyCardHidden | IEnemyCardOpen>((card, ref) => {
-    const { backUrl, color, bgColor } = getCardPropertiesByType(card.type);
+    const { backUrl, color, bgColor } = getCardPropertiesByType(card.type, false);
     const isPlayerCard = 'hp' in card && 'damage' in card && 'manacost' in card;
 
     const dataForColor = {
@@ -37,11 +37,7 @@ const Card = memo(
     };
 
     return isPlayerCard ? (
-      <div
-        ref={ref}
-        className={classes.card}
-        id={`card_${card.id}`}
-      >
+      <div ref={ref} className={classes.card} id={`card_${card.id}`}>
         <div className={classes.front} style={dataForColor}>
           <div
             className={classes.img}

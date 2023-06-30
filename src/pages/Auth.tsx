@@ -1,44 +1,35 @@
-import { FC } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { Button, Input, PAlert } from '../ui';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSignInMutation, useSignUpMutation } from '../api';
+import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
+import { useAppDispatch, SingInStartAction, SingUpStartAction, useAuthSelector } from '../store';
 
 interface IAuthPageProps {
   type: 'login' | 'register';
 }
 
-const AuthPage: FC<IAuthPageProps> = ({ type }) => {
+const AuthPage: FC<IAuthPageProps> = memo(({ type }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IUserRegisterCreds>();
+  } = useForm<IUserRegisterCreds>({ reValidateMode: 'onChange' });
   const isRegister = type === 'register';
-  const navigate = useNavigate();
-  // const location = useLocation();
-  const [signIn, { isError }] = useSignInMutation();
-  const [signUp] = useSignUpMutation();
-  // const from = location.state?.from?.pathname || "/";
+  const dispatch = useAppDispatch();
+  const isError = useAuthSelector().isError;
 
-  const onSubmit: SubmitHandler<IUserRegisterCreds> = (data) => {
-    isRegister
-      ? signUp(data)
-          .unwrap()
-          .then(() => navigate('/game/login'))
-          .catch(() => alert('Registration not working'))
-      : signIn(data)
-          .unwrap()
-          .then(() => {
-            // navigate(from, { replace: true });
-            navigate('/game');
-          });
-  };
+  const onSubmit: SubmitHandler<IUserRegisterCreds> = useCallback(
+    (data) => {
+      isRegister ? dispatch(SingUpStartAction(data)) : dispatch(SingInStartAction(data));
+    },
+    [dispatch, isRegister]
+  );
+
   return (
     <div className="flex justify-center items-center h-full flex-col">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-        {isError && <div className="text-red-600">Invalid login or password</div>}
+        {isError && <div className="text-red-600">Something wrong</div>}
         {isRegister && (
           <>
             <label>Name</label>
@@ -74,6 +65,6 @@ const AuthPage: FC<IAuthPageProps> = ({ type }) => {
       </div>
     </div>
   );
-};
+});
 
 export default AuthPage;

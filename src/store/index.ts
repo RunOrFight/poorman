@@ -1,29 +1,47 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { GameReducer } from './GameSlice';
 import { useSelector } from 'react-redux';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
-import { AuthApi, GameApi } from '../api';
-import { AuthReducer } from './AuthSlice.ts';
+import { httpApi } from '../api';
+import { Epic, combineEpics, createEpicMiddleware } from 'redux-observable';
+import { AuthEpic, AuthReducer } from './Auth';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { createReduxHistoryContext } from 'redux-first-history';
+import { createBrowserHistory } from 'history';
+import { GameEpic, GameReducer } from './Game';
 
-const rootReducer = combineReducers({
-  game: GameReducer,
-  [AuthApi.reducerPath]: AuthApi.reducer,
-  [GameApi.reducerPath]: GameApi.reducer,
-  auth: AuthReducer,
+const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
+  history: createBrowserHistory(),
 });
 
+const rootEpic = combineEpics(AuthEpic, GameEpic);
+
+const dependencies = { httpApi };
+const epicMiddleware = createEpicMiddleware({ dependencies });
+
+const rootReducer = combineReducers({
+  router: routerReducer,
+  game: GameReducer,
+  auth: AuthReducer,
+});
 export const setupStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(AuthApi.middleware).concat(GameApi.middleware),
-  });
+  const store = createStore(
+    rootReducer,
+    compose(applyMiddleware(routerMiddleware, epicMiddleware))
+  );
+
+  epicMiddleware.run(rootEpic);
+
+  const history = createReduxHistory(store);
+
+  return { store, history };
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
+export type AppStore = ReturnType<typeof setupStore>['store'];
 export type AppDispatch = AppStore['dispatch'];
+export type AppDependencies = typeof dependencies;
+export type AppEpic = Epic<any, any, RootState, AppDependencies>;
+export type ActionWithPayload<T = any> = { type: string; payload: T };
 export const useAppDispatch = useDispatch<AppDispatch>;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export * from './GameSlice.ts';
-export * from './AuthSlice.ts';
+export * from './Game';
+export * from './Auth';

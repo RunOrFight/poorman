@@ -1,18 +1,17 @@
 import { useEffect } from 'react';
-import { useAppSelector } from '../store';
-import { useLoadGameMutation } from '../api';
+import { LoadGameStartAction, useAppDispatch, useAppSelector } from '../store';
 
 export const useLoadGame = () => {
   const gameId = useAppSelector((state) => state.game.gameId!);
   const playerId = useAppSelector((state) => state.game.playerId!);
   const isGameLoaded = useAppSelector((state) => state.game.isGameLoaded!);
-  const [loadGame, { isSuccess }] = useLoadGameMutation();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!isGameLoaded) {
-      loadGame({ gameId, playerId });
+      dispatch(LoadGameStartAction({ gameId, playerId }));
     }
   });
 
-  return isSuccess;
+  return isGameLoaded;
 };

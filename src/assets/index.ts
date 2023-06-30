@@ -11,6 +11,10 @@ import nola from '../assets/nola.png';
 import yellow_sfinx from '../assets/yellow_sfinx.png';
 import green_haski from '../assets/green_haski.png';
 import blue_cat from '../assets/blue_cat.png';
+import yellow_arrow from '../assets/yellow_arrow.png';
+import red_arrow from '../assets/red_arrow.png';
+import green_arrow from '../assets/green_arrow.png';
+import blue_arrow from '../assets/blue_arrow.png';
 import pointer_down from '../assets/landing/pointer_down.svg';
 import adv1 from '../assets/landing/adv_1.svg';
 import adv2 from '../assets/landing/adv_2.svg';
@@ -40,6 +44,10 @@ export {
   adv3,
   adv4,
   adv5,
+  yellow_arrow,
+  red_arrow,
+  green_arrow,
+  blue_arrow,
   logo,
   cards_set,
 };

@@ -1,22 +1,28 @@
 import { Navigate } from 'react-router-dom';
-import { Button, InfiniteProgress, Input, Window } from '../ui';
+import { Button, Input, Window } from '../ui';
 import { useSignalR } from '../services';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { CopyToClipboard } from '../widgets';
-import { useAppSelector, useAuthSelector } from '../store';
-import { useCreateGameMutation, useJoinGameMutation } from '../api';
-import { IUser } from '../interfaces';
+import {
+  CreateGameStartAction,
+  JoinGameStartAction,
+  useAppDispatch,
+  useAppSelector,
+  useAuthSelector,
+} from '../store';
 
 const MenuPage = () => {
   const [allUsersJoinedGame, setAllUsersJoinedGame] = useState(false);
   const [isWindowVisible, setIsWindowVisible] = useState(false);
   const lobbyIdInput = useRef<HTMLInputElement>(null);
-  const [createGame, { isLoading, isSuccess }] = useCreateGameMutation();
-  const [joinLobby] = useJoinGameMutation();
+
   const playerId = useAppSelector((state) => state.game.playerId);
   const gameId = useAppSelector((state) => state.game.gameId);
+  const link = useAppSelector((state) => state.game.link);
 
-  const { user } = useAuthSelector() as { user: IUser };
+  const user = useAuthSelector().user;
+
+  const dispatch = useAppDispatch();
 
   const connection = useSignalR();
 
@@ -31,15 +37,15 @@ const MenuPage = () => {
 
   const handleCreateLobbyButtonClick = useCallback(async () => {
     setIsWindowVisible(true);
-    createGame({ userId: user.id });
-  }, [createGame, user.id]);
+    dispatch(CreateGameStartAction({ userId: user.id }));
+  }, [user.id, dispatch]);
 
   const handleJoinLobbyButtonClick = useCallback(async () => {
     if (!lobbyIdInput.current?.value) {
       return;
     }
-    joinLobby({ link: lobbyIdInput.current.value, userId: user.id });
-  }, [joinLobby, user.id]);
+    dispatch(JoinGameStartAction({ link: lobbyIdInput.current.value, userId: user.id }));
+  }, [user.id, dispatch]);
 
   if (allUsersJoinedGame && playerId && gameId) {
     return <Navigate to={`/game/${gameId}`} />;
@@ -48,16 +54,15 @@ const MenuPage = () => {
   return (
     <div className="flex justify-center flex-col items-center h-full gap-2">
       <div className="text-xl">You are logged as {user?.name}</div>
-      <div className="w-full">{isLoading && <InfiniteProgress />}</div>
       <div className="flex w-full justify-center items-center gap-2">
         <Input ref={lobbyIdInput} />
         <Button onClick={handleJoinLobbyButtonClick}>Join Lobby</Button>
         <div className="text-xl">Or</div>
         <Button onClick={handleCreateLobbyButtonClick}>Create Lobby</Button>
       </div>
-      {isSuccess && (
+      {link && (
         <Window isVisible={isWindowVisible} setIsVisible={setIsWindowVisible}>
-          <CopyToClipboard />
+          <CopyToClipboard link={link} />
         </Window>
       )}
     </div>
