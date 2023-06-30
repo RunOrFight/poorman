@@ -1,5 +1,6 @@
 import { ICardAttack } from '../interfaces';
 import anime from 'animejs/lib/anime.es';
+import { AnimeParams } from 'animejs';
 
 export async function playAttackAnimation(data: ICardAttack) {
   await new Promise((complete) => {
@@ -50,3 +51,8 @@ export async function playAttackAnimation(data: ICardAttack) {
     });
   });
 }
+
+export const animePromise = (params: AnimeParams) =>
+  new Promise((complete) => {
+    anime({ ...params, complete });
+  });

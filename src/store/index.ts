@@ -6,13 +6,13 @@ import { AuthEpic, AuthReducer } from './Auth';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
-import { GameReducer } from './Game';
+import { GameEpic, GameReducer } from './Game';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
 });
 
-const rootEpic = combineEpics(AuthEpic);
+const rootEpic = combineEpics(AuthEpic, GameEpic);
 
 const dependencies = { httpApi };
 const epicMiddleware = createEpicMiddleware({ dependencies });
