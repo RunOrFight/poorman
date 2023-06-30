@@ -5,6 +5,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { FC, useEffect, useRef } from 'react';
 import { IPlayerCard } from '../interfaces';
 import anime from 'animejs/lib/anime.es.js';
+import { getCardPropertiesByType } from '../utils';
 
 interface IPlayerCardProps {
   card: IPlayerCard;
@@ -12,13 +13,13 @@ interface IPlayerCardProps {
 
 const PlayerCard: FC<IPlayerCardProps> = ({ card }) => {
   const mana = usePlayerSelector().manaCurrent;
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: card.id,
     disabled: card.manacost > mana,
   });
   const style = { transform: CSS.Translate.toString(transform) };
   const ref = useRef<HTMLDivElement | null>(null!);
-
+  const { arrows } = getCardPropertiesByType(card.type, isDragging);
   useEffect(() => {
     anime({
       targets: ref.current,
@@ -37,6 +38,7 @@ const PlayerCard: FC<IPlayerCardProps> = ({ card }) => {
       {...attributes}
       className={'relative grow max-w-[170px]'}
     >
+      {arrows}
       <Card {...card} ref={ref} />
     </div>
   );
