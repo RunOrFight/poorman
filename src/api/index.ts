@@ -1,7 +1,6 @@
 import { apiUrl } from '../constants';
 import { IUser, IUserLoginCreds, IUserRegisterCreds } from '../interfaces';
 
-export * from './AuthApi';
 export * from './GameApi';
 
 import { ajax } from 'rxjs/ajax';
