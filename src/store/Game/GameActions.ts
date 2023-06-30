@@ -1,4 +1,5 @@
 import {
+  ICardAttack,
   ICreateGamePayload,
   ICreateGameResponse,
   IGameData,
@@ -22,6 +23,12 @@ export const LOAD_GAME_OK = 'LOAD_GAME_OK';
 export const LOAD_GAME_FAIL = 'LOAD_GAME_FAIL';
 
 export const SET_GAME_DATA = 'SET_GAME_DATA';
+
+export const BATTLE_START = 'BATTLE_START';
+
+export const CARD_ATTACK = 'CARD_ATTACK';
+
+export const TURN_START = 'TURN_START';
 
 export const LoadGameStartAction = (payload: ILoadGamePayload) => ({
   type: LOAD_GAME_START,
@@ -71,4 +78,17 @@ export const JoinGameFailAction = (err: AjaxError) => ({
 export const SetGameDataAction = (payload: IGameData) => ({
   type: SET_GAME_DATA,
   payload,
+});
+
+export const BattleStartAction = () => ({
+  type: BATTLE_START,
+});
+
+export const CardAttackAction = (payload: { cardId: string; isEnemy: boolean }) => ({
+  type: CARD_ATTACK,
+  payload,
+});
+
+export const TurnStartAction = () => ({
+  type: TURN_START,
 });
