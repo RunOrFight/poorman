@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { GameState } from './GameState.ts';
-import { CREATE_GAME_OK, JOIN_GAME_OK, LOAD_GAME_OK } from './GameActions.ts';
+import { CREATE_GAME_OK, JOIN_GAME_OK, LOAD_GAME_OK, SET_GAME_DATA_OK } from './GameActions.ts';
 
 export const GameReducer: Reducer<typeof GameState> = (state = GameState, action) => {
   switch (action.type) {
@@ -21,6 +21,11 @@ export const GameReducer: Reducer<typeof GameState> = (state = GameState, action
       return {
         ...state,
         isGameLoaded: action.payload.success,
+      };
+    case SET_GAME_DATA_OK:
+      return {
+        ...state,
+        ...action.payload,
       };
     default:
       return state;

@@ -39,7 +39,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 export type AppStore = ReturnType<typeof setupStore>['store'];
 export type AppDispatch = AppStore['dispatch'];
 export type AppDependencies = typeof dependencies;
-export type AppEpic = Epic<any, any, AppStore, AppDependencies>;
+export type AppEpic = Epic<any, any, RootState, AppDependencies>;
 export type ActionWithPayload<T = any> = { type: string; payload: T };
 export const useAppDispatch = useDispatch<AppDispatch>;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

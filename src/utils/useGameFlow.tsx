@@ -1,52 +1,21 @@
-import { useEffect, useState } from 'react';
-import { ICardAttack, ICardIsDead, IGameData } from '../interfaces';
-import { SetGameDataAction, useAppDispatch } from '../store';
+import { useEffect } from 'react';
+import { ICardAttack, IGameData } from '../interfaces';
+import { CardAttackStartAction, SetGameDataStartAction, useAppDispatch } from '../store';
 import { useSignalR } from '../services';
-import { playAttackAnimation } from './Anime.ts';
 
-const eventStack: { eventName: string; data: ICardAttack | IGameData | ICardIsDead }[] = [];
 export const useGameFlow = () => {
   const connection = useSignalR();
-  const [isBattleStarted, setIsBattleStarted] = useState(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (isBattleStarted) {
-      connection.off('update_game_data');
-      connection.on('update_game_data', (data) => {
-        const parsedData: IGameData = JSON.parse(data);
-        eventStack.push({ eventName: 'update_game_data', data: parsedData });
-      });
-    } else {
-      connection.off('update_game_data');
-      connection.on('update_game_data', (data) => {
-        const parsedData = JSON.parse(data);
-        dispatch(SetGameDataAction(parsedData));
-      });
-    }
-  }, [isBattleStarted, connection, dispatch]);
-
-  useEffect(() => {
-    connection.on('start_battle', () => {
-      setIsBattleStarted(true);
+    connection.on('update_game_data', (data) => {
+      const parsedData: IGameData = JSON.parse(data);
+      dispatch(SetGameDataStartAction(parsedData));
     });
 
     connection.on('card_attack', (data) => {
-      setIsBattleStarted(true);
-      const parsedData = JSON.parse(data);
-      eventStack.push({ eventName: 'card_attack', data: parsedData });
-    });
-
-    connection.on('turn_start', async () => {
-      for (const event of eventStack) {
-        if (event.eventName === 'card_attack') {
-          await playAttackAnimation(event.data as ICardAttack);
-        } else if (event.eventName === 'update_game_data') {
-          dispatch(SetGameDataAction(event.data as IGameData));
-        }
-      }
-      eventStack.filter(() => false);
-      setIsBattleStarted(false);
+      const parsedData: ICardAttack = JSON.parse(data);
+      dispatch(CardAttackStartAction(parsedData));
     });
 
     connection.on('player_win', (data) => {

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSignalR } from '../services';
 import { Button } from '../ui';
-import { useAppSelector } from '../store';
-import { httpApi } from '../api';
+import { EndTurnStart, useAppDispatch, useAppSelector } from '../store';
 
 const EndTurnButton = () => {
   // const { timeLeft, isTimeOver, startTimer, stopTimer } = useTimer(30);
   const [isTurnEnd, setIsTurnEnd] = useState(false);
   const playerId = useAppSelector((state) => state.game.playerId!);
   const connection = useSignalR();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // startTimer();
@@ -27,7 +27,7 @@ const EndTurnButton = () => {
   const handleClick = () => {
     // stopTimer();
     setIsTurnEnd(true);
-    httpApi.endTurn({ playerId });
+    dispatch(EndTurnStart({ playerId }));
   };
 
   return (
