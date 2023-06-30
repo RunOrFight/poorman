@@ -1,5 +1,5 @@
 import { ofType } from 'redux-observable';
-import { ActionWithPayload, AppEpic } from '..';
+import { ActionWithPayload, AppEpic, SingUpFailAction, SingUpOkAction } from '..';
 import { SIGN_IN_OK, SIGN_IN_START, SingInOkAction, SIGN_UP_START } from './AuthActions';
 import { catchError, map, exhaustMap } from 'rxjs/operators';
 import { merge, of } from 'rxjs';
@@ -14,7 +14,7 @@ const AuthEpic: AppEpic = (action$, state$, { httpApi }) => {
       exhaustMap(({ payload }: ActionWithPayload<IUserLoginCreds>) =>
         httpApi.signIn(payload).pipe(
           map((res) => SingInOkAction(res.response)),
-          catchError((err: AjaxError) => {
+          catchError((_err: AjaxError) => {
             const user = { id: 15, name: 'Sasha', email: '@hello' };
             localStorage.setItem('user', JSON.stringify(user));
             return of(/*singInFailAction(err)*/ SingInOkAction(user));
@@ -26,21 +26,16 @@ const AuthEpic: AppEpic = (action$, state$, { httpApi }) => {
       ofType(SIGN_UP_START),
       exhaustMap(({ payload }: ActionWithPayload<IUserRegisterCreds>) =>
         httpApi.signUp(payload).pipe(
-          map((res) => SingInOkAction(res.response)),
+          map((res) => SingUpOkAction(res.response)),
           catchError((err: AjaxError) => {
-            const user = { id: 15, name: 'Sasha', email: '@hello' };
-            localStorage.setItem('user', JSON.stringify(user));
-            return of(/*singInFailAction(err)*/ SingInOkAction(user));
+            return of(SingUpFailAction(err));
           })
         )
       )
     ),
     action$.pipe(
       ofType(SIGN_IN_OK),
-      map(() => {
-        const ph = push('/game');
-        return ph;
-      })
+      map(() => push('/game'))
     )
   );
 };

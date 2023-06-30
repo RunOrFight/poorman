@@ -12,9 +12,11 @@ if (userString) {
 export const AuthState = user
   ? {
       isAuthorized: true,
+      isError: false,
       user,
     }
   : {
       isAuthorized: false,
+      isError: false,
       user: null,
     };
