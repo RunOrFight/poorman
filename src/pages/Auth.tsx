@@ -3,8 +3,7 @@ import { Button, Input, PAlert } from '../ui';
 import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
-import { useAppDispatch } from '../store';
-import { SingInStartAction, SingUpStartAction } from '../store/Auth';
+import { useAppDispatch, SingInStartAction, SingUpStartAction } from '../store';
 
 interface IAuthPageProps {
   type: 'login' | 'register';

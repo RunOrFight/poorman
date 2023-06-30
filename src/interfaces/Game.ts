@@ -110,7 +110,7 @@ export interface IJoinGameResponse {
   playerId: number;
   gameId: number;
 }
-export interface ICreteGamePayload {
+export interface ICreateGamePayload {
   userId: IUser['id'];
 }
 

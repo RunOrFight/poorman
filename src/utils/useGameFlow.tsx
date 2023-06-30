@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ICardAttack, ICardIsDead, IGameData } from '../interfaces';
-import { setGameData, useAppDispatch } from '../store';
+import { SetGameDataAction, useAppDispatch } from '../store';
 import { useSignalR } from '../services';
 import { playAttackAnimation } from './Anime.ts';
 
@@ -21,7 +21,7 @@ export const useGameFlow = () => {
       connection.off('update_game_data');
       connection.on('update_game_data', (data) => {
         const parsedData = JSON.parse(data);
-        dispatch(setGameData(parsedData));
+        dispatch(SetGameDataAction(parsedData));
       });
     }
   }, [isBattleStarted, connection, dispatch]);
@@ -42,7 +42,7 @@ export const useGameFlow = () => {
         if (event.eventName === 'card_attack') {
           await playAttackAnimation(event.data as ICardAttack);
         } else if (event.eventName === 'update_game_data') {
-          dispatch(setGameData(event.data as IGameData));
+          dispatch(SetGameDataAction(event.data as IGameData));
         }
       }
       eventStack.filter(() => false);

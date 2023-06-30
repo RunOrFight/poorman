@@ -1,4 +1,3 @@
-import { GameReducer } from './GameSlice';
 import { useSelector } from 'react-redux';
 import { TypedUseSelectorHook, useDispatch } from 'react-redux';
 import { httpApi } from '../api';
@@ -7,6 +6,7 @@ import { AuthEpic, AuthReducer } from './Auth';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
+import { GameReducer } from './Game';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
@@ -43,5 +43,5 @@ export type AppEpic = Epic<any, any, AppStore, AppDependencies>;
 export type ActionWithPayload<T = any> = { type: string; payload: T };
 export const useAppDispatch = useDispatch<AppDispatch>;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-export * from './GameSlice.ts';
+export * from './Game';
 export * from './Auth';

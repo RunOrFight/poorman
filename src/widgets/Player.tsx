@@ -2,21 +2,19 @@ import { Field } from '../ui';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 
 import { usePlayerFieldsSelector, useAppSelector, usePlayerSelector } from '../store';
-import { useThrowCardMutation } from '../api';
 import { PlayerCard } from '.';
 import { CardIn } from '../interfaces';
+import { httpApi } from '../api';
 
 const Player = () => {
   const cardsInHand = usePlayerSelector().cardsInHand;
   const playerId = useAppSelector((state) => state.game.playerId!);
   const fields = usePlayerFieldsSelector();
-  const [throwCard] = useThrowCardMutation();
   const handleDragEnd = ({ over, active }: DragEndEvent) => {
     if (!over?.id || over.data.current?.card) {
       return;
     }
-
-    throwCard({
+    httpApi.throwCard({
       playerId,
       cardId: active.id as number,
       field: over.id as CardIn,
