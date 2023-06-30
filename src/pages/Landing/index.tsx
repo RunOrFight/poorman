@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { pointer_down, adv1, adv2, adv3, adv4, adv5 } from '../../assets';
+import { pointer_down, adv1, adv2, adv3, adv4, adv5, logo, cards_set } from '../../assets';
 import styled from './Landing.module.pcss';
 import { LOGIN_ROUTE } from '../../constants';
 
@@ -46,13 +46,7 @@ const Index = () => {
     <div className={styled.wrapper}>
       <section className={styled.headerContainer}>
         <div className={clsx(styled.container)}>
-          <img
-            className={styled.logo}
-            src="/src/assets/landing/logo.svg"
-            alt="Cybercats"
-            width="339px"
-            height="61px"
-          />
+          <img className={styled.logo} src={logo} alt="Cybercats" width="339px" height="61px" />
           <h1 className={styled.h1}>Experience the Future of Online Gambling</h1>
           <p className={styled.text}>
             Welcome to the future of video gaming and online gambling. Cybercats is an innovative
@@ -75,7 +69,7 @@ const Index = () => {
           </p>
         </div>
         <div className={styled.block}>
-          <img className={styled.cardsSet} src="/src/assets/landing/cards_set.png" alt="cards" />
+          <img className={styled.cardsSet} src={cards_set} alt="cards" />
         </div>
       </section>
 
@@ -113,7 +107,7 @@ const Index = () => {
       <footer className={styled.footer}>
         <img
           className={clsx(styled.logo, styled.small)}
-          src="/src/assets/landing/logo.svg"
+          src={logo}
           alt="Cybercats"
           width="339px"
           height="61px"
