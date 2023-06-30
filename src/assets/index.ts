@@ -21,6 +21,8 @@ import adv2 from '../assets/landing/adv_2.svg';
 import adv3 from '../assets/landing/adv_3.svg';
 import adv4 from '../assets/landing/adv_4.svg';
 import adv5 from '../assets/landing/adv_5.svg';
+import logo from '../assets/landing/logo.svg';
+import cards_set from '../assets/landing/cards_set.png';
 
 export {
   piece,
@@ -46,4 +48,6 @@ export {
   red_arrow,
   green_arrow,
   blue_arrow,
+  logo,
+  cards_set,
 };
