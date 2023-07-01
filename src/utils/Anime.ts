@@ -23,6 +23,8 @@ export const cardAttackAnimation = ({
 });
 
 export const cardGetDamageAnimation = ({
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   isEnemy,
   cardId,
 }: {

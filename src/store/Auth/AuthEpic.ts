@@ -13,6 +13,8 @@ import { IUserLoginCreds, IUserRegisterCreds } from '../../interfaces';
 import { AjaxError } from 'rxjs/internal/ajax/errors';
 import { push } from 'redux-first-history';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const AuthEpic: AppEpic = (action$, state$, { httpApi }) => {
   return merge(
     action$.pipe(
