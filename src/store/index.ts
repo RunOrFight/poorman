@@ -12,7 +12,7 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
   history: createBrowserHistory(),
 });
 
-const rootEpic = combineEpics(AuthEpic, GameEpic);
+const rootEpic: any = combineEpics(AuthEpic, GameEpic);
 
 const dependencies = { httpApi };
 const epicMiddleware = createEpicMiddleware({ dependencies });
