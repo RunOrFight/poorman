@@ -13,13 +13,13 @@ interface ICardPropertiesProps {
 const CardProperties: FC<ICardPropertiesProps> = ({ card, color }) => {
   return (
     <>
-      <div className={'absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2'}>
-        <MpIcon value={card.manacost} color={color} />
-      </div>
-      <div className={'absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2'}>
+      <div className={'absolute bottom-[6px] left-[20px] -translate-x-1/2 translate-y-1/2'}>
         <DamageIcon value={card.damage} color={color} />
       </div>
-      <div className={'absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2'}>
+      <div className={'absolute bottom-0 left-[50%] -translate-x-1/2 translate-y-1/2'}>
+        <MpIcon value={card.manacost} color={color} />
+      </div>
+      <div className={'absolute bottom-[2px] right-[20px] translate-x-1/2 translate-y-1/2'}>
         <HpIcon value={card.hp} color={color} />
       </div>
     </>

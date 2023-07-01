@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-70px);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  transition-property: opacity;
+  transition-duration: 300ms;
+  opacity: 0;
+
+  &.opacity {
+    opacity: 1;
+  }
+}
+
+.item {
+  &.hidden {
+    visibility: hidden;
+  }
+
+  &.left {
+    transform: rotate(-45deg);
+  }
+  &.center {
+  }
+  &.right {
+    transform: rotate(45deg);
+  }
+}

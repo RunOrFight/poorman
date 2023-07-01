@@ -11,3 +11,4 @@ export { default as DamageIcon } from './DamageIcon';
 export { default as HpIcon } from './HpIcon';
 export { default as MpIcon } from './MpIcon';
 export { default as FadeHint } from './FadeHint';
+export { default as ArrowSet } from './ArrowSet/ArrowSet';

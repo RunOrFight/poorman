@@ -1,61 +1,59 @@
 import { FC } from 'react';
 
-interface DamageIconProps {
+interface IDamageIconProps {
   value: number;
   color: string;
 }
 
-const DamageIcon: FC<DamageIconProps> = ({ value, color }) => {
+const DamageIcon: FC<IDamageIconProps> = ({ value, color }) => {
   const svg = (
     <svg
-      width="42"
-      height="74"
-      viewBox="0 0 42 74"
+      width="36"
+      height="44"
+      viewBox="0 0 36 44"
+      stroke={color}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      stroke={color}
     >
-      <path
-        d="M3.58197 57.5485L7.21594 63.1643C7.40022 63.4491 7.7163 63.621 8.05551 63.621L28.5115 63.6209"
-        stroke="white"
-        strokeWidth="1.65"
-        strokeLinecap="round"
-      />
-      <path d="M20.0117 1L1.01172 38.5" strokeWidth="1.65" strokeLinecap="round" />
-      <path
-        d="M21.0117 60H32.5433C32.8401 60 33.1216 59.8682 33.3116 59.6402L40.2799 51.2781C40.4297 51.0984 40.5117 50.8719 40.5117 50.638V48.5"
-        strokeWidth="1.65"
-        strokeLinecap="round"
-      />
-      <g filter="url(#filter0_b_771_1954)">
+      <g id="Fire__yellow">
+        <path id="Vector 87" d="M10 8L1 26.2199" strokeWidth="1.65" strokeLinecap="round" />
         <path
-          d="M5.01172 41.0137L20.5457 11L30.5117 32.5L34.0117 25.5L37.0117 41.0137V47.1781L29.5554 55.5H20.5457H9.67191L5.01172 47.1781V41.0137Z"
-          fill="#D9D9D9"
-          fillOpacity="0.24"
+          id="Vector 86"
+          d="M18.7598 42.3172H28.4229C28.6715 42.3172 28.9074 42.2068 29.0666 42.0157L34.9058 35.0086C35.0313 34.858 35.1001 34.6682 35.1001 34.4722V30.5"
+          strokeWidth="1.65"
+          strokeLinecap="round"
+        />
+        <g id="Vector 83" filter="url(#filter0_b_927_7841)">
+          <path
+            d="M5.35156 26.4072L18.3685 1.25684L26.7196 19.2731L29.6525 13.4073L32.1664 26.4072V31.5728L25.9183 38.5462H18.3685H9.25664L5.35156 31.5728V26.4072Z"
+            fill="#D9D9D9"
+            fillOpacity="0.24"
+          />
+        </g>
+        <path
+          id="Vector 82"
+          d="M5.43791 26.2322L17.5679 1.62413C17.8836 0.983645 18.8045 1.00625 19.0884 1.66146L26.2841 18.2681C26.437 18.6208 26.9445 18.5987 27.066 18.234L28.3829 14.2833C28.5135 13.8916 29.0721 13.9049 29.1838 14.3024L32.5541 26.2962C32.5749 26.3699 32.5854 26.4462 32.5854 26.5228V31.2844C32.5854 31.4713 32.5229 31.6529 32.4078 31.8002L27.3902 38.2242C27.2314 38.4275 26.9878 38.5463 26.7299 38.5463H18.3685H9.74779C9.44449 38.5463 9.16486 38.3824 9.01666 38.1178L5.45839 31.7637C5.38835 31.6386 5.35156 31.4976 5.35156 31.3542V26.6027C5.35156 26.4742 5.38111 26.3474 5.43791 26.2322Z"
+          stroke="white"
+          strokeWidth="1.38264"
         />
       </g>
-      <path
-        d="M5.11477 40.8046L19.5903 11.4382C19.9671 10.6739 21.066 10.7008 21.4048 11.4827L29.992 31.3005C30.1744 31.7215 30.78 31.6951 30.9251 31.2598L32.4967 26.5452C32.6525 26.0778 33.3191 26.0937 33.4524 26.568L37.4744 40.881C37.4992 40.9691 37.5117 41.0601 37.5117 41.1515V46.8338C37.5117 47.0569 37.4371 47.2736 37.2998 47.4494L31.312 55.1156C31.1225 55.3582 30.8318 55.5 30.5239 55.5H20.5457H10.258C9.89609 55.5 9.56238 55.3044 9.38553 54.9886L5.13921 47.4058C5.05562 47.2565 5.01172 47.0882 5.01172 46.9172V41.2468C5.01172 41.0934 5.04698 40.9422 5.11477 40.8046Z"
-        stroke="white"
-        strokeWidth="1.65"
-      />
       <defs>
         <filter
-          id="filter0_b_771_1954"
-          x="-1.59457"
-          y="4.39371"
-          width="45.2126"
-          height="57.7126"
+          id="filter0_b_927_7841"
+          x="-2.64844"
+          y="-6.74316"
+          width="42.8149"
+          height="53.2896"
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feGaussianBlur in="BackgroundImageFix" stdDeviation="3.30315" />
-          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_771_1954" />
+          <feGaussianBlur in="BackgroundImageFix" stdDeviation="4" />
+          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_927_7841" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
-            in2="effect1_backgroundBlur_771_1954"
+            in2="effect1_backgroundBlur_927_7841"
             result="shape"
           />
         </filter>
@@ -66,7 +64,7 @@ const DamageIcon: FC<DamageIconProps> = ({ value, color }) => {
   return (
     <div className={'relative'}>
       {svg}
-      <div className={'absolute top-[30px] left-0 right-0 text-xl'}>{value}</div>
+      <div className={'absolute top-[13px] left-0 right-0 text-xl'}>{value}</div>
     </div>
   );
 };

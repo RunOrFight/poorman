@@ -5,7 +5,7 @@ export const Color = {
   YELLOW: '#F99D06',
 };
 
-export const bgColor = {
+export const BgColor = {
   RED: '#3A0D0D',
   BLUE: '#0B0A3D',
   GREEN: '#1A3D0A',
