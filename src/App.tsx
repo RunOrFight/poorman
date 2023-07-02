@@ -1,8 +1,8 @@
 import { AuthPage, GamePage, MenuPage, Landing } from './pages';
-import { RequireAuth } from './widgets';
+import { Canvas, RequireAuth } from './widgets';
 import { Provider } from 'react-redux';
 import { setupStore } from './store';
-import { isGameOnlyMode } from './constants';
+import { isCanvasMode, isGameOnlyMode } from './constants';
 import { Route, Routes } from 'react-router-dom';
 import { HistoryRouter as Router } from 'redux-first-history/rr6';
 
@@ -14,6 +14,8 @@ const App = () => {
         <Routes>
           {isGameOnlyMode ? (
             <Route path="*" element={<GamePage />}></Route>
+          ) : isCanvasMode ? (
+            <Route path="*" element={<Canvas />}></Route>
           ) : (
             <>
               <Route path="/" index element={<Landing />} />

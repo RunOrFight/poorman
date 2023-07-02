@@ -9,3 +9,4 @@ export { default as LeftSide } from './LeftSide';
 export { default as PlayerCard } from './PlayerCard';
 export { default as Enemy } from './Enemy';
 export { default as RightSide } from './RightSide';
+export { default as Canvas } from './Canvas';
