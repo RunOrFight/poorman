@@ -1,9 +1,9 @@
 import {
   ICardAttack,
-  ICreateGamePayload,
-  ICreateGameResponse,
   IEndTurnPayload,
   IEndTurnResponse,
+  IFindGamePayload,
+  IFindGameResponse,
   IGameData,
   IJoinGamePayload,
   IJoinGameResponse,
@@ -59,12 +59,12 @@ export const LoadGameFailAction = (err: AjaxError) => ({
   payload: err,
 });
 
-export const CreateGameStartAction = (payload: ICreateGamePayload) => ({
+export const CreateGameStartAction = (payload: IFindGamePayload) => ({
   type: CREATE_GAME_START,
   payload,
 });
 
-export const CreateGameOkAction = (response: ICreateGameResponse) => ({
+export const CreateGameOkAction = (response: IFindGameResponse) => ({
   type: CREATE_GAME_OK,
   payload: response,
 });
