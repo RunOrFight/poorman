@@ -23,7 +23,10 @@ const App = () => {
   const transitions = useTransition(location, transitionConfig);
 
   return transitions((style) => (
-    <animated.div className="w-full h-full" style={style}>
+    <animated.div
+      className="w-full h-full overflow-hidden"
+      style={{ ...style, overflow: 'hidden' }}
+    >
       <Routes>
         <Route path="/" index element={<Landing />} />
         <Route path="*" element={<div>No Page</div>} />

@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { ConnectionState, IS_USER_SETTLED } from '.';
+import { ConnectionState, IS_USER_SETTLED, SET_CONNECTION_STATE } from '.';
 
 const ConnectionReducer: Reducer<typeof ConnectionState> = (state = ConnectionState, action) => {
   switch (action.type) {
@@ -8,6 +8,11 @@ const ConnectionReducer: Reducer<typeof ConnectionState> = (state = ConnectionSt
         ...state,
         isUserSettled: true,
       };
+
+    case SET_CONNECTION_STATE:
+      return state.connectionState === action.payload
+        ? state
+        : { ...state, connectionState: action.payload };
 
     default:
       return state;

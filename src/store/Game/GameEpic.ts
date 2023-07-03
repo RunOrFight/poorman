@@ -24,8 +24,16 @@ import {
 import { merge, concatMap, from, of } from 'rxjs';
 import { ofType } from 'redux-observable';
 import { animePromise, cardAttackAnimation } from '../../utils';
-import { catchError, distinctUntilChanged, exhaustMap, map, filter } from 'rxjs/operators';
+import {
+  catchError,
+  distinctUntilChanged,
+  exhaustMap,
+  map,
+  filter,
+  mergeMap,
+} from 'rxjs/operators';
 import { ICardAttack, IGameData } from '../../interfaces/Game.ts';
+import { push } from 'redux-first-history';
 
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
   merge(
@@ -53,7 +61,9 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
       exhaustMap(({ payload }) =>
         from(
           httpApi.findGame(payload).pipe(
-            map((res) => CreateGameOkAction(res.response)),
+            mergeMap((res) =>
+              from([CreateGameOkAction(res.response), push(`/game/${res.response.gameId}`)])
+            ),
             catchError((err) => of(CreateGameFailAction(err)))
           )
         )
