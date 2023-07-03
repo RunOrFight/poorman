@@ -15,7 +15,6 @@ class Card {
     this.ctx.lineWidth = 2;
 
     this.ctx.moveTo(this.x + 10, this.y);
-
     this.ctx.lineTo(this.x + 10 + (this.width - 20), this.y);
     this.ctx.lineTo(this.x + this.width, this.y + 10);
     this.ctx.lineTo(this.x + this.width, this.y + 10 + (this.height - 20));
@@ -24,6 +23,20 @@ class Card {
     this.ctx.lineTo(this.x, this.y + (this.height - 10));
     this.ctx.lineTo(this.x, this.y + 10);
     this.ctx.lineTo(this.x + 10, this.y);
+
+    this.ctx.moveTo(this.x, this.y + 121);
+    this.ctx.lineTo(this.x + 10, this.y + 121 + 10);
+    this.ctx.lineTo(this.x + this.width - 10, this.y + 121 + 10);
+    this.ctx.lineTo(this.x + this.width, this.y + 121);
+
+    this.ctx.lineWidth = 1;
+    this.ctx.moveTo(this.x + 5, this.y + 121 + 3);
+    this.ctx.lineTo(this.x + 14, this.y + 121 - 12);
+
+    this.ctx.moveTo(this.x + 33, this.y + 121 + 10);
+    this.ctx.lineTo(this.x + 33, this.y + 121 + 10 + 5);
+    this.ctx.lineTo(this.x + 33 - 5, this.y + 121 + 10 + 10);
+    this.ctx.lineTo(this.x + 33 - 14, this.y + 121 + 10 + 10);
 
     this.ctx.stroke();
   }

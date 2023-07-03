@@ -2,7 +2,7 @@ import { ReactNode, createContext, useContext, useEffect, useState } from 'react
 import { ExtendedConnection } from '../interfaces';
 import { HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';
 import { apiUrl } from '../constants';
-import { useAuthSelector } from '../store';
+import { useAppDispatch, useAppSelector, useAuthSelector, IsUserSettledAction } from '../store';
 
 const connection = new HubConnectionBuilder().withUrl(`${apiUrl}/socket`).build();
 
@@ -14,7 +14,8 @@ const useSignalR = () => {
 
 export const WithConnection = (copmonent: ReactNode) => {
   const [connectionState, setConnectionState] = useState(connection.state);
-  const [isUserSettled, setIsUserSettled] = useState(false);
+  const isUserSettled = useAppSelector((state) => state.connection.isUserSettled);
+  const dispatch = useAppDispatch();
   const user = useAuthSelector().user;
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export const WithConnection = (copmonent: ReactNode) => {
         .then(() => {
           setConnectionState(connection.state);
           connection.invoke('SetUserId', user.id).then(() => {
-            !isUserSettled && setIsUserSettled(true);
+            !isUserSettled && dispatch(IsUserSettledAction());
           });
         })
         .catch(() => setConnectionState(connection.state));
