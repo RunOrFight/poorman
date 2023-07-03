@@ -7,7 +7,6 @@ export const GameReducer: Reducer<typeof GameState> = (state = GameState, action
     case CREATE_GAME_OK:
       return {
         ...state,
-        link: action.payload.link,
         gameId: action.payload.gameId,
         playerId: action.payload.playerId,
       };

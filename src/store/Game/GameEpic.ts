@@ -52,7 +52,7 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
       ofType(CREATE_GAME_START),
       exhaustMap(({ payload }) =>
         from(
-          httpApi.createGame(payload).pipe(
+          httpApi.findGame(payload).pipe(
             map((res) => CreateGameOkAction(res.response)),
             catchError((err) => of(CreateGameFailAction(err)))
           )

@@ -1,0 +1,115 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 78px;
+
+
+    .curtain {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        background: rgb(1, 9, 35);
+
+        &.left {
+            animation: curtain_move 2s ease-in-out;
+            width: 0;
+            left: 0;
+        }
+
+        &.right {
+            animation: curtain_move 2s ease-in-out;
+            right: 0;
+        }
+    }
+
+    .page-transition {
+        overflow: hidden;
+    }
+
+    .title {
+        color: #FFF;
+        text-shadow: -3.7855684757232666px 0.5407954454421997px 9.734318733215332px 0px #0034EC, 4.326363563537598px 2.163181781768799px 3.7855684757232666px 0px rgba(255, 0, 168, 0.85);
+        font-size: 170px;
+        font-family: 'Cyberpunk', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .start_game_btn {
+        cursor: pointer;
+
+        .btn_background {
+            fill: url(#paint0_linear_973_181);
+
+            &.loading {
+
+            }
+        }
+
+
+
+        .text {
+            fill: #FFF;
+            font-size: 70px;
+            font-family: 'Cyberpunk', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: -8.4px;
+
+            &.flipAnimation {
+                animation: flip 1s ease-in-out;
+            }
+        }
+
+
+
+        .running-border {
+        }
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(30%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-30%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes curtain_move {
+    0% {
+        width: 0;
+    }
+    25% {
+        width: 50%;
+    }
+    50% {
+        width: 50%;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+
+
+
+
+
+
