@@ -36,6 +36,20 @@ export const cardGetDamageAnimation = ({
   fontSize: ['24px', '12px'],
 });
 
+export const tearDownTheVeil = {
+  targets: '.veil-left, .veil-right',
+
+  width: [{ value: '0%', duration: 250 }],
+  easing: 'linear',
+};
+
+export const toCloseTheVeil = {
+  targets: '.veil-left, .veil-right',
+  width: '50%',
+  duration: 250,
+  easing: 'linear',
+};
+
 export const animePromise = (params: AnimeParams) =>
   new Promise((complete) => {
     anime({ ...params, complete });

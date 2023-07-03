@@ -1,45 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { CreateGameStartAction, useAppDispatch, useAppSelector, useAuthSelector } from '../store';
+import { useCallback, useState } from 'react';
+import { CreateGameStartAction, useAppDispatch, useAuthSelector } from '../store';
 import style from './Menu.module.pcss';
 import React from 'react';
 
 const MenuPage = () => {
   const [gameFounding, setGameFounding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [allUsersJoinedGame, setAllUsersJoinedGame] = useState(false);
-
-  const playerId = useAppSelector((state) => state.game.playerId);
-  const gameId = useAppSelector((state) => state.game.gameId);
 
   const user = useAuthSelector().user;
 
   const dispatch = useAppDispatch();
-
-  const navigateRef = useRef<string>('');
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (allUsersJoinedGame && gameId && playerId) {
-      const timer = setTimeout(() => {
-        // Обновление ссылки перенаправления
-        navigateRef.current = `/game/${gameId}`;
-
-        // Перенаправление после задержки
-        navigate(navigateRef.current);
-      }, 1000);
-
-      // Очистка таймера при размонтировании компонента
-      return () => clearTimeout(timer);
-    }
-  }, [allUsersJoinedGame, gameId, playerId, navigate]);
-
-  useEffect(() => {
-    if (gameId && playerId) {
-      console.log('HEREHERE AFTER RESPONSE');
-      setAllUsersJoinedGame(true);
-    }
-  }, [gameId]);
 
   const handleFindGameButtonClick = useCallback(async () => {
     setGameFounding(true);
@@ -48,23 +18,9 @@ const MenuPage = () => {
     }, 250);
     dispatch(CreateGameStartAction({ userId: user.id }));
   }, [dispatch]);
-  //
-  // const handleJoinLobbyButtonClick = useCallback(async () => {
-  //   if (!lobbyIdInput.current?.value) {
-  //     return;
-  //   }
-  //   dispatch(JoinGameStartAction({ link: lobbyIdInput.current.value, userId: user.id }));
-  // }, [user.id, dispatch]);
-
-  // if (allUsersJoinedGame && gameId && playerId) {
-  //   return <Navigate to={`/game/${gameId}`} />;
-  // }
 
   return (
     <div className={style.wrapper}>
-      <div className={`${style.curtain} ${allUsersJoinedGame ? style.left : null}`} />
-      <div className={`${style.curtain} ${allUsersJoinedGame ? style.right : null}`} />
-
       <span className={style.title}>Cybercats</span>
 
       <svg

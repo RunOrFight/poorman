@@ -7,6 +7,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 import { GameEpic, GameReducer } from './Game';
+import { ConnectionReducer } from './Connection';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
   history: createBrowserHistory(),
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   router: routerReducer,
   game: GameReducer,
   auth: AuthReducer,
+  connection: ConnectionReducer,
 });
 export const setupStore = () => {
   const store = createStore(
@@ -43,5 +45,8 @@ export type AppEpic = Epic<any, any, RootState, AppDependencies>;
 export type ActionWithPayload<T = any> = { type: string; payload: T };
 export const useAppDispatch = useDispatch<AppDispatch>;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
 export * from './Game';
 export * from './Auth';
+export * from './Connection';
+export * from './Router';

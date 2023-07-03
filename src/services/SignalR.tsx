@@ -2,7 +2,13 @@ import { ReactNode, createContext, useContext, useEffect, useState } from 'react
 import { ExtendedConnection } from '../interfaces';
 import { HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';
 import { apiUrl } from '../constants';
-import { useAuthSelector } from '../store';
+import {
+  useAppDispatch,
+  useAppSelector,
+  useAuthSelector,
+  IsUserSettledAction,
+  SetConnectionStateAction,
+} from '../store';
 
 const connection = new HubConnectionBuilder().withUrl(`${apiUrl}/socket`).build();
 
@@ -13,21 +19,27 @@ const useSignalR = () => {
 };
 
 export const WithConnection = (copmonent: ReactNode) => {
-  const [connectionState, setConnectionState] = useState(connection.state);
-  const [isUserSettled, setIsUserSettled] = useState(false);
+  const connectionState = useAppSelector((state) => state.connection.connectionState);
+  const isUserSettled = useAppSelector((state) => state.connection.isUserSettled);
+  const dispatch = useAppDispatch();
   const user = useAuthSelector().user;
 
   useEffect(() => {
+    connection.onreconnecting(() => {
+      dispatch(SetConnectionStateAction(connection.state));
+    });
     if (connectionState === HubConnectionState.Disconnected) {
       connection
         .start()
         .then(() => {
-          setConnectionState(connection.state);
+          dispatch(SetConnectionStateAction(connection.state));
           connection.invoke('SetUserId', user.id).then(() => {
-            !isUserSettled && setIsUserSettled(true);
+            dispatch(SetConnectionStateAction(connection.state));
+            !isUserSettled && dispatch(IsUserSettledAction());
           });
         })
-        .catch(() => setConnectionState(connection.state));
+        .catch(() => dispatch(SetConnectionStateAction(connection.state)))
+        .finally(() => dispatch(SetConnectionStateAction(connection.state)));
     }
   });
 
