@@ -45,6 +45,8 @@ export type AppEpic = Epic<any, any, RootState, AppDependencies>;
 export type ActionWithPayload<T = any> = { type: string; payload: T };
 export const useAppDispatch = useDispatch<AppDispatch>;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
 export * from './Game';
 export * from './Auth';
 export * from './Connection';
+export * from './Router';

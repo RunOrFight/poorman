@@ -20,6 +20,7 @@ import {
   LoadGameOkAction,
   SET_GAME_DATA_START,
   SetGameDataOkAction,
+  pushStart,
 } from '../index.ts';
 import { merge, concatMap, from, of } from 'rxjs';
 import { ofType } from 'redux-observable';
@@ -33,7 +34,6 @@ import {
   mergeMap,
 } from 'rxjs/operators';
 import { ICardAttack, IGameData } from '../../interfaces/Game.ts';
-import { push } from 'redux-first-history';
 
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
   merge(
@@ -62,7 +62,7 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
         from(
           httpApi.findGame(payload).pipe(
             mergeMap((res) =>
-              from([CreateGameOkAction(res.response), push(`/game/${res.response.gameId}`)])
+              from([CreateGameOkAction(res.response), pushStart(`/game/${res.response.gameId}`)])
             ),
             catchError((err) => of(CreateGameFailAction(err)))
           )

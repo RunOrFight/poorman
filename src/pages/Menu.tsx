@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { CreateGameStartAction, useAppDispatch, useAppSelector, useAuthSelector } from '../store';
+import { CreateGameStartAction, useAppDispatch, useAuthSelector } from '../store';
 import style from './Menu.module.pcss';
 import React from 'react';
 
