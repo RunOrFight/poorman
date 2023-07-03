@@ -100,8 +100,7 @@ export enum CardType {
   All,
 }
 
-export interface ICreateGameResponse {
-  link: string;
+export interface IFindGameResponse {
   playerId: number;
   gameId: number;
 }
@@ -110,13 +109,13 @@ export interface IJoinGameResponse {
   playerId: number;
   gameId: number;
 }
-export interface ICreateGamePayload {
+export interface IFindGamePayload {
   userId: IUser['id'];
 }
 
 export interface IJoinGamePayload {
   userId: IUser['id'];
-  link: ICreateGameResponse['link'];
+  link: string;
 }
 
 export interface ILoadGamePayload {
