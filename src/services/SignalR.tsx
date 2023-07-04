@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect } from 'react';
 import { ExtendedConnection } from '../interfaces';
 import { HubConnectionBuilder, HubConnectionState } from '@microsoft/signalr';
 import { apiUrl } from '../constants';

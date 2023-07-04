@@ -4,7 +4,6 @@ import { Button } from '../ui';
 import {
   CardAttackStartAction,
   EndTurnStart,
-  SetGameDataOkAction,
   SetGameDataStartAction,
   useAppDispatch,
   useAppSelector,
@@ -25,20 +24,115 @@ const EndTurnButton = () => {
   });
 
   const testHandleClick = () => {
-    dispatch(CardAttackStartAction({ attackingCard: card2, attackingPlayerId: 1 }));
-    dispatch(CardAttackStartAction({ attackingCard: card3, attackingPlayerId: 2 }));
     dispatch(
-      SetGameDataStartAction({
-        playerData: { field1: { ...card2, hp: 3 }, cardsInHand: [card1], hp: 25, name: 'Player1' },
-        enemyData: { field1: { ...card3, hp: 3 }, cardsInHand: [card4], hp: 25, name: 'Player2' },
+      CardAttackStartAction({
+        attackingCard: card2,
+        attackingPlayerId: 1,
+        field: 1,
+        fieldsUnderAttack: [],
+        playerUnderAttackId: 2,
       })
     );
-    dispatch(CardAttackStartAction({ attackingCard: card2, attackingPlayerId: 1 }));
-    dispatch(CardAttackStartAction({ attackingCard: card3, attackingPlayerId: 2 }));
+    dispatch(
+      CardAttackStartAction({
+        attackingCard: card3,
+        attackingPlayerId: 2,
+        field: 1,
+        fieldsUnderAttack: [],
+        playerUnderAttackId: 1,
+      })
+    );
     dispatch(
       SetGameDataStartAction({
-        playerData: { field1: { ...card2, hp: 2 }, cardsInHand: [card1], hp: 20, name: 'Player1' },
-        enemyData: { field1: { ...card3, hp: 2 }, cardsInHand: [card4], hp: 20, name: 'Player2' },
+        playerData: {
+          field1: { ...card2, hp: 3 },
+          cardsInHand: [card1],
+          hp: 25,
+          name: 'Player1',
+          field2: null,
+          field3: null,
+          field4: null,
+          manaCommon: 2,
+          manaCurrent: 2,
+        },
+        enemyData: {
+          field1: { ...card3, hp: 3 },
+          cardsInHand: [card4],
+          hp: 25,
+          name: 'Player2',
+          field2: null,
+          field3: null,
+          field4: null,
+          manaCommon: 2,
+        },
+      })
+    );
+    dispatch(
+      CardAttackStartAction({
+        attackingCard: card2,
+        attackingPlayerId: 1,
+        field: 1,
+        fieldsUnderAttack: [],
+        playerUnderAttackId: 2,
+      })
+    );
+    dispatch(
+      CardAttackStartAction({
+        attackingCard: card3,
+        attackingPlayerId: 2,
+        field: 1,
+        fieldsUnderAttack: [],
+        playerUnderAttackId: 1,
+      })
+    );
+    dispatch(
+      SetGameDataStartAction({
+        playerData: {
+          field1: { ...card2, hp: 2 },
+          cardsInHand: [card1],
+          hp: 20,
+          name: 'Player1',
+          field2: null,
+          field3: null,
+          field4: null,
+          manaCommon: 3,
+          manaCurrent: 3,
+        },
+        enemyData: {
+          field1: { ...card3, hp: 2 },
+          cardsInHand: [card4],
+          hp: 20,
+          name: 'Player2',
+          field2: null,
+          field3: null,
+          field4: null,
+          manaCommon: 3,
+        },
+      })
+    );
+    dispatch(
+      SetGameDataStartAction({
+        playerData: {
+          field1: { ...card2, hp: 2 },
+          cardsInHand: [card1],
+          hp: 20,
+          name: 'Player1',
+          field2: null,
+          field3: null,
+          field4: null,
+          manaCommon: 3,
+          manaCurrent: 3,
+        },
+        enemyData: {
+          field1: { ...card3, hp: 2 },
+          cardsInHand: [card4],
+          hp: 20,
+          name: 'Player2',
+          field2: null,
+          field3: null,
+          field4: null,
+          manaCommon: 3,
+        },
       })
     );
   };
