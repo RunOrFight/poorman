@@ -3,12 +3,6 @@
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    color: #fff;
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 42px;
-    letter-spacing: 0em;
-    text-align: center;
     text-decoration: none;
     cursor: pointer;
     border-image-source: linear-gradient(253.5deg, rgba(255, 255, 255, 0.5) 10.2%, rgba(7, 30, 74, 0.5) 88.62%);
@@ -16,9 +10,14 @@
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     height: 75px;
     padding: 32px 27px 32px 27px;
-    background: linear-gradient(180deg, #2BBAD9 17.01%, #650B95 152.06%),
-linear-gradient(253.5deg, rgba(255, 255, 255, 0.5) 10.2%, rgba(7, 30, 74, 0.5) 88.62%);
-
+    background: linear-gradient(180deg, #2BBAD9 17.01%, #650B95 152.06%);
+    color: #FFF;
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Hemico-Greek', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 @media (max-width: 1199px) {

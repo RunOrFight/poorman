@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    height: 82px;
+    width: 610px;
+
+
+    .input_container {
+        width: 605px;
+        height: 82px;
+        background: linear-gradient(to right, #0F539E, #062055);
+    }
+
+    .test {
+        font-family: 'Hemico-Greek', sans-serif;
+        color: #FFF;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding-left: 20px;
+        background: linear-gradient(to right, #0F539E, #062055);
+        width: 100%;
+        height: 100%;
+        border-top: 3px solid;
+        border-bottom: 3px solid;
+        border-image: linear-gradient(to right, #2BBAD9, #5156B6) 1;
+        border-image-slice: 1;
+    }
+
+    .test::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to right, #0F539E, #062055);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+    .left_triangle,
+    .right_triangle {
+        width: 25px;
+        height: 82px;
+    }
+
+    .left_triangle {
+        margin-right: -3.5px;
+    }
+
+    .right_triangle {
+        margin-left: -3.5px;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill::first-line {
+    font-family: 'Cyberpunk', sans-serif;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+}
