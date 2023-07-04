@@ -50,6 +50,23 @@ export const toCloseTheVeil = {
   easing: 'linear',
 };
 
+export const fieldUnderAttackAnimation = ({
+  isEnemy,
+  fieldId,
+}: {
+  isEnemy: boolean;
+  fieldId: string;
+}) => {
+  return {
+    targets: `.${isEnemy ? 'enemy' : 'player'} #${fieldId}`,
+    scale: [
+      { value: 1.2, duration: 400 },
+      { value: 1, duration: 160 },
+    ],
+    easing: 'easeOutElastic(1, .8)',
+  };
+};
+
 export const animePromise = (params: AnimeParams) =>
   new Promise((complete) => {
     anime({ ...params, complete });

@@ -3,3 +3,4 @@ export * from './usePrevios';
 export * from './useLoadGame';
 export * from './useGameFlow';
 export * from './Anime';
+export * from './Mock.ts';

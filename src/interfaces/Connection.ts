@@ -8,6 +8,7 @@ interface Events {
   card_attack: [data: string];
   start_battle: [];
   player_win: [data: string];
+  card_is_dead: [data: string];
 }
 
 export interface ExtendedConnection extends HubConnection {
