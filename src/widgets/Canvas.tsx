@@ -1,68 +1,89 @@
-import { CanvasHTMLAttributes, FC, useEffect, useRef } from 'react';
+import { CanvasHTMLAttributes, FC, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
-class Card {
-  constructor(
-    public ctx: CanvasRenderingContext2D,
-    public x: number,
-    public y: number,
-    public width: number,
-    public height: number
-  ) {}
+interface Position {
+  x: number;
+  y: number;
+}
 
-  draw() {
-    this.ctx.beginPath();
-    this.ctx.strokeStyle = '#ffffff';
-    this.ctx.lineWidth = 2;
+class Particle {
+  constructor(public radius: number, public position: Position) {}
 
-    this.ctx.moveTo(this.x + 10, this.y);
-    this.ctx.lineTo(this.x + 10 + (this.width - 20), this.y);
-    this.ctx.lineTo(this.x + this.width, this.y + 10);
-    this.ctx.lineTo(this.x + this.width, this.y + 10 + (this.height - 20));
-    this.ctx.lineTo(this.x + this.width - 10, this.y + this.height);
-    this.ctx.lineTo(this.x + 10, this.y + this.height);
-    this.ctx.lineTo(this.x, this.y + (this.height - 10));
-    this.ctx.lineTo(this.x, this.y + 10);
-    this.ctx.lineTo(this.x + 10, this.y);
-
-    this.ctx.moveTo(this.x, this.y + 121);
-    this.ctx.lineTo(this.x + 10, this.y + 121 + 10);
-    this.ctx.lineTo(this.x + this.width - 10, this.y + 121 + 10);
-    this.ctx.lineTo(this.x + this.width, this.y + 121);
-
-    this.ctx.lineWidth = 1;
-    this.ctx.moveTo(this.x + 5, this.y + 121 + 3);
-    this.ctx.lineTo(this.x + 14, this.y + 121 - 12);
-
-    this.ctx.moveTo(this.x + 33, this.y + 121 + 10);
-    this.ctx.lineTo(this.x + 33, this.y + 121 + 10 + 5);
-    this.ctx.lineTo(this.x + 33 - 5, this.y + 121 + 10 + 10);
-    this.ctx.lineTo(this.x + 33 - 14, this.y + 121 + 10 + 10);
-
-    this.ctx.stroke();
+  draw(context: CanvasRenderingContext2D) {
+    context.beginPath();
+    context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI, false);
+    context.fill();
+    context.closePath();
   }
 }
 
+const move = (obj: { position: Position; draw: (context: CanvasRenderingContext2D) => void }) => {
+  return {
+    to(to: Position) {
+      const dx = to.x - obj.position.x;
+      const dy = to.y - obj.position.y;
+      const magnitude = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+      const normalized = { x: dx / magnitude, y: dy / magnitude };
+      return {
+        withSpeed(speed: number) {
+          return {
+            draw(context: CanvasRenderingContext2D) {
+              if (
+                obj.position.x.toFixed() === to.x.toFixed() &&
+                obj.position.y.toFixed() === to.y.toFixed()
+              ) {
+                return;
+              }
+              obj.position.x = obj.position.x + normalized.x * speed;
+              obj.position.y = obj.position.y + normalized.y * speed;
+              obj.draw(context);
+            },
+          };
+        },
+      };
+    },
+  };
+};
+
+const canvasOverlay = document.getElementById('canvas-overlay')!;
+
 const Canvas: FC<CanvasHTMLAttributes<HTMLCanvasElement>> = (props) => {
+  const [isHidden, setIsHidden] = useState(true);
+
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = ref.current!;
-    const context = canvas.getContext('2d')!;
-    let animationFrameId = 0;
+    const canvas = ref.current;
+    if (canvas) {
+      const context = canvas.getContext('2d')!;
+      const { width, height } = canvasOverlay.getBoundingClientRect();
+      context.canvas.width = width;
+      context.canvas.height = height;
 
-    const render = () => {
-      new Card(context, 20, 20, 132, 178).draw();
-      animationFrameId = window.requestAnimationFrame(render);
-    };
+      let animationFrameId = 0;
 
-    render();
+      const particle = new Particle(10, { x: 20, y: 20 });
+      const movement = move(particle).to({ x: 50, y: 20 }).withSpeed(2);
+      const render = () => {
+        context.fillStyle = '#ffffff';
+        movement.draw(context);
+        animationFrameId = requestAnimationFrame(render);
+      };
+      render();
+    }
 
     return () => {
       window.cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  return <canvas width="500" height="500" className="border" ref={ref} {...props} />;
+  return (
+    !isHidden &&
+    createPortal(
+      <canvas className="border bg-transparent h-full w-full " ref={ref} {...props} />,
+      canvasOverlay
+    )
+  );
 };
 
 export default Canvas;

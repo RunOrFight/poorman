@@ -138,6 +138,14 @@ h6 {
   height: 100vh;
 }
 
+#canvas-overlay{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 /*#cat-1{*/
 /*  background-image: image-set(*/
 /*    url("../src/assets/cat1.png") 1x,*/

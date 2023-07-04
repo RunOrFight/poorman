@@ -2,7 +2,6 @@
   position: relative;
   width: 170px;
   height: 232px;
-  padding: 2px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -10,7 +9,7 @@
   font-size: 20px;
   cursor: pointer;
   mix-blend-mode: color;
-  outline: 1px solid grey;
+  padding: 20px;
 }
 
 .field:after {
