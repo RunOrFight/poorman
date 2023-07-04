@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
 import { useAppDispatch, SingInStartAction, SingUpStartAction, useAuthSelector } from '../store';
+import st from './Auth.module.pcss';
 
 interface IAuthPageProps {
   type: 'login' | 'register';
@@ -28,37 +29,41 @@ const AuthPage: FC<IAuthPageProps> = memo(({ type }) => {
 
   return (
     <div className="flex justify-center items-center h-full flex-col">
-      <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+      <span className={st.title}>{!isRegister ? 'Sign in' : 'Registration'}</span>
+      <form className="flex flex-col gap-2 items-center" onSubmit={handleSubmit(onSubmit)}>
         {isError && <div className="text-red-600">Something wrong</div>}
         {isRegister && (
-          <>
-            <label>Name</label>
+          <div className={st.input_container}>
             <Input
               type="text"
               {...register('name', { required: true, setValueAs: (value) => value.trimEnd() })}
               aria-invalid={errors.name ? 'true' : 'false'}
             />
-          </>
+          </div>
         )}
         {errors.name?.type === 'required' && <PAlert>Name is required</PAlert>}
-        <label>Email</label>
-        <Input
-          type="text"
-          {...register('email', { required: true, setValueAs: (value) => value.trimEnd() })}
-          aria-invalid={errors.email ? 'true' : 'false'}
-        />
-        {errors.email?.type === 'required' && <PAlert>Email is required</PAlert>}
-        <label>Password</label>
-        <Input
-          type="password"
-          {...register('password', { required: true, setValueAs: (value) => value.trimEnd() })}
-          aria-invalid={errors.password ? 'true' : 'false'}
-        />
-        {errors.password?.type === 'required' && <PAlert>Password is required</PAlert>}
+        <div className={st.input_container}>
+          <Input
+              type="text"
+              {...register('email', { required: true, setValueAs: (value) => value.trimEnd() })}
+              aria-invalid={errors.email ? 'true' : 'false'}
+          />
+          {errors.email?.type === 'required' && <PAlert>Email is required</PAlert>}
+        </div>
+        <div className={st.input_container}>
+          <Input
+              type="password"
+              {...register('password', { required: true, setValueAs: (value) => value.trimEnd() })}
+              aria-invalid={errors.password ? 'true' : 'false'}
+          />
+          {errors.password?.type === 'required' && <PAlert>Password is required</PAlert>}
+        </div>
 
-        <Button type="submit">Ok</Button>
+        <div className={st.button_container}>
+          <Button type="submit">continue</Button>
+        </div>
       </form>
-      <div className="pt-5 text-blue-grey underline">
+      <div className={st.switch}>
         <Link to={isRegister ? '/game/login' : '/game/register'}>
           {isRegister ? 'Log In' : 'Crete a New Account'}
         </Link>
