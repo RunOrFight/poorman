@@ -44,17 +44,17 @@ const AuthPage: FC<IAuthPageProps> = memo(({ type }) => {
         {errors.name?.type === 'required' && <PAlert>Name is required</PAlert>}
         <div className={st.input_container}>
           <Input
-              type="text"
-              {...register('email', { required: true, setValueAs: (value) => value.trimEnd() })}
-              aria-invalid={errors.email ? 'true' : 'false'}
+            type="text"
+            {...register('email', { required: true, setValueAs: (value) => value.trimEnd() })}
+            aria-invalid={errors.email ? 'true' : 'false'}
           />
           {errors.email?.type === 'required' && <PAlert>Email is required</PAlert>}
         </div>
         <div className={st.input_container}>
           <Input
-              type="password"
-              {...register('password', { required: true, setValueAs: (value) => value.trimEnd() })}
-              aria-invalid={errors.password ? 'true' : 'false'}
+            type="password"
+            {...register('password', { required: true, setValueAs: (value) => value.trimEnd() })}
+            aria-invalid={errors.password ? 'true' : 'false'}
           />
           {errors.password?.type === 'required' && <PAlert>Password is required</PAlert>}
         </div>

@@ -24,7 +24,7 @@ import {
 } from '../index.ts';
 import { merge, concatMap, from, of } from 'rxjs';
 import { ofType } from 'redux-observable';
-import { animePromise, cardAttackAnimation } from '../../utils';
+import { animePromise, cardAttackAnimation, fieldUnderAttackAnimation } from '../../utils';
 import {
   catchError,
   distinctUntilChanged,
@@ -34,19 +34,20 @@ import {
   mergeMap,
 } from 'rxjs/operators';
 import { ICardAttack, IGameData } from '../../interfaces/Game.ts';
+import { isGameOnlyMode } from '../../constants/Env.ts';
 
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
   merge(
     action$.pipe(
       filter((action) => action.type === CARD_ATTACK_START || action.type === SET_GAME_DATA_START),
-      distinctUntilChanged(
-        (prev, next) => JSON.stringify(prev.payload) === JSON.stringify(next.payload)
+      distinctUntilChanged((prev, next) =>
+        isGameOnlyMode ? false : JSON.stringify(prev.payload) === JSON.stringify(next.payload)
       ),
 
       concatMap(({ payload, type }: ActionWithPayload<ICardAttack | IGameData>) => {
         if (type === CARD_ATTACK_START) {
-          const { attackingCard } = payload as ICardAttack;
-          const isEnemy = state$.value.game.playerId !== attackingCard.playerId;
+          const { attackingCard, attackingPlayerId } = payload as ICardAttack;
+          const isEnemy = state$.value.game.playerId !== attackingPlayerId;
           const cardId = attackingCard.id;
           return from(animePromise(cardAttackAnimation({ isEnemy, cardId }))).pipe(
             map(() => CardAttackOkAction(payload as ICardAttack))

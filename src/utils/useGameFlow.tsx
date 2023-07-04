@@ -19,7 +19,11 @@ export const useGameFlow = () => {
     });
 
     connection.on('player_win', (data) => {
-      alert(data);
+      console.log('player_win', data);
+    });
+
+    connection.on('card_is_dead', (data) => {
+      console.log('card_is_dead', data);
     });
   });
 };

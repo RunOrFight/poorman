@@ -1,16 +1,35 @@
-import { FC, forwardRef, memo } from 'react';
+import { FC, forwardRef, memo, useEffect, useMemo, useRef } from 'react';
 import classes from './Card.module.css';
 import { IEnemyCardHidden, IEnemyCardOpen, IPlayerCard } from '../../interfaces';
 
 import { DamageIcon, MpIcon, HpIcon } from '../';
-import { getCardPropertiesByType } from '../../utils';
+import { getCardPropertiesByType, usePrevious } from '../../utils';
 import { Color } from '../../constants';
+import anime from 'animejs';
 
 interface ICardPropertiesProps {
   card: IPlayerCard;
   color: (typeof Color)[keyof typeof Color];
 }
 const CardProperties: FC<ICardPropertiesProps> = ({ card, color }) => {
+  const previousHp = usePrevious(card.hp);
+  const diff = useMemo(() => card.hp - previousHp, [card.hp, previousHp]);
+  const animation = useRef(
+    anime({
+      targets: `#card_${card.id} .hp-text`,
+      color: [Color.RED, '#ffffff'],
+      fontSize: [{ value: '2rem' }, { value: '1.25rem' }],
+      easing: 'easeInCubic',
+      duration: 300,
+    })
+  );
+
+  useEffect(() => {
+    if (diff > 0) {
+      animation.current.restart();
+    }
+  }, [diff]);
+
   return (
     <>
       <div className={'absolute bottom-[6px] left-[20px] -translate-x-1/2 translate-y-1/2'}>

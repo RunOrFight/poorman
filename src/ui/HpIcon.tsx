@@ -69,7 +69,7 @@ const HpIcon: FC<IHpIcon> = ({ value, color }) => {
   return (
     <div className={'relative'}>
       {svg}
-      <div className={'absolute top-[6px] left-0 right-0 text-xl'}>{value}</div>
+      <div className={'absolute top-[6px] left-0 right-0 text-xl hp-text'}>{value}</div>
     </div>
   );
 };
