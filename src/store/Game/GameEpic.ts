@@ -24,7 +24,7 @@ import {
 } from '../index.ts';
 import { merge, concatMap, from, of } from 'rxjs';
 import { ofType } from 'redux-observable';
-import { animePromise, cardAttackAnimation, fieldUnderAttackAnimation } from '../../utils';
+import { animePromise, cardAttackAnimation } from '../../utils';
 import {
   catchError,
   distinctUntilChanged,

@@ -48,19 +48,18 @@ const move = (obj: { position: Position; draw: (context: CanvasRenderingContext2
 const canvasOverlay = document.getElementById('canvas-overlay')!;
 
 const Canvas: FC<CanvasHTMLAttributes<HTMLCanvasElement>> = (props) => {
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden] = useState(true);
 
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = ref.current;
+    let animationFrameId = 0;
     if (canvas) {
       const context = canvas.getContext('2d')!;
       const { width, height } = canvasOverlay.getBoundingClientRect();
       context.canvas.width = width;
       context.canvas.height = height;
-
-      let animationFrameId = 0;
 
       const particle = new Particle(10, { x: 20, y: 20 });
       const movement = move(particle).to({ x: 50, y: 20 }).withSpeed(2);
