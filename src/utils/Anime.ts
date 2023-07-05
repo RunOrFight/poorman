@@ -23,9 +23,6 @@ export const cardAttackAnimation = ({
 });
 
 export const cardGetDamageAnimation = ({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  isEnemy,
   cardId,
 }: {
   isEnemy: boolean;
@@ -65,6 +62,13 @@ export const fieldUnderAttackAnimation = ({
     ],
     easing: 'easeOutElastic(1, .8)',
   };
+};
+
+export const playerWinAnimation = {
+  targets: '.player-win',
+  opacity: '1',
+  duration: 250,
+  easing: 'easeInBounce',
 };
 
 export const animePromise = (params: AnimeParams) =>
