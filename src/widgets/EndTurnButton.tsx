@@ -5,6 +5,7 @@ import { click_mp3 } from '../assets';
 import {
   CardAttackStartAction,
   EndTurnStart,
+  PlayerWinAction,
   SetGameDataStartAction,
   useAppDispatch,
   useAppSelector,
@@ -17,7 +18,7 @@ const EndTurnButton = () => {
   const playerId = useAppSelector((state) => state.game.playerId!);
   const connection = useSignalR();
   const dispatch = useAppDispatch();
-  const clickRef = useRef<any>(null);
+  const clickRef = useRef<HTMLAudioElement>(null!);
 
   useEffect(() => {
     connection.on('turn_start', () => {
@@ -137,6 +138,19 @@ const EndTurnButton = () => {
         },
       })
     );
+    dispatch(
+      PlayerWinAction({
+        name: 'Sasha',
+        cardsInHand: [],
+        field1: null,
+        field2: null,
+        field3: null,
+        field4: null,
+        hp: 30,
+        manaCommon: 0,
+        manaCurrent: 0,
+      })
+    );
   };
 
   const handleClick = () => {
@@ -153,9 +167,9 @@ const EndTurnButton = () => {
         <source src={click_mp3} type="audio/mpeg" />
       </audio>
       {/*<div className="text-white font-sans text-xl">{timeLeft} sec</div>*/}
-        <Button disabled={isTurnEnd} onClick={isGameOnlyMode ? testHandleClick : handleClick}>
-            {isTurnEnd ? 'Wait for battle' : 'End Turn'}
-        </Button>
+      <Button disabled={isTurnEnd} onClick={isGameOnlyMode ? testHandleClick : handleClick}>
+        {isTurnEnd ? 'Wait for battle' : 'End Turn'}
+      </Button>
     </div>
   );
 };

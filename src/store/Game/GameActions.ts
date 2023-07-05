@@ -9,6 +9,7 @@ import {
   IJoinGameResponse,
   ILoadGamePayload,
   ILoadGameResponse,
+  IPlayerData,
   IThrowCartPayload,
   IThrowCartResponse,
 } from '../../interfaces';
@@ -43,6 +44,8 @@ export const END_TURN_FAIL = 'END_TURN_FAIL';
 export const CARD_THROW_START = 'CARD_THROW_START';
 export const CARD_THROW_OK = 'CARD_THROW_OK';
 export const CARD_THROW_FAIL = 'CARD_THROW_FAIL';
+
+export const PLAYER_WIN = 'PLAYER_WIN';
 
 export const LoadGameStartAction = (payload: ILoadGamePayload) => ({
   type: LOAD_GAME_START,
@@ -144,5 +147,10 @@ export const CardThrowOk = (payload: IThrowCartResponse) => ({
 
 export const CardThrowFail = (payload: AjaxError) => ({
   type: CARD_THROW_FAIL,
+  payload,
+});
+
+export const PlayerWinAction = (payload: IPlayerData) => ({
+  type: PLAYER_WIN,
   payload,
 });

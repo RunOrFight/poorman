@@ -13,6 +13,7 @@ export const GameState = {
   gameId: null as number | null,
   playerId,
   isGameLoaded: false,
+  playerWin: null as IPlayerData | null,
   playerData: {
     manaCommon: 0,
     manaCurrent: 0,

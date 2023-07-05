@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
-import { ICardAttack, IGameData } from '../interfaces';
-import { CardAttackStartAction, SetGameDataStartAction, useAppDispatch } from '../store';
+import { ICardAttack, IGameData, IPlayerData } from '../interfaces';
+import {
+  CardAttackStartAction,
+  PlayerWinAction,
+  SetGameDataStartAction,
+  useAppDispatch,
+} from '../store';
 import { useSignalR } from '../services';
 
 export const useGameFlow = () => {
@@ -19,11 +24,12 @@ export const useGameFlow = () => {
     });
 
     connection.on('player_win', (data) => {
-      console.log('player_win', data);
+      const parsedData: IPlayerData = JSON.parse(data);
+      dispatch(PlayerWinAction(parsedData));
     });
 
     connection.on('card_is_dead', (data) => {
-      console.log('card_is_dead', data);
+      data;
     });
   });
 };

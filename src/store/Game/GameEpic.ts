@@ -18,13 +18,14 @@ import {
   LOAD_GAME_START,
   LoadGameFailAction,
   LoadGameOkAction,
+  PLAYER_WIN,
   SET_GAME_DATA_START,
   SetGameDataOkAction,
   pushStart,
 } from '../index.ts';
-import { merge, concatMap, from, of } from 'rxjs';
+import { merge, concatMap, from, of, EMPTY, concat } from 'rxjs';
 import { ofType } from 'redux-observable';
-import { animePromise, cardAttackAnimation } from '../../utils';
+import { animePromise, cardAttackAnimation, playerWinAnimation, toCloseTheVeil } from '../../utils';
 import {
   catchError,
   distinctUntilChanged,
@@ -32,6 +33,7 @@ import {
   map,
   filter,
   mergeMap,
+  switchMap,
 } from 'rxjs/operators';
 import { ICardAttack, IGameData } from '../../interfaces/Game.ts';
 import { isGameOnlyMode } from '../../constants/Env.ts';
@@ -39,7 +41,12 @@ import { isGameOnlyMode } from '../../constants/Env.ts';
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
   merge(
     action$.pipe(
-      filter((action) => action.type === CARD_ATTACK_START || action.type === SET_GAME_DATA_START),
+      filter(
+        (action) =>
+          action.type === CARD_ATTACK_START ||
+          action.type === SET_GAME_DATA_START ||
+          action.type === PLAYER_WIN
+      ),
       distinctUntilChanged((prev, next) =>
         isGameOnlyMode ? false : JSON.stringify(prev.payload) === JSON.stringify(next.payload)
       ),
@@ -51,6 +58,11 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
           const cardId = attackingCard.id;
           return from(animePromise(cardAttackAnimation({ isEnemy, cardId }))).pipe(
             map(() => CardAttackOkAction(payload as ICardAttack))
+          );
+        } else if (type === PLAYER_WIN) {
+          return concat(
+            from(animePromise(toCloseTheVeil)).pipe(switchMap(() => EMPTY)),
+            from(animePromise(playerWinAnimation)).pipe(switchMap(() => EMPTY))
           );
         } else {
           return of(SetGameDataOkAction(payload as IGameData));
