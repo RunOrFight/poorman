@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { CreateGameStartAction, useAppDispatch, useAuthSelector } from '../store';
 import style from './Menu.module.pcss';
 import React from 'react';
@@ -7,45 +7,16 @@ import { click_mp3 } from '../assets';
 const MenuPage = () => {
   const [gameFounding, setGameFounding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [allUsersJoinedGame, setAllUsersJoinedGame] = useState(false);
   const clickRef = useRef<HTMLAudioElement>(null);
-
-  const playerId = useAppSelector((state) => state.game.playerId);
-  const gameId = useAppSelector((state) => state.game.gameId);
 
   const user = useAuthSelector().user;
 
   const dispatch = useAppDispatch();
 
-  const navigateRef = useRef<string>('');
-  const navigate = useNavigate();
-
-
-  useEffect(() => {
-    if (allUsersJoinedGame && gameId && playerId) {
-      const timer = setTimeout(() => {
-        // Обновление ссылки перенаправления
-        navigateRef.current = `/game/${gameId}`;
-
-        // Перенаправление после задержки
-        navigate(navigateRef.current);
-      }, 1000);
-
-      // Очистка таймера при размонтировании компонента
-      return () => clearTimeout(timer);
-    }
-  }, [allUsersJoinedGame, gameId, playerId, navigate]);
-
-  useEffect(() => {
-    if (gameId && playerId) {
-      console.log('HEREHERE AFTER RESPONSE');
-      setAllUsersJoinedGame(true);
-    }
-  }, [gameId]);
-
   const handleFindGameButtonClick = useCallback(async () => {
-    clickRef.current?.play();
-
+    if (clickRef.current) {
+      clickRef.current.play();
+    }
     setGameFounding(true);
     setTimeout(() => {
       setIsLoading(true);
@@ -55,13 +26,9 @@ const MenuPage = () => {
 
   return (
     <div className={style.wrapper}>
-      <audio ref={clickRef}>
+      <audio ref={clickRef} loop>
         <source src={click_mp3} type="audio/mpeg" />
       </audio>
-
-      <div className={`${style.curtain} ${allUsersJoinedGame ? style.left : null}`} />
-      <div className={`${style.curtain} ${allUsersJoinedGame ? style.right : null}`} />
-
       <span className={style.title}>Cybercats</span>
 
       <svg
@@ -71,7 +38,7 @@ const MenuPage = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={style.start_game_btn}
-        onClick={!gameFounding ? handleFindGameButtonClick : null}
+        onClick={handleFindGameButtonClick}
       >
         <path
           d="M384.351 2H383.618L383.059 2.47289L372.225 11.635H92.4665L83.412 2.58541L82.8263 2H81.9982H32.0443H31.2162L30.6304 2.58541L2.58617 30.6146L2 31.2005V32.0292V94.219V95.0124L2.54397 95.5901L30.5882 125.371L31.1805 126H32.0443H68.8524H69.5069L70.0347 125.613L82.6526 116.365H174.01L182.179 125.346L182.774 126H183.659H319.498H320.899L321.378 124.684L324.404 116.365H399.878V124V126H401.878H446.574H447.353L447.927 125.473L480.353 95.692L481 95.0976V94.219V38.1606V37.3625L480.451 36.7837L448.024 2.62309L447.433 2H446.574H384.351Z"
@@ -207,5 +174,4 @@ const MenuPage = () => {
     </div>
   );
 };
-
 export default MenuPage;
