@@ -23,6 +23,9 @@ import adv4 from '../assets/landing/adv_4.svg';
 import adv5 from '../assets/landing/adv_5.svg';
 import logo from '../assets/landing/logo.svg';
 import cards_set from '../assets/landing/cards_set.png';
+import game_mp3 from './sound/game.mp3';
+import click_mp3 from './sound/click.mp3';
+import get_mana_mp3 from './sound/get_mana.mp3'
 
 export {
   piece,
@@ -50,4 +53,7 @@ export {
   blue_arrow,
   logo,
   cards_set,
+  game_mp3,
+  click_mp3,
+  get_mana_mp3,
 };
