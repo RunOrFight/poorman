@@ -26,7 +26,7 @@ const MenuPage = () => {
 
   return (
     <div className={style.wrapper}>
-      <audio ref={clickRef} loop>
+      <audio ref={clickRef}>
         <source src={click_mp3} type="audio/mpeg" />
       </audio>
       <span className={style.title}>Cybercats</span>
