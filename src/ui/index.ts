@@ -12,3 +12,4 @@ export { default as HpIcon } from './HpIcon';
 export { default as MpIcon } from './MpIcon';
 export { default as FadeHint } from './FadeHint';
 export { default as ArrowSet } from './ArrowSet/ArrowSet';
+export { default as Audio } from './Audio';
