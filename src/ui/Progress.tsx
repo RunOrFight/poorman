@@ -1,32 +1,30 @@
 import { piece, progress } from '../assets';
 import { usePlayerSelector } from '../store';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { get_mana_mp3 } from '../assets';
+import { Audio } from '../ui';
 
 const Progress = () => {
   const manaCurrent = usePlayerSelector().manaCurrent;
   const prevManaCurrentRef = useRef(manaCurrent);
-  const manaSound = useRef<any>(null);
+  const getManaAudioRef = useRef<HTMLAudioElement>(null!);
   useEffect(() => {
     if (manaCurrent >= prevManaCurrentRef.current) {
-      if (manaSound.current) {
-        manaSound.current.play();
-      }
+      getManaAudioRef.current?.play();
     }
     prevManaCurrentRef.current = manaCurrent;
   }, [manaCurrent]);
 
   setTimeout(() => {
-    if (manaSound.current && manaSound.current.volume) {
-      manaSound.current.volume = 0.1;
+    if (getManaAudioRef.current && getManaAudioRef.current.volume) {
+      getManaAudioRef.current.volume = 0.1;
     }
   }, 100);
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <audio ref={manaSound}>
-        <source src={get_mana_mp3} type="audio/mpeg" />
-      </audio>
+      <Audio src={get_mana_mp3} ref={getManaAudioRef} />
+
       <div className="text-white text-2xl">{manaCurrent}</div>
       <div
         style={{ backgroundImage: `url(${progress})` }}
