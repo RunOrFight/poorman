@@ -1,8 +1,7 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 
 interface IAudioProps {
   src: string;
-  play: () => void;
 }
 
 const Audio = forwardRef<HTMLAudioElement, IAudioProps>(({ src }, ref) => {
