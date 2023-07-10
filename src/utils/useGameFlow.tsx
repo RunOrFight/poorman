@@ -37,5 +37,5 @@ export const useGameFlow = () => {
       const parsedData: ICardIsDead = JSON.parse(data);
       dispatch(CardIsDeadAction(parsedData));
     });
-  });
+  }, []);
 };

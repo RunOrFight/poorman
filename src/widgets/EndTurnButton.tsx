@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSignalR } from '../services';
-import { Audio, Button } from '../ui';
-import { click_mp3 } from '../assets';
+import { Button } from '../ui';
+import { sound_click} from '../assets';
 import {
   CardAttackStartAction,
   EndTurnStart,
@@ -18,7 +18,6 @@ const EndTurnButton = () => {
   const playerId = useAppSelector((state) => state.game.playerId!);
   const connection = useSignalR();
   const dispatch = useAppDispatch();
-  const clickRef = useRef<HTMLAudioElement>(null!);
 
   useEffect(() => {
     connection.on('turn_start', () => {
@@ -154,7 +153,7 @@ const EndTurnButton = () => {
   };
 
   const handleClick = () => {
-    clickRef.current?.play();
+    new Audio(sound_click).play();
 
     setIsTurnEnd(true);
     dispatch(EndTurnStart({ playerId }));
@@ -162,7 +161,6 @@ const EndTurnButton = () => {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <Audio src={click_mp3} ref={clickRef} />
       {/*<div className="text-white font-sans text-xl">{timeLeft} sec</div>*/}
       <Button disabled={isTurnEnd} onClick={isGameOnlyMode ? testHandleClick : handleClick}>
         {isTurnEnd ? 'Wait for battle' : 'End Turn'}

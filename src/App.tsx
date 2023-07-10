@@ -1,6 +1,7 @@
 import { RequireAuth } from './widgets';
 import { Route, Routes } from 'react-router-dom';
 import Music from './widgets/Music';
+import GameMusic from './widgets/GameMusic';
 
 import { AuthPage, GamePage, LandingPage, MenuPage, WithVeil } from './pages';
 
@@ -13,16 +14,23 @@ const App = () => {
         <Route path="/game" element={<WithVeil />}>
           <Route path="register" element={<AuthPage type="register" />} />
           <Route path="login" element={<AuthPage type="login" />} />
-          <Route
-            path="/game"
-            element={
-              <Music>
-                <RequireAuth />
-              </Music>
-            }
-          >
-            <Route index element={<MenuPage />} />
-            <Route path="/game/:id" element={<GamePage />} />
+          <Route path="/game" element={<RequireAuth />}>
+            <Route
+              index
+              element={
+                <Music>
+                  <MenuPage />
+                </Music>
+              }
+            />
+            <Route
+              path="/game/:id"
+              element={
+                <GameMusic>
+                  <GamePage />
+                </GameMusic>
+              }
+            />
           </Route>
         </Route>
       </Routes>

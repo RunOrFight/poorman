@@ -23,9 +23,15 @@ import adv4 from '../assets/landing/adv_4.svg';
 import adv5 from '../assets/landing/adv_5.svg';
 import logo from '../assets/landing/logo.svg';
 import cards_set from '../assets/landing/cards_set.png';
-import game_mp3 from './sound/game.mp3';
-import click_mp3 from './sound/click.mp3';
-import get_mana_mp3 from './sound/get_mana.mp3'
+import sound_menu_main from './sound/menu/sound_menu_main.mp3';
+import sound_game_main from './sound/game/sound_game_main.mp3';
+import sound_start_game from './sound/menu/sound_start_game.wav';
+import sound_click from './sound/common/sound_click.wav';
+import sound_get_mana from './sound/game/sound_get_mana.wav';
+import sound_sword from './sound/game/sword.mp3';
+import sound_archer from './sound/game/archer.mp3';
+import sound_gun from './sound/game/gun.mp3';
+import sound_energy from './sound/game/energy.mp3';
 
 export {
   piece,
@@ -53,7 +59,13 @@ export {
   blue_arrow,
   logo,
   cards_set,
-  game_mp3,
-  click_mp3,
-  get_mana_mp3,
+  sound_menu_main,
+  sound_click,
+  sound_get_mana,
+  sound_sword,
+  sound_archer,
+  sound_gun,
+  sound_energy,
+  sound_game_main,
+  sound_start_game,
 };

@@ -1,21 +1,19 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { CreateGameStartAction, useAppDispatch, useAuthSelector } from '../store';
 import style from './Menu.module.pcss';
 import React from 'react';
-import { click_mp3 } from '../assets';
-import { Audio } from '../ui';
+import { sound_start_game } from '../assets';
 
 const MenuPage = () => {
   const [gameFounding, setGameFounding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const clickRef = useRef<HTMLAudioElement>(null!);
 
   const user = useAuthSelector().user;
 
   const dispatch = useAppDispatch();
 
   const handleFindGameButtonClick = useCallback(async () => {
-    clickRef.current?.play();
+    new Audio(sound_start_game).play();
     setGameFounding(true);
     setTimeout(() => {
       setIsLoading(true);
@@ -25,7 +23,6 @@ const MenuPage = () => {
 
   return (
     <div className={style.wrapper}>
-      <Audio src={click_mp3} ref={clickRef} />
       <span className={style.title}>Cybercats</span>
 
       <svg

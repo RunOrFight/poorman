@@ -43,8 +43,9 @@ import {
   mergeMap,
   switchMap,
 } from 'rxjs/operators';
-import { CardIn, ICardAttack, ICardIsDead, IGameData } from '../../interfaces/Game.ts';
+import { CardIn, CardType, ICardAttack, ICardIsDead, IGameData } from '../../interfaces';
 import { isGameOnlyMode } from '../../constants/Env.ts';
+import { sound_archer, sound_energy, sound_gun, sound_sword } from '../../assets';
 
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
   merge(
@@ -66,8 +67,18 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
           const isEnemy = state$.value.game.playerId !== attackingPlayerId;
           const cardId = attackingCard.id;
           const cardType = attackingCard.type;
-
+          const audio =
+            attackingCard.type === CardType.Straight
+              ? new Audio(sound_sword)
+              : attackingCard.type === CardType.Left
+              ? new Audio(sound_archer)
+              : attackingCard.type === CardType.Right
+              ? new Audio(sound_gun)
+              : attackingCard.type === CardType.All
+              ? new Audio(sound_energy)
+              : null;
           return merge(
+            from((audio as HTMLAudioElement).play()),
             from(
               animePromise(
                 fieldUnderAttackAnimation({
