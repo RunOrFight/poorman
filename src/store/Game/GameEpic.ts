@@ -56,7 +56,8 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
           const { attackingCard, attackingPlayerId } = payload as ICardAttack;
           const isEnemy = state$.value.game.playerId !== attackingPlayerId;
           const cardId = attackingCard.id;
-          return from(animePromise(cardAttackAnimation({ isEnemy, cardId }))).pipe(
+          const cardType = attackingCard.type;
+          return from(animePromise(cardAttackAnimation({ isEnemy, cardId, cardType }))).pipe(
             map(() => CardAttackOkAction(payload as ICardAttack))
           );
         } else if (type === PLAYER_WIN) {

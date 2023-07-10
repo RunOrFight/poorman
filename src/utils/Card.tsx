@@ -20,6 +20,18 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
         backUrl: yellow_card_back,
         color: Color.YELLOW,
         bgColor: BgColor.YELLOW,
+        animation: (isEnemy: boolean) => {
+          return {
+            keyframes: [
+              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+              { translateY: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? -100 : 100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+            ],
+          };
+        },
       };
 
     case CardType.Left:
@@ -30,6 +42,16 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
         backUrl: blue_card_back,
         color: Color.BLUE,
         bgColor: BgColor.BLUE,
+        animation: (isEnemy: boolean) => {
+          return {
+            keyframes: [
+              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+              { translateY: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+            ],
+          };
+        },
       };
 
     case CardType.Right:
@@ -40,6 +62,16 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
         backUrl: green_card_back,
         color: Color.GREEN,
         bgColor: BgColor.GREEN,
+        animation: (isEnemy: boolean) => {
+          return {
+            keyframes: [
+              { translateY: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? -100 : 100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+            ],
+          };
+        },
       };
 
     case CardType.Straight:
@@ -48,6 +80,14 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
         backUrl: red_card_back,
         color: Color.RED,
         bgColor: BgColor.RED,
+        animation: (isEnemy: boolean) => {
+          return {
+            keyframes: [
+              { translateY: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+            ],
+          };
+        },
       };
 
     default:
@@ -55,6 +95,18 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
         backUrl: red_card_back,
         color: Color.RED,
         bgColor: BgColor.RED,
+        animation: (isEnemy: boolean) => {
+          return {
+            keyframes: [
+              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+              { translateY: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? -100 : 100, scale: 1.2 },
+              { translateY: 0, translateX: 0, scale: 1 },
+            ],
+          };
+        },
       };
   }
 }

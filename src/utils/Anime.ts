@@ -1,24 +1,20 @@
-import { ICardAttack } from '../interfaces';
+import { CardType, ICardAttack } from '../interfaces';
 import anime from 'animejs/lib/anime.es';
 import { AnimeParams } from 'animejs';
+import { getCardPropertiesByType } from '.';
 
 export const cardAttackAnimation = ({
   isEnemy,
   cardId,
+  cardType,
 }: {
   isEnemy: boolean;
   cardId: ICardAttack['attackingCard']['id'];
+  cardType: CardType;
 }) => ({
-  targets: `#card_${cardId}`,
-  translateY: [
-    { value: isEnemy ? -100 : 100, duration: 400 },
-    { value: isEnemy ? 50 : -50, duration: 160 },
-    { value: 0, duration: 500 },
-  ],
-  scale: [
-    { value: 1.2, duration: 400 },
-    { value: 1, duration: 160 },
-  ],
+  targets: `#card_${cardId} `,
+  ...getCardPropertiesByType(cardType, false).animation(isEnemy),
+  duration: 1000,
   easing: 'easeOutElastic(1, .8)',
 });
 

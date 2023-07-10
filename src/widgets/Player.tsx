@@ -31,7 +31,7 @@ const Player = () => {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="h-full w-full flex flex-col p-2.5 player">
+      <div className="h-full w-full flex flex-col p-2.5 player z-10">
         <div className="flex h-full justify-center gap-[30px] items-center">
           {fields.map((field) => (
             <Field id={field.id} key={field.id} card={field.data} />
