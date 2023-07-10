@@ -2,6 +2,7 @@ import {
   ActionWithPayload,
   AppEpic,
   CARD_ATTACK_START,
+  CARD_IS_DEAD,
   CARD_THROW_START,
   CREATE_GAME_START,
   CardAttackOkAction,
@@ -28,6 +29,7 @@ import { ofType } from 'redux-observable';
 import {
   animePromise,
   cardAttackAnimation,
+  cardIsDeadAnimation,
   fieldUnderAttackAnimation,
   playerWinAnimation,
   toCloseTheVeil,
@@ -41,7 +43,7 @@ import {
   mergeMap,
   switchMap,
 } from 'rxjs/operators';
-import { CardIn, ICardAttack, IGameData } from '../../interfaces/Game.ts';
+import { CardIn, ICardAttack, ICardIsDead, IGameData } from '../../interfaces/Game.ts';
 import { isGameOnlyMode } from '../../constants/Env.ts';
 
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
@@ -51,18 +53,20 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
         (action) =>
           action.type === CARD_ATTACK_START ||
           action.type === SET_GAME_DATA_START ||
-          action.type === PLAYER_WIN
+          action.type === PLAYER_WIN ||
+          action.type === CARD_IS_DEAD
       ),
       distinctUntilChanged((prev, next) =>
         isGameOnlyMode ? false : JSON.stringify(prev.payload) === JSON.stringify(next.payload)
       ),
 
-      concatMap(({ payload, type }: ActionWithPayload<ICardAttack | IGameData>) => {
+      concatMap(({ payload, type }: ActionWithPayload<ICardAttack | IGameData | ICardIsDead>) => {
         if (type === CARD_ATTACK_START) {
           const { attackingCard, attackingPlayerId, fieldsUnderAttack } = payload as ICardAttack;
           const isEnemy = state$.value.game.playerId !== attackingPlayerId;
           const cardId = attackingCard.id;
           const cardType = attackingCard.type;
+
           return merge(
             from(
               animePromise(
@@ -71,7 +75,7 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
                   fieldIds: fieldsUnderAttack.map((fieldUnderAttack) => CardIn[fieldUnderAttack]),
                 })
               )
-            ),
+            ).pipe(mergeMap(() => EMPTY)),
             from(animePromise(cardAttackAnimation({ isEnemy, cardId, cardType }))).pipe(
               map(() => CardAttackOkAction(payload as ICardAttack))
             )
@@ -81,6 +85,15 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
             from(animePromise(toCloseTheVeil)).pipe(switchMap(() => EMPTY)),
             from(animePromise(playerWinAnimation)).pipe(switchMap(() => EMPTY))
           );
+        } else if (type === CARD_IS_DEAD) {
+          return from(
+            animePromise(
+              cardIsDeadAnimation({
+                fieldId: CardIn[(payload as ICardIsDead).field],
+                isEnemy: state$.value.game.playerId !== (payload as ICardIsDead).playerId,
+              })
+            )
+          ).pipe(switchMap(() => EMPTY));
         } else {
           return of(SetGameDataOkAction(payload as IGameData));
         }

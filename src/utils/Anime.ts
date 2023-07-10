@@ -18,6 +18,18 @@ export const cardAttackAnimation = ({
   easing: 'easeOutElastic(1, .8)',
 });
 
+export const cardIsDeadAnimation = ({
+  isEnemy,
+  fieldId,
+}: {
+  isEnemy: boolean;
+  fieldId: string;
+}) => ({
+  targets: `.${isEnemy ? 'player' : 'enemy'} #${fieldId} .card`,
+  keyframes: [{ scale: 1.2 }, { rotate: '360deg' }, { scaleY: 0 }],
+  duration: 500,
+});
+
 export const cardGetDamageAnimation = ({
   cardId,
 }: {

@@ -1,5 +1,6 @@
 import {
   ICardAttack,
+  ICardIsDead,
   IEndTurnPayload,
   IEndTurnResponse,
   IFindGamePayload,
@@ -152,5 +153,11 @@ export const CardThrowFail = (payload: AjaxError) => ({
 
 export const PlayerWinAction = (payload: IPlayerData) => ({
   type: PLAYER_WIN,
+  payload,
+});
+
+export const CARD_IS_DEAD = 'CARD_IS_DEAD';
+export const CardIsDeadAction = (payload: ICardIsDead) => ({
+  type: CARD_IS_DEAD,
   payload,
 });

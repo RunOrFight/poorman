@@ -6,6 +6,7 @@ import { DamageIcon, MpIcon, HpIcon } from '../';
 import { getCardPropertiesByType, usePrevious } from '../../utils';
 import { Color } from '../../constants';
 import anime from 'animejs';
+import clsx from 'clsx';
 
 interface ICardPropertiesProps {
   card: IPlayerCard;
@@ -56,7 +57,7 @@ const Card = memo(
     };
 
     return isPlayerCard ? (
-      <div ref={ref} className={classes.card} id={`card_${card.id}`}>
+      <div ref={ref} className={clsx(classes.card, 'card')} id={`card_${card.id}`}>
         <div className={classes.front} style={dataForColor}>
           <div
             className={classes.img}
