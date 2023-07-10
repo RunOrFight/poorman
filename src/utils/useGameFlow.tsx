@@ -18,8 +18,10 @@ export const useGameFlow = () => {
       dispatch(SetGameDataStartAction(parsedData));
     });
 
+    console.log('IN USE GAME FLOW SUBSCRIPT')
     connection.on('card_attack', (data) => {
       const parsedData: ICardAttack = JSON.parse(data);
+      console.log(parsedData, 'EVENT DATA');
       dispatch(CardAttackStartAction(parsedData));
     });
 
@@ -31,5 +33,5 @@ export const useGameFlow = () => {
     connection.on('card_is_dead', (data) => {
       data;
     });
-  });
+  }, []);
 };
