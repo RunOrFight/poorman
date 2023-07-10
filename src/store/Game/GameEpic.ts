@@ -25,7 +25,13 @@ import {
 } from '../index.ts';
 import { merge, concatMap, from, of, EMPTY, concat } from 'rxjs';
 import { ofType } from 'redux-observable';
-import { animePromise, cardAttackAnimation, playerWinAnimation, toCloseTheVeil } from '../../utils';
+import {
+  animePromise,
+  cardAttackAnimation,
+  fieldUnderAttackAnimation,
+  playerWinAnimation,
+  toCloseTheVeil,
+} from '../../utils';
 import {
   catchError,
   distinctUntilChanged,
@@ -35,7 +41,7 @@ import {
   mergeMap,
   switchMap,
 } from 'rxjs/operators';
-import { ICardAttack, IGameData } from '../../interfaces/Game.ts';
+import { CardIn, ICardAttack, IGameData } from '../../interfaces/Game.ts';
 import { isGameOnlyMode } from '../../constants/Env.ts';
 
 const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
@@ -53,12 +59,22 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
 
       concatMap(({ payload, type }: ActionWithPayload<ICardAttack | IGameData>) => {
         if (type === CARD_ATTACK_START) {
-          const { attackingCard, attackingPlayerId } = payload as ICardAttack;
+          const { attackingCard, attackingPlayerId, fieldsUnderAttack } = payload as ICardAttack;
           const isEnemy = state$.value.game.playerId !== attackingPlayerId;
           const cardId = attackingCard.id;
           const cardType = attackingCard.type;
-          return from(animePromise(cardAttackAnimation({ isEnemy, cardId, cardType }))).pipe(
-            map(() => CardAttackOkAction(payload as ICardAttack))
+          return merge(
+            from(
+              animePromise(
+                fieldUnderAttackAnimation({
+                  isEnemy,
+                  fieldIds: fieldsUnderAttack.map((fieldUnderAttack) => CardIn[fieldUnderAttack]),
+                })
+              )
+            ),
+            from(animePromise(cardAttackAnimation({ isEnemy, cardId, cardType }))).pipe(
+              map(() => CardAttackOkAction(payload as ICardAttack))
+            )
           );
         } else if (type === PLAYER_WIN) {
           return concat(

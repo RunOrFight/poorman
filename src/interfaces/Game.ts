@@ -77,7 +77,7 @@ export interface ICardAttack {
   attackingPlayerId: IPlayer['id'];
   attackingCard: IPlayerCard;
   playerUnderAttackId: IPlayer['id'];
-  fieldsUnderAttack: IPlayerCard[];
+  fieldsUnderAttack: CardIn[];
 }
 
 export interface ICardIsDead {

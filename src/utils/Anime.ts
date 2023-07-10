@@ -45,18 +45,16 @@ export const toCloseTheVeil = {
 
 export const fieldUnderAttackAnimation = ({
   isEnemy,
-  fieldId,
+  fieldIds,
 }: {
   isEnemy: boolean;
-  fieldId: string;
+  fieldIds: string[];
 }) => {
   return {
-    targets: `.${isEnemy ? 'enemy' : 'player'} #${fieldId}`,
-    scale: [
-      { value: 1.2, duration: 400 },
-      { value: 1, duration: 160 },
-    ],
-    easing: 'easeOutElastic(1, .8)',
+    targets: fieldIds
+      .map((fieldId) => `.${isEnemy ? 'player' : 'enemy'} #${fieldId} .under-attack`)
+      .join(', '),
+    opacity: [{ value: '20%' }, { value: '0%', delay: 500 }],
   };
 };
 

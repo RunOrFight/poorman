@@ -45,7 +45,7 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
         animation: (isEnemy: boolean) => {
           return {
             keyframes: [
-              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? 100 : -100, scale: 1.2 },
+              { translateY: isEnemy ? 100 : -100, translateX: -100, scale: 1.2 },
               { translateY: 0, translateX: 0, scale: 1 },
               { translateY: isEnemy ? 100 : -100, scale: 1.2 },
               { translateY: 0, translateX: 0, scale: 1 },
@@ -67,7 +67,7 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
             keyframes: [
               { translateY: isEnemy ? 100 : -100, scale: 1.2 },
               { translateY: 0, translateX: 0, scale: 1 },
-              { translateY: isEnemy ? 100 : -100, translateX: isEnemy ? -100 : 100, scale: 1.2 },
+              { translateY: isEnemy ? 100 : -100, translateX: 100, scale: 1.2 },
               { translateY: 0, translateX: 0, scale: 1 },
             ],
           };
