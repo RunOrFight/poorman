@@ -35,7 +35,7 @@ export const GameReducer: Reducer<typeof GameState> = (state = GameState, action
     case PLAYER_WIN:
       return {
         ...state,
-        playerWin: action.payload,
+        playerWin: action.payload === state.playerId ? state.playerData.name : state.enemyData.name,
       };
     default:
       return state;

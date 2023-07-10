@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSignalR } from '../services';
 import { Button } from '../ui';
-import { sound_click} from '../assets';
+import { sound_click } from '../assets';
 import {
   CardAttackStartAction,
   EndTurnStart,
