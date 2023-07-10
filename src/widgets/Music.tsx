@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { game_mp3 } from '../assets';
+import { sound_menu_main } from '../assets';
 
 const Music = ({ children }: any) => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -23,7 +23,7 @@ const Music = ({ children }: any) => {
   return (
     <>
       <audio ref={audioRef} loop>
-        <source src={game_mp3} type="audio/mpeg" />
+        <source src={sound_menu_main} type="audio/mpeg" />
       </audio>
       {children}
     </>
