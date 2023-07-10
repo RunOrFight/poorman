@@ -41,7 +41,6 @@ import {
   map,
   filter,
   mergeMap,
-  switchMap,
 } from 'rxjs/operators';
 import { CardIn, CardType, ICardAttack, ICardIsDead, IGameData } from '../../interfaces';
 import { isGameOnlyMode } from '../../constants/Env.ts';
@@ -78,7 +77,7 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
               ? new Audio(sound_energy)
               : null;
           return merge(
-            from((audio as HTMLAudioElement).play()),
+            from((audio as HTMLAudioElement).play()).pipe(mergeMap(() => EMPTY)),
             from(
               animePromise(
                 fieldUnderAttackAnimation({
@@ -93,8 +92,8 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
           );
         } else if (type === PLAYER_WIN) {
           return concat(
-            from(animePromise(toCloseTheVeil)).pipe(switchMap(() => EMPTY)),
-            from(animePromise(playerWinAnimation)).pipe(switchMap(() => EMPTY))
+            from(animePromise(toCloseTheVeil)).pipe(mergeMap(() => EMPTY)),
+            from(animePromise(playerWinAnimation)).pipe(mergeMap(() => EMPTY))
           );
         } else if (type === CARD_IS_DEAD) {
           return from(
@@ -104,7 +103,7 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
                 isEnemy: state$.value.game.playerId !== (payload as ICardIsDead).playerId,
               })
             )
-          ).pipe(switchMap(() => EMPTY));
+          ).pipe(mergeMap(() => EMPTY));
         } else {
           return of(SetGameDataOkAction(payload as IGameData));
         }
