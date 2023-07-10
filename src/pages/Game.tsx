@@ -5,8 +5,9 @@ import { divider } from '../assets';
 import { isGameOnlyMode } from '../constants';
 import { useGameFlow, useLoadGame } from '../utils';
 import { useAppSelector } from '../store';
+import { memo } from 'react';
 
-const GamePage = () => {
+const GamePage = memo(() => {
   const isGameLoadedSuccessfully = useLoadGame();
 
   useGameFlow();
@@ -40,6 +41,6 @@ const GamePage = () => {
       <PAlert>Game is not loaded</PAlert>
     </div>
   );
-};
+});
 
 export default GamePage;

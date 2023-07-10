@@ -25,7 +25,7 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
     case CardType.Left:
       return {
         arrows: (
-          <ArrowSet color={Color.BLUE} bgColor={BgColor.BLUE} opacity={isDragging} center right />
+          <ArrowSet color={Color.BLUE} bgColor={BgColor.BLUE} opacity={isDragging} center left />
         ),
         backUrl: blue_card_back,
         color: Color.BLUE,
@@ -35,7 +35,7 @@ export function getCardPropertiesByType(type: CardType, isDragging: boolean) {
     case CardType.Right:
       return {
         arrows: (
-          <ArrowSet color={Color.GREEN} bgColor={BgColor.GREEN} opacity={isDragging} left center />
+          <ArrowSet color={Color.GREEN} bgColor={BgColor.GREEN} opacity={isDragging} center right />
         ),
         backUrl: green_card_back,
         color: Color.GREEN,
