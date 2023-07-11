@@ -166,6 +166,13 @@ const GameEpic: AppEpic = (action$, state$, { httpApi }) =>
         )
       )
     )
+  ).pipe(
+    catchError((e) => {
+      // eslint-disable-next-line no-console
+      console.log('ERROR FROM EPIC', e);
+
+      return EMPTY;
+    })
   );
 
 export { GameEpic };
