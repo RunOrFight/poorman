@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSignalR } from '../services';
 import { Button } from '../ui';
-import { sound_click } from '../assets';
 import {
   CardAttackStartAction,
   EndTurnStart,
@@ -151,7 +150,6 @@ const EndTurnButton = () => {
   };
 
   const handleClick = () => {
-    new Audio(sound_click).play();
 
     setIsTurnEnd(true);
     dispatch(EndTurnStart({ playerId }));

@@ -1,4 +1,4 @@
-import { piece, progress, sound_get_mana } from '../assets';
+import { piece, progress } from '../assets';
 import { usePlayerSelector } from '../store';
 import { useEffect, useRef } from 'react';
 
@@ -6,9 +6,6 @@ const Progress = () => {
   const manaCurrent = usePlayerSelector().manaCurrent;
   const prevManaCurrentRef = useRef(manaCurrent);
   useEffect(() => {
-    if (manaCurrent >= prevManaCurrentRef.current) {
-      new Audio(sound_get_mana).play();
-    }
     prevManaCurrentRef.current = manaCurrent;
   }, [manaCurrent]);
 

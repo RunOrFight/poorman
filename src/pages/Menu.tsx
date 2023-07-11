@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react';
 import { CreateGameStartAction, useAppDispatch, useAuthSelector } from '../store';
 import style from './Menu.module.pcss';
 import React from 'react';
-import { sound_start_game } from '../assets';
 
 const MenuPage = () => {
   const [gameFounding, setGameFounding] = useState(false);
@@ -13,7 +12,6 @@ const MenuPage = () => {
   const dispatch = useAppDispatch();
 
   const handleFindGameButtonClick = useCallback(async () => {
-    new Audio(sound_start_game).play();
     setGameFounding(true);
     setTimeout(() => {
       setIsLoading(true);
