@@ -7,7 +7,7 @@ const Enemy = () => {
 
   return (
     <div className="w-full h-full flex flex-col enemy">
-      <div className="w-full flex justify-center h-[190px] items-center hand pt-[27px] pb-[22px]">
+      <div className="w-full flex gap-2.5 items-center justify-center h-[190px] hand pt-[22px] pb-[27px]">
         {cardsInHand.map((card) => (
           <Card key={card.id} {...card} />
         ))}

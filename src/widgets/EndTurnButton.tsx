@@ -5,7 +5,6 @@ import { sound_click } from '../assets';
 import {
   CardAttackStartAction,
   EndTurnStart,
-  PlayerWinAction,
   SetGameDataStartAction,
   useAppDispatch,
   useAppSelector,
@@ -137,7 +136,7 @@ const EndTurnButton = () => {
         },
       })
     );
-    dispatch();
+    // dispatch();
     // PlayerWinAction({
     //   name: 'Sasha',
     //   cardsInHand: [],
