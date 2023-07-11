@@ -21,7 +21,7 @@ const GamePage = memo(() => {
     <>
       <SpaceBg>
         <div className="flex w-full h-full ] justify-center items-center text-white overflow-hidden">
-          <div className="max-w-[1080px] max-h-[810px] h-full w-full flex">
+          <div className="max-w-[1080px] max-h-[810px] h-full w-full flex scale-[0.95]">
             <LeftSide />
 
             <div className="flex flex-col h-full w-full">

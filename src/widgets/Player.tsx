@@ -37,7 +37,7 @@ const Player = () => {
             <Field id={field.id} key={field.id} card={field.data} />
           ))}
         </div>
-        <div className="w-full flex gap-2.5 items-center justify-center h-[190px] hand pt-[22px] pb-[27px]">
+        <div className="w-full flex gap-2.5 items-center justify-center h-[190px] hand">
           {cardsInHand.map((card) => (
             <PlayerCard key={card.id} card={card} />
           ))}
