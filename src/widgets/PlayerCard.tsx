@@ -36,7 +36,7 @@ const PlayerCard: FC<IPlayerCardProps> = ({ card }) => {
       style={style}
       {...listeners}
       {...attributes}
-      className={'relative grow max-w-[170px]'}
+      className={'relative h-full'}
     >
       {arrows}
       <Card {...card} ref={ref} />

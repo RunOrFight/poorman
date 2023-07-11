@@ -16,7 +16,7 @@ export const GameState = {
   playerWin: null as IPlayerData | null,
   playerData: {
     manaCommon: 0,
-    manaCurrent: 0,
+    manaCurrent: isGameOnlyMode ? 5 : 0,
     name: isGameOnlyMode ? 'Player1' : '',
     hp: isGameOnlyMode ? 30 : 0,
     cardsInHand,

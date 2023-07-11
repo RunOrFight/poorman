@@ -6,7 +6,7 @@ const PlayerHero = () => {
   const playerHp = usePlayerSelector().hp;
 
   return (
-    <div className="flex flex-col justify-center items-center relative">
+    <div className="flex flex-col justify-center items-center relative mt-[116px]">
       <Hero hp={playerHp} name={playerName} />
     </div>
   );

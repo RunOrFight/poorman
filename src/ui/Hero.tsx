@@ -28,11 +28,11 @@ const Hero: FC<IHeroProps> = memo(({ hp, name }) => {
   }, []);
 
   return (
-    <div className="relative w-[200px] h-[200px] flex flex-col text-white text-4xl justify-center items-center">
+    <div className="relative w-[155px] h-[155px] flex flex-col text-white text-2xl justify-center items-center">
       <span className="fade-hint opacity-0 text-red-600 absolute z-10 ">
         {hp - previousHp > 0 ? null : hp - previousHp}
       </span>
-      <span className="text-2xl">{name}</span>
+      <span className="text-xl">{name}</span>
       <span>{hp}</span>
       <img src={hero} alt="hero" className=" object-cover absolute top-0 left-0 w-full h-full" />
     </div>

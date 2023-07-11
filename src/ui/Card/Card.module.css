@@ -7,9 +7,8 @@
 .card {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 170px;
-  min-width: 100px;
+  width: 130px;
+  height: 100%;
   padding-bottom: 136.47%; /* 232/170 * 100% = 136.47% */
   justify-content: center;
   align-items: center;
@@ -33,7 +32,7 @@
   align-items: flex-start;
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 130px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;

@@ -56,3 +56,11 @@
 .button:disabled:hover {
     transform: none;
 }
+
+:global(.right-side) .button,:global(.right-side) .button[type="submit"]{
+    font-weight: 900;
+    line-height: 18px;
+    font-size: 14px;
+    height: 58px;
+    padding: 32px 27px 32px 27px;
+}

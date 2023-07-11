@@ -137,19 +137,18 @@ const EndTurnButton = () => {
         },
       })
     );
-    dispatch(
-      PlayerWinAction({
-        name: 'Sasha',
-        cardsInHand: [],
-        field1: null,
-        field2: null,
-        field3: null,
-        field4: null,
-        hp: 30,
-        manaCommon: 0,
-        manaCurrent: 0,
-      })
-    );
+    dispatch();
+    // PlayerWinAction({
+    //   name: 'Sasha',
+    //   cardsInHand: [],
+    //   field1: null,
+    //   field2: null,
+    //   field3: null,
+    //   field4: null,
+    //   hp: 30,
+    //   manaCommon: 0,
+    //   manaCurrent: 0,
+    // })
   };
 
   const handleClick = () => {
