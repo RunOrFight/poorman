@@ -20,6 +20,7 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
   transition: rotate ease-in-out 500ms;
+  touch-action: pan-x ;
 }
 
 .back, .front {

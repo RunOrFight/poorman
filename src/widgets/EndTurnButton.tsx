@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useSignalR } from '../services';
 import { Button } from '../ui';
 import { sound_click } from '../assets';
 import {
@@ -13,16 +11,8 @@ import { card1, card2, card3, card4 } from '../utils';
 import { isGameOnlyMode } from '../constants';
 
 const EndTurnButton = () => {
-  const [isTurnEnd, setIsTurnEnd] = useState(false);
   const playerId = useAppSelector((state) => state.game.playerId!);
-  const connection = useSignalR();
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    connection.on('turn_start', () => {
-      setIsTurnEnd(false);
-    });
-  });
 
   const testHandleClick = () => {
     dispatch(
@@ -153,9 +143,10 @@ const EndTurnButton = () => {
   const handleClick = () => {
     new Audio(sound_click).play();
 
-    setIsTurnEnd(true);
     dispatch(EndTurnStart({ playerId }));
   };
+
+  const isTurnEnd = useAppSelector((s) => s.game.isTurnEnd);
 
   return (
     <div className="flex flex-col items-center gap-2">

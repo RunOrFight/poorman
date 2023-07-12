@@ -1,5 +1,5 @@
 import { useDraggable } from '@dnd-kit/core';
-import { usePlayerSelector } from '../store';
+import { useAppSelector, usePlayerSelector } from '../store';
 import { Card } from '../ui';
 import { CSS } from '@dnd-kit/utilities';
 import { FC, useEffect, useRef } from 'react';
@@ -13,9 +13,10 @@ interface IPlayerCardProps {
 
 const PlayerCard: FC<IPlayerCardProps> = ({ card }) => {
   const mana = usePlayerSelector().manaCurrent;
+  const isTurnEnd = useAppSelector((s) => s.game.isTurnEnd);
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: card.id,
-    disabled: card.manacost > mana,
+    disabled: card.manacost > mana || isTurnEnd,
   });
   const style = { transform: CSS.Translate.toString(transform) };
   const ref = useRef<HTMLDivElement | null>(null!);

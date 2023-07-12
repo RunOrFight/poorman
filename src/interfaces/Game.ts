@@ -144,3 +144,5 @@ export interface IEndTurnPayload {
 export interface IEndTurnResponse {
   success: boolean;
 }
+
+export type TPlayerWin = string;

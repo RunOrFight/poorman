@@ -2,6 +2,7 @@ import { Reducer } from 'redux';
 import { GameState } from './GameState.ts';
 import {
   CREATE_GAME_OK,
+  END_TURN_OK,
   JOIN_GAME_OK,
   LOAD_GAME_OK,
   PLAYER_WIN,
@@ -37,6 +38,12 @@ export const GameReducer: Reducer<typeof GameState> = (state = GameState, action
         ...state,
         playerWin: action.payload === state.playerId ? state.playerData.name : state.enemyData.name,
       };
+    case END_TURN_OK:
+      return {
+        ...state,
+        isTurnEnd: action.payload.success,
+      };
+
     default:
       return state;
   }

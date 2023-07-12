@@ -1,17 +1,17 @@
 import { HubConnection } from '@microsoft/signalr';
-import { IGame } from '.';
+import { ICardAttack, ICardIsDead, IGame, IGameData, TPlayerWin } from '.';
 
-interface Events {
-  all_users_joined_lobby: [{ gameId: IGame['id'] }];
-  turn_start: [];
-  update_game_data: [data: string];
-  card_attack: [data: string];
-  start_battle: [];
-  player_win: [data: string];
-  card_is_dead: [data: string];
+export interface IEvents {
+  all_users_joined_lobby: { gameId: IGame['id'] };
+  turn_start: undefined;
+  update_game_data: IGameData;
+  card_attack: ICardAttack;
+  start_battle: undefined;
+  player_win: TPlayerWin;
+  card_is_dead: ICardIsDead;
 }
 
 export interface ExtendedConnection extends HubConnection {
-  on: <T extends keyof Events>(methodName: T, newMethod: (...args: Events[T]) => void) => void;
-  off: (methodName: keyof Events) => void;
+  on: <T extends keyof IEvents>(methodName: T, newMethod: (data: string) => void) => void;
+  off: (methodName: keyof IEvents) => void;
 }

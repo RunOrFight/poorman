@@ -10,9 +10,9 @@ import {
   IJoinGameResponse,
   ILoadGamePayload,
   ILoadGameResponse,
-  IPlayerData,
   IThrowCartPayload,
   IThrowCartResponse,
+  TPlayerWin,
 } from '../../interfaces';
 import { AjaxError } from 'rxjs/internal/ajax/errors';
 
@@ -103,8 +103,9 @@ export const SetGameDataOkAction = (payload: IGameData) => ({
   payload,
 });
 
-export const BattleStartAction = () => ({
+export const BattleStartAction = (payload: boolean) => ({
   type: BATTLE_START,
+  payload,
 });
 
 export const CardAttackStartAction = (payload: ICardAttack) => ({
@@ -151,7 +152,7 @@ export const CardThrowFail = (payload: AjaxError) => ({
   payload,
 });
 
-export const PlayerWinAction = (payload: IPlayerData) => ({
+export const PlayerWinAction = (payload: TPlayerWin) => ({
   type: PLAYER_WIN,
   payload,
 });

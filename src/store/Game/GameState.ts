@@ -14,6 +14,7 @@ export const GameState = {
   playerId,
   isGameLoaded: false,
   playerWin: null as IPlayerData | null,
+  isTurnEnd: false,
   playerData: {
     manaCommon: 0,
     manaCurrent: isGameOnlyMode ? 5 : 0,
