@@ -14,9 +14,11 @@ export const AuthState = user
       isAuthorized: true,
       isError: false,
       user,
+      signedUp: false,
     }
   : {
       isAuthorized: false,
       isError: false,
       user: null,
+      signedUp: false,
     };
