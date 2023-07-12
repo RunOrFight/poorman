@@ -9,6 +9,12 @@ export const SIGN_UP_START = 'SIGN_UP_START';
 export const SIGN_UP_OK = 'SIGN_UP_OK';
 export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 
+export const REDIRECTED_TO_SIGN_IN = 'REDIRECTED_TO_SIGN_IN';
+
+export const RedirectedToSignInAction = () => ({
+  type: REDIRECTED_TO_SIGN_IN,
+});
+
 export const SingInStartAction = (userCreds: IUserLoginCreds) => ({
   type: SIGN_IN_START,
   payload: userCreds,

@@ -1,10 +1,12 @@
-import { FC, memo, useCallback } from 'react';
+import {FC, memo, useCallback, useEffect} from 'react';
 import { Button, Input, PAlert } from '../ui';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IUserRegisterCreds } from '../interfaces';
 import { useAppDispatch, SingInStartAction, SingUpStartAction, useAuthSelector } from '../store';
 import st from './Auth.module.pcss';
+import {RedirectedToSignInAction} from "../store/Auth";
+import {LOGIN_ROUTE} from "../constants";
 
 interface IAuthPageProps {
   type: 'login' | 'register';
@@ -16,9 +18,18 @@ const AuthPage: FC<IAuthPageProps> = memo(({ type }) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IUserRegisterCreds>({ reValidateMode: 'onChange' });
+  const navigate = useNavigate();
   const isRegister = type === 'register';
   const dispatch = useAppDispatch();
   const isError = useAuthSelector().isError;
+  const isSignedUp = useAuthSelector().signedUp;
+
+  useEffect(() => {
+    if (isRegister && isSignedUp) {
+      navigate(LOGIN_ROUTE);
+      dispatch(RedirectedToSignInAction());
+    }
+  }, [isSignedUp]);
 
   const onSubmit: SubmitHandler<IUserRegisterCreds> = useCallback(
     (data) => {
