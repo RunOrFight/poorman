@@ -45,7 +45,10 @@ const AuthPage: FC<IAuthPageProps> = memo(({ type }) => {
         <div className={st.input_container}>
           <Input
             type="text"
-            {...register('email', { required: true, setValueAs: (value) => value.trimEnd() })}
+            {...register('email', {
+              required: true,
+              setValueAs: (value) => value.trimEnd().toLowerCase(),
+            })}
             aria-invalid={errors.email ? 'true' : 'false'}
           />
           {errors.email?.type === 'required' && <PAlert>Email is required</PAlert>}
