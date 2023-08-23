@@ -47,15 +47,62 @@ const Index = () => {
       <section className={styled.headerContainer}>
         <div className={clsx(styled.container)}>
           <img className={styled.logo} src={logo} alt="Cybercats" width="339px" height="61px" />
-          <h1 className={styled.h1}>Experience the Future of Online Gambling</h1>
+          <h1 className={styled.h1}>Tutorial</h1>
           <p className={styled.text}>
-            Welcome to the future of video gaming and online gambling. Cybercats is an innovative
-            game development studio crafting engaging and high-performing card games in a Cyberpunk
-            setting to provide an entirely new experience to iGaming customers
+            Welcome to the game Cybercats! In this tutorial, we will tell you the mechanics of our game and introduce you to our heroes
           </p>
         </div>
-        <div className={styled.pointer} onClick={scrollTo}>
-          <img src={pointer_down} alt={'pointer'} />
+      </section>
+      <section className={styled.cardsContainer}>
+        <div className={clsx(styled.container)}>
+          <div className={styled.cardsDescription}>
+            <h2 className={styled.h2}>Cards</h2>
+            <p className={styled.text}>We have 12 cards of cats and 12 cards of dogs</p>
+          </div>
+          <div className={styled.cardsDeck}>
+            <img className={styled.cardsDeckImg} src='/src/assets/tutorial/сard_deck_cats.png' alt='deck_cats' width="276px" height="355px" />
+            <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_deck_dogs.png' alt='deck_dogs' width="270px" height="356px" />
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className={clsx(styled.container)}>
+          <div className={styled.styled.cardLevelDescription}>
+            <h2 className={styled.h2}>Card level</h2>
+            <p className={styled.text}>3 breeds of cats and 3 dogs indicate the level of the character. This affects the cost of the card, the amount of damage and health of the character</p>
+          </div>
+          <div>
+            <div>
+              <img src='/src/assets/tutorial/card_level_1.png' alt='level-1' />
+              <p></p>
+              <p></p>
+            </div>
+            <div>
+              <img src='/src/assets/tutorial/card_level_1.png' alt='level-1' />
+              <p></p>
+              <p></p>
+            </div>
+            <div>
+              <img src='/src/assets/tutorial/card_level_1.png' alt='level-1' />
+              <p></p>
+              <p></p>
+            </div>
+            <div>
+              <img src='/src/assets/tutorial/card_level_1.png' alt='level-1' />
+              <p></p>
+              <p></p>
+            </div>
+            <div>
+              <img src='/src/assets/tutorial/card_level_1.png' alt='level-1' />
+              <p></p>
+              <p></p>
+            </div>
+            <div>
+              <img src='/src/assets/tutorial/card_level_1.png' alt='level-1' />
+              <p></p>
+              <p></p>
+            </div>
+          </div>
         </div>
       </section>
       {/*<section ref={secondSection} className={styled.suggestion}>*/}
