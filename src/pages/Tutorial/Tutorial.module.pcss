@@ -1,15 +1,18 @@
 body {
   background: rgba(0, 5, 24, 1);
-  background-image: url('/src/assets/bg.png')
+  background-image: url('/src/assets/bg.png');
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .wrapper {
   font-family: 'Jost', sans-serif;
   font-style: normal;
   color: #fff;
-  background-image: url('/src/assets/tutorial/blur_1.png'), url('/src/assets/tutorial/blur_2.png'), url('/src/assets/tutorial/blur_3.png'), url('/src/assets/tutorial/blur_4.png');
-  background-position: 46% 10%, 10% 10%, 10% 10%, 10% 10%;
+background-image: url(/src/assets/tutorial/blur_1.png), url('/src/assets/tutorial/blur_2.png'), url('/src/assets/tutorial/blur_3.png'), url('/src/assets/tutorial/blur_4.png');
+    background-position: 0% 6%, 100% 23%, 0% 65%, 100% 87%;
+background-repeat: no-repeat;
 }
+
 
 .logo {
   max-width: 339px;
@@ -23,13 +26,12 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 820px;
+    padding: 145px 321px 60px 321px;
 }
 
 .headerContainer {
   position: relative;
   margin: 0 auto;
-  padding: 40px 30px 60px;
   background-color: #010617;
   background-image: url('/src/assets/tutorial/bg_tutorial.jpg');
   background-repeat: no-repeat;
@@ -37,13 +39,12 @@ body {
   background-position: center;
 
   @media (min-width: 768px) {
-    padding: 50px 67px 50px 67;
+
   }
 }
 
 .text {
-  text-align: center;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 300;
   line-height: 140%;
 
@@ -51,11 +52,20 @@ body {
     font-size: 14px;
   }
 
+    &.center {
+      text-align: center;
+          padding: 0 310px;
+    }
+
 
   @media (min-width: 768px) {
 
     font-size: 24px;
   }
+}
+
+.cardsDescriptionText {
+padding: 0 165px 0 0;
 }
 
 .h1 {
@@ -74,7 +84,7 @@ body {
   font-size: 21px;
   font-weight: 700;
   line-height: 122.5%;
-
+padding: 0 0 28px 0;
 
   @media (min-width: 768px) {
     font-size: 50px;
@@ -108,18 +118,45 @@ body {
   }
 }
 
+.cardsContainer {
+    display: flex;
+        padding: 233px 0 0 0;
+        max-width: 1280px;
+        margin: 0 auto;
+}
+
+.cardsDescription {
+    max-width: 430px;
+
+}
+
 .cardsDeck {
     display: flex;
+    justify-content: center;
+    gap: 96px;
+    width: 100%;
     height: 356px;
 }
 
 .cardsDeckImg {
-    width: 193px;
-    height: 265px;
+    padding: 36px 0 0 0;
 }
 
 .cardLevelContainer {
     display: flex;
+
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 233px 0 0 0;
+}
+
+.cardLevelDescription {
+    max-width: 430px;
+
+}
+
+.cardLevelDescriptionText {
+    padding: 0 80px 0px 0;
 }
 
 .levelList {
@@ -128,17 +165,97 @@ body {
     gap: 63px 128px;
 }
 
+.levelItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+}
+
+.levelText {
+    font-size: 34px;
+}
+
+.cardClassContainer {
+    padding: 233px 0 0 0;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.cardClassDescriptionText {
+    padding: 0 200px 0 0;
+}
+
 .cardClassList {
     display: flex;
+gap: 42px;
+    padding: 68px 0 0 0;
+}
+
+.cardClassItem {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text__red {
+    color: #FE3600;
+}
+
+.text__blue {
+    color: #007AFE;
+}
+
+.text__green {
+    color: #00FC19;
+}
+
+.text__yellow {
+    color: #F4C10D;
+}
+
+.text__bold {
+    font-weight: 500;
 }
 
 .gameBoardContainer {
     display: flex;
+    justify-content: space-between;
+
+    max-width: 1280px;
+    margin: 0 auto;
+        padding: 233px 0 0 0;
+}
+
+.gameBoardDescription {
+max-width: 345px;
+}
+
+.gameBoardDescriptionText {
+    padding: 0 0 30px 0;
 }
 
 .gameBoardImg {
     width: 875px;
     height: 675px;
+}
+
+.gameBoardList {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 140%;
+}
+
+.dot::before {
+content: "\2027";
+  display: inline-block;
+  width: 1em;
+}
+
+.deckCardsText {
+    padding: 0 0 30px 0;
 }
 
 .deckCardImg {
@@ -149,12 +266,67 @@ body {
 .deckCardList {
     display: flex;
     flex-wrap: wrap;
-    gap: 54px;
+    gap: 56px;
+}
+
+.deckCardsWrapper {
+    display:flex;
+    gap: 50px;
+    padding: 0 0 73px 0;
+}
+
+.deckCardsWrapper p {
+    flex: 50%;
+}
+
+.deckCardsContainer {
+    padding: 233px 321px 0 321px;
+}
+
+.energyBlockContainer {
+    display: flex;
+    gap: 128px;
+    padding: 233px 0 0 0;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.gamePlayContainer {
+        padding: 233px 0 210px 0;
+        max-width: 1280px;
+        margin: 0 auto;
+}
+
+.phasesList {
+padding: 20px 0 0 0;
+}
+
+.phaseBattleList {
+padding: 15px 0 0 0;
+}
+
+.phasesItemText {
+    display: flex;
+    gap: 50px;
+    padding: 15px 0 56px 0;
+}
+
+.phasesItemText p {
+    flex: 50%;
+}
+
+.phasesItem:not(:last-child) {
+padding: 0 0 130px 0;
 }
 
 .energyBlockImg {
     display: flex;
-    gap: 20px;
+    align-items: flex-end;
+    gap: 55px;
+}
+
+.energyBlockText {
+    width: 540px
 }
 
 
@@ -310,6 +482,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid #47528C;
 }
 
 .mailto {

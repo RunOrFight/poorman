@@ -48,16 +48,16 @@ const Index = () => {
         <div className={clsx(styled.container)}>
           <img className={styled.logo} src={logo} alt="Cybercats" width="339px" height="61px" />
           <h1 className={styled.h1}>Tutorial</h1>
-          <p className={styled.text}>
+          <p className={clsx(styled.text, styled.center)}>
             Welcome to the game Cybercats! In this tutorial, we will tell you the mechanics of our game and introduce you to our heroes
           </p>
         </div>
       </section>
-      <section className={styled.cardsContainer}>
-        <div className={clsx(styled.container)}>
+      <section>
+        <div className={styled.cardsContainer}>
           <div className={styled.cardsDescription}>
             <h2 className={styled.h2}>Cards</h2>
-            <p className={styled.text}>We have 12 cards of cats and 12 cards of dogs</p>
+            <p className={clsx(styled.text, styled.cardsDescriptionText)}>We have 12 cards of cats and 12 cards of dogs</p>
           </div>
           <div className={styled.cardsDeck}>
             <img className={styled.cardsDeckImg} src='/src/assets/tutorial/сard_deck_cats.png' alt='deck_cats' width="276px" height="355px" />
@@ -69,86 +69,88 @@ const Index = () => {
         <div className={styled.cardLevelContainer}>
           <div className={styled.cardLevelDescription}>
             <h2 className={styled.h2}>Card level</h2>
-            <p className={styled.text}>3 breeds of cats and 3 dogs indicate the level of the character. This affects the cost of the card, the amount of damage and health of the character</p>
+            <p className={clsx(styled.text, styled.cardLevelDescriptionText)}><b>3</b> breeds of cats and <b>3</b> dogs indicate the level of the character. This affects the <b>cost</b> of the card, the amount of <b>damage</b> and <b>health</b> of the character</p>
           </div>
           <div className={styled.levelList}>
-            <div>
+            <div className={styled.levelItem}>
               <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_level_1.png' alt='level-1' width="193px" height="265px"/>
-              <p>1 lvl</p>
-              <p>Munchkin</p>
+              <p className={styled.levelText}>1 lvl</p>
+              <p className={styled.text}>Munchkin</p>
             </div>
-            <div>
+            <div className={styled.levelItem}>
               <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_level_2.png' alt='level-2' width="193px" height="265px"/>
-              <p>2 lvl</p>
-              <p>Maine coon</p>
+              <p className={styled.levelText}>2 lvl</p>
+              <p className={styled.text}>Maine coon</p>
             </div>
-            <div>
+            <div className={styled.levelItem}>
               <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_level_3.png' alt='level-3' width="193px" height="265px"/>
-              <p>3 lvl</p>
-              <p>Sphinx</p>
+              <p className={styled.levelText}>3 lvl</p>
+              <p className={styled.text}>Sphinx</p>
             </div>
-            <div>
+            <div className={styled.levelItem}>
               <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_level_4.png' alt='level-4' width="193px" height="265px"/>
-              <p>4 lvl</p>
-              <p>Corgi</p>
+              <p className={styled.levelText}>4 lvl</p>
+              <p className={styled.text}>Corgi</p>
             </div>
-            <div>
+            <div className={styled.levelItem}>
               <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_level_5.png' alt='level-5' width="193px" height="265px"/>
-              <p>5 lvl</p>
-              <p>terrier</p>
+              <p className={styled.levelText}>5 lvl</p>
+              <p className={styled.text}>Terrier</p>
             </div>
-            <div>
+            <div className={styled.levelItem}>
               <img className={styled.cardsDeckImg} src='/src/assets/tutorial/card_level_6.png' alt='level-6' width="193px" height="265px"/>
-              <p>6 lvl</p>
-              <p>Husky</p>
+              <p className={styled.levelText}>6 lvl</p>
+              <p className={styled.text}>Husky</p>
             </div>
           </div>
         </div>
       </section>
 
       <section>
-        <div>
-          <div className={styled.cardClassDescription}>
-            <h2 className={styled.h2}>Card class</h2>
-            <p className={styled.text}>Depending on the weapon, the cards attack in different directions</p>
-          </div>
-        </div>
-        <div className={styled.cardClassList}>
+        <div className={styled.cardClassContainer}>
           <div>
-            <p>Red warrior</p>
-            <p>forward</p>
-            <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_red.png' alt='class_red' width="193px" height="265px" />
+            <div className={styled.cardClassDescription}>
+              <h2 className={styled.h2}>Card class</h2>
+              <p className={clsx(styled.text, styled.cardClassDescriptionText)}>Depending on the weapon, the cards attack in different directions</p>
+            </div>
           </div>
-          <div>
-            <p>Blue archer</p>
-            <p>forward and to the left</p>
-            <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_blue.png' alt='class_blue' width="193px" height="265px" />
-          </div>
-          <div>
-            <p>Green shooter</p>
-            <p>forward and to the right</p>
-            <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_green.png' alt='class_green' width="193px" height="265px" />
-          </div>
-          <div>
-            <p>Yellow electric</p>
-            <p>all three directions</p>
-            <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_yellow.png' alt='class_yellow' width="193px" height="265px" />
+          <div className={styled.cardClassList}>
+            <div className={styled.cardClassItem}>
+              <p className={clsx(styled.text, styled.text__red, styled.text__bold)}>Red warrior</p>
+              <p className={clsx(styled.text, styled.text__bold)}>forward</p>
+              <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_red.png' alt='class_red' width="234px" height="311px" />
+            </div>
+            <div className={styled.cardClassItem}>
+              <p className={clsx(styled.text, styled.text__blue, styled.text__bold)}>Blue archer</p>
+              <p className={clsx(styled.text, styled.text__bold)}>forward and to the left</p>
+              <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_blue.png' alt='class_blue' width="305px" height="311px" />
+            </div>
+            <div className={styled.cardClassItem}>
+              <p className={clsx(styled.text, styled.text__green, styled.text__bold)}>Green shooter</p>
+              <p className={clsx(styled.text, styled.text__bold)}>forward and to the right</p>
+              <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_green.png' alt='class_green' width="305px" height="312px" />
+            </div>
+            <div className={styled.cardClassItem}>
+              <p className={clsx(styled.text, styled.text__yellow, styled.text__bold)}>Yellow electric</p>
+              <p className={clsx(styled.text, styled.text__bold)}>all three directions</p>
+              <img className={styled.cardsDeckImg} src='/src/assets/tutorial/class_yellow.png' alt='class_yellow' width="305px" height="311px" />
+            </div>
           </div>
         </div>
       </section>
       <section>
         <div className={styled.gameBoardContainer}>
-          <div>
+          <div className={styled.gameBoardDescription}>
             <h2 className={styled.h2}>Game board</h2>
-            <p className={styled.text}>On the game board, you can find:</p>
-            <ul>
-              <li>Player's name and health</li>
-              <li>Number of energy blocks</li>
-              <li>Card holder</li>
-              <li>Cards in hand</li>
-              <li>Opponent's cards in hand</li>
-              <li>End turn button</li>
-              <li>Fields for placing cards</li>
+            <p className={clsx(styled.text, styled.gameBoardDescriptionText)}>On the game board, you can find:</p>
+            <ul className={styled.gameBoardList}>
+              <li className={styled.dot}>Player's name and health</li>
+              <li className={styled.dot}>Number of energy blocks</li>
+              <li className={styled.dot}>Card holder</li>
+              <li className={styled.dot}>Cards in hand</li>
+              <li className={styled.dot}>Opponent's cards in hand</li>
+              <li className={styled.dot}>End turn button</li>
+              <li className={styled.dot}>Fields for placing cards</li>
             </ul>
           </div>
           <div>
@@ -158,13 +160,13 @@ const Index = () => {
       </section>
 
       <section>
-        <div>
-          <div className={styled.cardClassDescription}>
+        <div className={styled.deckCardsContainer}>
+          <div className={styled.deckCards}>
             <h2 className={styled.h2}>Deck of cards</h2>
-            <p className={styled.text}>There are 48 cards in the deck</p>
-            <div>
-              <p>At the beginning of the game, both you and your opponent draw 3 cards from the deck. Then, at the start of each turn, you draw 2 cards</p>
-              <p>You cannot have more than 5 cards in your hand. If the number of cards in your hand exceeds 5 during the card draw phase, any excess cards that were supposed to be drawn are discarded</p>
+            <p className={clsx(styled.text, styled.deckCardsText)}>There are <b>48</b> cards in the deck</p>
+            <div className={clsx(styled.deckCardsWrapper, styled.text)}>
+              <p>At the beginning of the game, both you and your opponent draw <b>3 cards</b> from the deck. Then, at the start of each turn, you draw <b>2 cards</b></p>
+              <p>You <b>cannot</b> have more than <b>5 cards</b> in your hand. If the number of cards in your hand exceeds 5 during the card draw phase, any excess cards that were supposed to be drawn are <b>discarded</b></p>
             </div>
           </div>
           <div className={styled.deckCardList}>
@@ -203,51 +205,51 @@ const Index = () => {
       </section>
 
       <section>
-        <div>
-          <div className={styled.cardClassDescription}>
+        <div className={styled.energyBlockContainer}>
+          <div className={styled.energyBlockDescription}>
             <h2 className={styled.h2}>Energy Blocks</h2>
-            <p className={styled.text}>You use energy blocks to play cards. At the beginning of the game, you start with 2 energy blocks.
-              With each turn, the number of energy blocks you receive will increase by 1 until it reaches 7</p>
+            <p className={clsx(styled.text, styled.energyBlockText)}>You use energy blocks to play cards. At the beginning of the game, you start with <b>2</b> energy blocks.
+              With each turn, the number of energy blocks you receive will increase by <b>1</b> until it reaches <b>7</b></p>
           </div>
           <div className={styled.energyBlockImg}>
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/energy_scale.png' alt='energy_scale' width="47px" height="384px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/cost_card.png' alt='cost_card' width="256px" height="384px" />
+            <img className={styled.energyImg} src='/src/assets/tutorial/energy_scale.png' alt='energy_scale' width="47px" height="384px" />
+            <img className={styled.energyImg} src='/src/assets/tutorial/cost_card.png' alt='cost_card' width="256px" height="384px" />
           </div>
         </div>
       </section>
 
       <section>
-        <div>
-          <div className={styled.cardClassDescription}>
+        <div className={styled.gamePlayContainer}>
+          <div className={styled.gamePlayDescription}>
             <h2 className={styled.h2}>Gameplay</h2>
             <p className={styled.text}>The turn is divided into 2 phases</p>
           </div>
-          <ol>
-            <li>1. Card Deployment Phase
-              <div>
+          <ol className={clsx(styled.text, styled.phasesList)}>
+            <li className={styled.phasesItem}>1. Card Deployment Phase
+              <div className={styled.phasesItemText}>
                 <p>In the first phase, you and your opponent deploy cards onto the field. Your opponent can infer that you have played a card based on the decrease in the number of cards in your hand. However, they will only see which card you played and on which field during the second phase.</p>
                 <p>To end the first phase, click the "End Turn" button. Once both you and your opponent have completed the first phase, the second phase begins.</p>
               </div>
-              <div>
-                <img src='/src/assets/tutorial/block_video.png' alt='block_video' width="875px" height="675px" />
-              </div>
+
+              <img className={styled.phaseImg} src='/src/assets/tutorial/block_video.png' alt='block_video' width="875px" height="675px" />
+
             </li>
 
-            <li>2. Battle Phase
-              <div>
-                <p>In the second phase, the cards battle each other. Cards attack from left to right.</p>
-                <ul>
-                  <li>If a card attacks an empty field, the opponent’s hero takes damage.</li>
-                  <li>If a card attacks another card, the health of the targeted card is reduced by the attack value of the attacking card.</li>
-                  <li>If a card's health reaches 0 or less and it has already attacked, the card dies (a card will not die until it has attacked).</li>
-                </ul>
+            <li className={styled.phasesItem}>2. Battle Phase
+              <div className={styled.phasesItemText}>
+                <div>
+                  <p>In the second phase, the cards battle each other. Cards attack from left to right.</p>
+                  <ul className={styled.phaseBattleList}>
+                    <li className={styled.dot}>If a card attacks an empty field, the opponent’s hero takes damage.</li>
+                    <li className={styled.dot}>If a card attacks another card, the health of the targeted card is reduced by the attack value of the attacking card.</li>
+                    <li className={styled.dot}>If a card's health reaches 0 or less and it has already attacked, the card dies (a card will not die until it has attacked).</li>
+                  </ul>
+                </div>
                 <div>
                   <p>After all cards have finished attacking, the next turn begins. The game ends when one of the players' health reaches zero.</p>
                 </div>
               </div>
-              <div>
-                <img src='/src/assets/tutorial/block_video.png' alt='block_video' width="875px" height="675px" />
-              </div>
+              <img className={styled.phaseImg} src='/src/assets/tutorial/block_video.png' alt='block_video' width="875px" height="675px" />
             </li>
           </ol>
         </div>
