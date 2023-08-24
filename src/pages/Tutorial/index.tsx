@@ -20,8 +20,8 @@ const Index = () => {
           <img
             className={styled.logo}
             src={logo} alt="Cybercats"
-            width="339px"
-            height="61px"
+            width="339"
+            height="61"
           />
           <h1 className={styled.h1}>Tutorial</h1>
           <p className={clsx(styled.text, styled.center)}>
@@ -39,14 +39,14 @@ const Index = () => {
             <img
               className={styled.cardsDeckImg}
               src='/src/assets/tutorial/сard_deck_cats.png' alt='deck_cats'
-              width="276px"
-              height="355px"
+              width="276"
+              height="355"
             />
             <img
               className={styled.cardsDeckImg}
               src='/src/assets/tutorial/card_deck_dogs.png' alt='deck_dogs'
-              width="270px"
-              height="356px"
+              width="270"
+              height="356"
             />
           </div>
         </div>
@@ -62,8 +62,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/card_level_1.png' alt='level-1'
-                width="193px"
-                height="265px"
+                width="197"
+                height="269"
               />
               <p className={styled.levelText}>1 lvl</p>
               <p className={styled.text}>Munchkin</p>
@@ -72,8 +72,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/card_level_2.png' alt='level-2'
-                width="193px"
-                height="265px"
+                width="196"
+                height="268"
               />
               <p className={styled.levelText}>2 lvl</p>
               <p className={styled.text}>Maine coon</p>
@@ -82,8 +82,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/card_level_3.png' alt='level-3'
-                width="193px"
-                height="265px"
+                width="195"
+                height="267"
               />
               <p className={styled.levelText}>3 lvl</p>
               <p className={styled.text}>Sphinx</p>
@@ -92,8 +92,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/card_level_4.png' alt='level-4'
-                width="193px"
-                height="265px"
+                width="196"
+                height="268"
               />
               <p className={styled.levelText}>4 lvl</p>
               <p className={styled.text}>Corgi</p>
@@ -102,8 +102,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/card_level_5.png' alt='level-5'
-                width="193px"
-                height="265px"
+                width="196"
+                height="268"
               />
               <p className={styled.levelText}>5 lvl</p>
               <p className={styled.text}>Terrier</p>
@@ -112,8 +112,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/card_level_6.png' alt='level-6'
-                width="193px"
-                height="265px"
+                width="195"
+                height="267"
               />
               <p className={styled.levelText}>6 lvl</p>
               <p className={styled.text}>Husky</p>
@@ -136,8 +136,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/class_red.png' alt='class_red'
-                width="234px"
-                height="311px"
+                width="234"
+                height="311"
               />
             </div>
             <div className={styled.cardClassItem}>
@@ -146,8 +146,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/class_blue.png' alt='class_blue'
-                width="305px"
-                height="311px"
+                width="305"
+                height="311"
               />
             </div>
             <div className={styled.cardClassItem}>
@@ -156,8 +156,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/class_green.png' alt='class_green'
-                width="305px"
-                height="312px"
+                width="305"
+                height="312"
               />
             </div>
             <div className={styled.cardClassItem}>
@@ -166,8 +166,8 @@ const Index = () => {
               <img
                 className={styled.cardsDeckImg}
                 src='/src/assets/tutorial/class_yellow.png' alt='class_yellow'
-                width="305px"
-                height="311px"
+                width="305"
+                height="311"
               />
             </div>
           </div>
@@ -192,8 +192,8 @@ const Index = () => {
             <img
               className={styled.gameBoardImg}
               src='/src/assets/tutorial/game_board.png' alt='game_board'
-              width="875px"
-              height="675px"
+              width="875"
+              height="675"
             />
           </div>
         </div>
@@ -209,33 +209,33 @@ const Index = () => {
             </div>
           </div>
           <div className={styled.deckCardList}>
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_warrior.png' alt='munchkin_warrior' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_warrior.png' alt='maine_coon_warrior' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_warrior.png' alt='sphinx_warrior' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_warrior.png' alt='corgi_warrior' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_warrior.png' alt='terrier_warrior' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_warrior.png' alt='husky_warrior' width="166px" height="230px" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_warrior.png' alt='munchkin_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_warrior.png' alt='maine_coon_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_warrior.png' alt='sphinx_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_warrior.png' alt='corgi_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_warrior.png' alt='terrier_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_warrior.png' alt='husky_warrior' width="171" height="232" />
 
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_archer.png' alt='munchkin_archer' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_archer.png' alt='maine_coon_archer' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_archer.png' alt='sphinx_archer' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_archer.png' alt='corgi_archer' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_archer.png' alt='terrier_archer' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_archer.png' alt='husky_archer' width="166px" height="230px" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_archer.png' alt='munchkin_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_archer.png' alt='maine_coon_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_archer.png' alt='sphinx_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_archer.png' alt='corgi_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_archer.png' alt='terrier_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_archer.png' alt='husky_archer' width="171" height="232" />
 
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_shooter.png' alt='munchkin_shooter' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_shooter.png' alt='maine_coon_shooter' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_shooter.png' alt='sphinx_shooter' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_shooter.png' alt='corgi_shooter' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_shooter.png' alt='terrier_shooter' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_shooter.png' alt='husky_shooter' width="166px" height="230px" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_shooter.png' alt='munchkin_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_shooter.png' alt='maine_coon_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_shooter.png' alt='sphinx_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_shooter.png' alt='corgi_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_shooter.png' alt='terrier_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_shooter.png' alt='husky_shooter' width="170" height="232" />
 
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_energy.png' alt='munchkin_energy' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_energy.png' alt='maine_coon_energy' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_energy.png' alt='sphinx_energy' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_energy.png' alt='corgi_energy' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_energy.png' alt='terrier_energy' width="166px" height="230px" />
-            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_energy.png' alt='husky_energy' width="166px" height="230px" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_energy.png' alt='munchkin_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_energy.png' alt='maine_coon_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_energy.png' alt='sphinx_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_energy.png' alt='corgi_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_energy.png' alt='terrier_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_energy.png' alt='husky_energy' width="171" height="232" />
           </div>
         </div>
       </section>
@@ -250,14 +250,14 @@ const Index = () => {
             <img
               className={styled.energyImg}
               src='/src/assets/tutorial/energy_scale.png' alt='energy_scale'
-              width="47px"
-              height="384px"
+              width="47"
+              height="384"
             />
             <img
               className={styled.energyImg}
               src='/src/assets/tutorial/cost_card.png' alt='cost_card'
-              width="256px"
-              height="384px"
+              width="256"
+              height="384"
             />
           </div>
         </div>
@@ -277,8 +277,8 @@ const Index = () => {
               <img
                 className={styled.phaseImg}
                 src='/src/assets/tutorial/block_video.png' alt='block_video'
-                width="875px"
-                height="675px"
+                width="875"
+                height="675"
               />
             </li>
             <li className={styled.phasesItem}>2. Battle Phase
@@ -298,8 +298,8 @@ const Index = () => {
               <img
                 className={styled.phaseImg}
                 src='/src/assets/tutorial/block_video.png' alt='block_video'
-                width="875px"
-                height="675px"
+                width="875"
+                height="675"
               />
             </li>
           </ol>
