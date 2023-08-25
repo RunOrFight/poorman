@@ -11,6 +11,10 @@ body {
   background-image: url(/src/assets/tutorial/blur_1.png), url('/src/assets/tutorial/blur_2.png'), url('/src/assets/tutorial/blur_3.png'), url('/src/assets/tutorial/blur_4.png');
   background-position: 0% 6%, 100% 23%, 0% 65%, 100% 87%;
   background-repeat: no-repeat;
+
+  @media (max-width: 1024px) {
+    background-image: none;
+  }
 }
 
 .logo {
@@ -25,6 +29,10 @@ body {
 .container {
   margin: 0 auto;
   padding: 145px 321px 60px 321px;
+
+  @media (max-width: 1024px) {
+    padding: 75px 195px 55px 195px;
+  }
 }
 
 .headerContainer {
@@ -36,8 +44,8 @@ body {
   background-size: contain;
   background-position: center;
 
-  @media (min-width: 768px) {
-
+  @media (max-width: 1024px) {
+    background-image: url('/src/assets/tutorial/bg_tutorial_tablet.jpg');
   }
 }
 
@@ -53,37 +61,39 @@ body {
   &.center {
     text-align: center;
     padding: 0 310px;
+
+    @media (max-width: 1024px) {
+      padding: 0;
+    }
   }
 
-  @media (min-width: 768px) {
-    font-size: 24px;
+  @media (max-width: 1024px) {
+    font-size: 20px
   }
-}
-
-.cardsDescriptionText {
-  padding: 0 165px 0 0;
 }
 
 .h1 {
   padding: 25px 0 25px;
   text-align: center;
-  font-size: 35px;
+  font-size: 72px;
   font-weight: 700;
   line-height: 120%;
 
-  @media (min-width: 768px) {
-    font-size: 72px;
+  @media (max-width: 1024px) {
+    font-size: 60px;
+    padding: 12px 0;
   }
 }
 
 .h2 {
-  font-size: 21px;
+  font-size: 50px;
   font-weight: 700;
   line-height: 122.5%;
   padding: 0 0 28px 0;
 
-  @media (min-width: 768px) {
-    font-size: 50px;
+  @media (max-width: 1024px) {
+    font-size: 44px;
+    padding: 0 0 18px 0;
   }
 }
 
@@ -102,10 +112,19 @@ body {
   padding: 233px 0 0 0;
   max-width: 1280px;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 110px 30px 0 30px;
+    gap: 25px;
+  }
 }
 
 .cardsDescription {
   max-width: 430px;
+
+  @media (max-width: 1024px) {
+    min-width: 300px; max-width: 300px;
+  }
 }
 
 .cardsDeck {
@@ -114,10 +133,20 @@ body {
   gap: 96px;
   width: 100%;
   height: 356px;
+
+  @media (max-width: 1024px) {
+    gap: 35px;
+    height: 265px;
+    width: auto;
+  }
 }
 
-.cardsDeckImg {
-  padding: 36px 0 0 0;
+.cardsDescriptionText {
+  padding: 0 165px 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
 }
 
 .cardLevelContainer {
@@ -125,20 +154,38 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 233px 0 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+    gap: 25px;
+  }
 }
 
 .cardLevelDescription {
   max-width: 430px;
+
+  @media (max-width: 1024px) {
+    min-width: 300px; max-width: 300px;
+  }
 }
 
 .cardLevelDescriptionText {
   padding: 0 80px 0px 0;
+
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
 }
 
 .levelList {
   display: flex;
   flex-wrap: wrap;
   gap: 63px 128px;
+
+  @media (max-width: 1024px) {
+    gap: 50px 25px;
+  }
 }
 
 .levelItem {
@@ -146,16 +193,28 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 11px;
+
+ @media (max-width: 1024px) {
+    gap: 5px;
+  }
 }
 
 .levelText {
   font-size: 34px;
+
+  @media (max-width: 1024px) {
+    font-size: 30px;
+  }
 }
 
 .cardClassContainer {
   padding: 233px 0 0 0;
   max-width: 1280px;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+  }
 }
 
 .cardClassDescriptionText {
@@ -166,6 +225,18 @@ body {
   display: flex;
   gap: 42px;
   padding: 68px 0 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 60px 0 0 0;
+  }
+}
+
+.cardClassImg {
+  padding: 30px 0 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 19px 0 0 0;
+  }
 }
 
 .cardClassItem {
@@ -201,10 +272,20 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   padding: 233px 0 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+    gap:25px;
+  }
 }
 
 .gameBoardDescription {
   max-width: 345px;
+
+  @media (max-width: 1024px) {
+    min-width: 300px;
+    max-width: 300px;
+  }
 }
 
 .gameBoardDescriptionText {
@@ -214,12 +295,20 @@ body {
 .gameBoardImg {
   width: 875px;
   height: 675px;
+
+  @media (max-width: 1024px) {
+    height: auto;
+  }
 }
 
 .gameBoardList {
   font-size: 24px;
   font-weight: 300;
   line-height: 140%;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 }
 
 .dot::before {
@@ -230,23 +319,53 @@ body {
 
 .deckCardsText {
   padding: 0 0 30px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 18px 0;
+  }
 }
 
 .deckCardImg {
   width: 166px;
   height: 230px;
+
+  @media (max-width: 1024px) {
+    width: 142px;
+    height: auto;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .deckCardList {
   display: flex;
   flex-wrap: wrap;
   gap: 56px;
+
+
+  @media (max-width: 1024px) {
+    gap: 22px;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+}
+
+.deckCardImg:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  z-index: 2;
+  padding: 0 0 0 15px;
 }
 
 .deckCardsWrapper {
   display:flex;
   gap: 50px;
   padding: 0 0 73px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 42px 0;
+  }
 }
 
 .deckCardsWrapper p {
@@ -255,6 +374,10 @@ body {
 
 .deckCardsContainer {
   padding: 233px 321px 0 321px;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+  }
 }
 
 .energyBlockContainer {
@@ -263,12 +386,21 @@ body {
   padding: 233px 0 0 0;
   max-width: 1280px;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+    gap: 100px;
+  }
 }
 
 .gamePlayContainer {
   padding: 233px 0 210px 0;
   max-width: 1280px;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 150px 30px;
+  }
 }
 
 .phasesList {
@@ -283,6 +415,10 @@ body {
   display: flex;
   gap: 50px;
   padding: 15px 0 56px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 50px 0;
+  }
 }
 
 .phasesItemText p {
@@ -291,6 +427,10 @@ body {
 
 .phasesItem:not(:last-child) {
   padding: 0 0 130px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 60px 0;
+  }
 }
 
 .energyBlockImg {
@@ -299,8 +439,20 @@ body {
   gap: 55px;
 }
 
+.energyImg {
+  width: 44px;
+}
+
+.energyCostImg {
+  width: 255px;
+}
+
 .energyBlockText {
-  width: 540px
+  width: 540px;
+
+  @media (max-width: 1024px) {
+    width: 470px;
+  }
 }
 
 .footer {

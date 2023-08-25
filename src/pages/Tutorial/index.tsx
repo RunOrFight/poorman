@@ -25,7 +25,7 @@ const Index = () => {
           />
           <h1 className={styled.h1}>Tutorial</h1>
           <p className={clsx(styled.text, styled.center)}>
-            Welcome to the game Cybercats! In this tutorial, we will tell you the mechanics of our game and introduce you to our heroes
+            Welcome to the game <strong>Cybercats!</strong> In this tutorial, we will tell you the mechanics of our game and introduce you to our heroes
           </p>
         </div>
       </section>
@@ -95,7 +95,7 @@ const Index = () => {
                 width="196"
                 height="268"
               />
-              <p className={styled.levelText}>4 lvl</p>
+              <p className={styled.levelText}>1 lvl</p>
               <p className={styled.text}>Corgi</p>
             </div>
             <div className={styled.levelItem}>
@@ -105,7 +105,7 @@ const Index = () => {
                 width="196"
                 height="268"
               />
-              <p className={styled.levelText}>5 lvl</p>
+              <p className={styled.levelText}>2 lvl</p>
               <p className={styled.text}>Terrier</p>
             </div>
             <div className={styled.levelItem}>
@@ -115,7 +115,7 @@ const Index = () => {
                 width="195"
                 height="267"
               />
-              <p className={styled.levelText}>6 lvl</p>
+              <p className={styled.levelText}>3 lvl</p>
               <p className={styled.text}>Husky</p>
             </div>
           </div>
@@ -134,7 +134,7 @@ const Index = () => {
               <p className={clsx(styled.text, styled.text__red, styled.text__bold)}>Red warrior</p>
               <p className={clsx(styled.text, styled.text__bold)}>forward</p>
               <img
-                className={styled.cardsDeckImg}
+                className={styled.cardClassImg}
                 src='/src/assets/tutorial/class_red.png' alt='class_red'
                 width="234"
                 height="311"
@@ -144,7 +144,7 @@ const Index = () => {
               <p className={clsx(styled.text, styled.text__blue, styled.text__bold)}>Blue archer</p>
               <p className={clsx(styled.text, styled.text__bold)}>forward and to the left</p>
               <img
-                className={styled.cardsDeckImg}
+                className={styled.cardClassImg}
                 src='/src/assets/tutorial/class_blue.png' alt='class_blue'
                 width="305"
                 height="311"
@@ -154,7 +154,7 @@ const Index = () => {
               <p className={clsx(styled.text, styled.text__green, styled.text__bold)}>Green shooter</p>
               <p className={clsx(styled.text, styled.text__bold)}>forward and to the right</p>
               <img
-                className={styled.cardsDeckImg}
+                className={styled.cardClassImg}
                 src='/src/assets/tutorial/class_green.png' alt='class_green'
                 width="305"
                 height="312"
@@ -164,7 +164,7 @@ const Index = () => {
               <p className={clsx(styled.text, styled.text__yellow, styled.text__bold)}>Yellow electric</p>
               <p className={clsx(styled.text, styled.text__bold)}>all three directions</p>
               <img
-                className={styled.cardsDeckImg}
+                className={styled.cardClassImg}
                 src='/src/assets/tutorial/class_yellow.png' alt='class_yellow'
                 width="305"
                 height="311"
@@ -254,7 +254,7 @@ const Index = () => {
               height="384"
             />
             <img
-              className={styled.energyImg}
+              className={styled.energyCostImg}
               src='/src/assets/tutorial/cost_card.png' alt='cost_card'
               width="256"
               height="384"
@@ -269,10 +269,10 @@ const Index = () => {
             <p className={styled.text}>The turn is divided into 2 phases</p>
           </div>
           <ol className={clsx(styled.text, styled.phasesList)}>
-            <li className={styled.phasesItem}>1. Card Deployment Phase
+            <li className={styled.phasesItem}><b>1. Card Deployment Phase</b>
               <div className={styled.phasesItemText}>
-                <p>In the first phase, you and your opponent deploy cards onto the field. Your opponent can infer that you have played a card based on the decrease in the number of cards in your hand. However, they will only see which card you played and on which field during the second phase.</p>
-                <p>To end the first phase, click the "End Turn" button. Once both you and your opponent have completed the first phase, the second phase begins.</p>
+                <p>In the first phase, you and your opponent <b>deploy cards onto the field</b>. Your opponent can infer that you have played a card based on the decrease in the number of cards in your hand. However, they will only see which card you played and on which field during the second phase.</p>
+                <p>To end the first phase, click the <b>"End Turn"</b> button. Once both you and your opponent have completed the first phase, the second phase begins.</p>
               </div>
               <img
                 className={styled.phaseImg}
@@ -281,21 +281,21 @@ const Index = () => {
                 height="675"
               />
             </li>
-            <li className={styled.phasesItem}>2. Battle Phase
+            <li className={styled.phasesItem}><b>2. Battle Phase</b>
               <div className={styled.phasesItemText}>
                 <div>
-                  <p>In the second phase, the cards battle each other. Cards attack from left to right.</p>
+                  <p>In the second phase, the cards battle each other. Cards attack from <b>left to right</b>.</p>
                   <ul className={styled.phaseBattleList}>
-                    <li className={styled.dot}>If a card attacks an empty field, the opponent’s hero takes damage.</li>
-                    <li className={styled.dot}>If a card attacks another card, the health of the targeted card is reduced by the attack value of the attacking card.</li>
-                    <li className={styled.dot}>If a card's health reaches 0 or less and it has already attacked, the card dies (a card will not die until it has attacked).</li>
+                    <li className={styled.dot}>If a card attacks an <b>empty field</b>, the opponent’s <b>hero</b> takes damage.</li>
+                    <li className={styled.dot}>If a card attacks <b>another card</b>, the health of the targeted card is <b>reduced by the attack value</b> of the attacking card.</li>
+                    <li className={styled.dot}>If a card's health reaches <b>0 or less</b> and it has already attacked, the card <b>dies</b> (a card <b>will not die</b> until it has attacked).</li>
                   </ul>
                 </div>
                 <div>
-                  <p>After all cards have finished attacking, the next turn begins. The game ends when one of the players' health reaches zero.</p>
+                  <p>After all cards have finished attacking, the next turn begins. The <b>game ends</b> when one of the players' health <b>reaches zero</b>.</p>
                 </div>
               </div>
-              <img
+          <img
                 className={styled.phaseImg}
                 src='/src/assets/tutorial/block_video.png' alt='block_video'
                 width="875"
