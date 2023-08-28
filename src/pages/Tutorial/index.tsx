@@ -1,5 +1,5 @@
+import React, { useRef } from 'react';
 import clsx from 'clsx';
-import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { logo } from '../../assets';
@@ -191,47 +191,47 @@ const Index = () => {
           </div>
         </div>
       </section>
-      {/*<section>*/}
-      {/*  <div className={styled.deckCardsContainer}>*/}
-      {/*    <div className={styled.deckCards}>*/}
-      {/*      <h2 className={styled.h2}>Deck of cards</h2>*/}
-      {/*      <p className={clsx(styled.text, styled.deckCardsText)}>There are <b>48</b> cards in the deck</p>*/}
-      {/*      <div className={clsx(styled.deckCardsWrapper, styled.text)}>*/}
-      {/*        <p>At the beginning of the game, both you and your opponent draw <b>3 cards</b> from the deck. Then, at the start of each turn, you draw <b>2 cards</b></p>*/}
-      {/*        <p>You <b>cannot</b> have more than <b>5 cards</b> in your hand. If the number of cards in your hand exceeds 5 during the card draw phase, any excess cards that were supposed to be drawn are <b>discarded</b></p>*/}
-      {/*      </div>*/}
-      {/*    </div>*/}
-      {/*    <div className={styled.deckCardList}>*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_warrior.png' alt='munchkin_warrior' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_warrior.png' alt='maine_coon_warrior' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_warrior.png' alt='sphinx_warrior' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_warrior.png' alt='corgi_warrior' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_warrior.png' alt='terrier_warrior' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_warrior.png' alt='husky_warrior' width="171" height="232" />*/}
+      <section>
+        <div className={styled.deckCardsContainer}>
+          <div className={styled.deckCards}>
+            <h2 className={styled.h2}>Deck of cards</h2>
+            <p className={clsx(styled.text, styled.deckCardsText)}>There are <b>48</b> cards in the deck</p>
+            <div className={clsx(styled.deckCardsWrapper, styled.text)}>
+              <p>At the beginning of the game, both you and your opponent draw <b>3 cards</b> from the deck. Then, at the start of each turn, you draw <b>2 cards</b></p>
+              <p>You <b>cannot</b> have more than <b>5 cards</b> in your hand. If the number of cards in your hand exceeds 5 during the card draw phase, any excess cards that were supposed to be drawn are <b>discarded</b></p>
+            </div>
+          </div>
+          <div className={clsx(styled.deckCardList, styled.carousel)}>
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_warrior.png' alt='munchkin_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_warrior.png' alt='maine_coon_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_warrior.png' alt='sphinx_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_warrior.png' alt='corgi_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_warrior.png' alt='terrier_warrior' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_warrior.png' alt='husky_warrior' width="171" height="232" />
 
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_archer.png' alt='munchkin_archer' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_archer.png' alt='maine_coon_archer' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_archer.png' alt='sphinx_archer' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_archer.png' alt='corgi_archer' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_archer.png' alt='terrier_archer' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_archer.png' alt='husky_archer' width="171" height="232" />*/}
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_archer.png' alt='munchkin_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_archer.png' alt='maine_coon_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_archer.png' alt='sphinx_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_archer.png' alt='corgi_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_archer.png' alt='terrier_archer' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_archer.png' alt='husky_archer' width="171" height="232" />
 
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_shooter.png' alt='munchkin_shooter' width="170" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_shooter.png' alt='maine_coon_shooter' width="170" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_shooter.png' alt='sphinx_shooter' width="170" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_shooter.png' alt='corgi_shooter' width="170" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_shooter.png' alt='terrier_shooter' width="170" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_shooter.png' alt='husky_shooter' width="170" height="232" />*/}
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_shooter.png' alt='munchkin_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_shooter.png' alt='maine_coon_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_shooter.png' alt='sphinx_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_shooter.png' alt='corgi_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_shooter.png' alt='terrier_shooter' width="170" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_shooter.png' alt='husky_shooter' width="170" height="232" />
 
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_energy.png' alt='munchkin_energy' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_energy.png' alt='maine_coon_energy' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_energy.png' alt='sphinx_energy' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_energy.png' alt='corgi_energy' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_energy.png' alt='terrier_energy' width="171" height="232" />*/}
-      {/*      <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_energy.png' alt='husky_energy' width="171" height="232" />*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*</section>*/}
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/munchkin_energy.png' alt='munchkin_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/maine_coon_energy.png' alt='maine_coon_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/sphinx_energy.png' alt='sphinx_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/corgi_energy.png' alt='corgi_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/terrier_energy.png' alt='terrier_energy' width="171" height="232" />
+            <img className={styled.deckCardImg} src='/src/assets/tutorial/husky_energy.png' alt='husky_energy' width="171" height="232" />
+          </div>
+        </div>
+      </section>
 
 
 
