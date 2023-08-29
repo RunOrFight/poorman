@@ -1,19 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import clsx from 'clsx';
-import { useNavigate } from 'react-router-dom';
 
 import { logo } from '../../assets';
 import styled from './Tutorial.module.pcss';
 
 
 const Index = () => {
-  const navigate = useNavigate();
-  const secondSection: any = useRef();
-
-  const scrollTo = () => {
-    secondSection.current.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className={styled.wrapper}>
       <section className={styled.headerContainer}>
