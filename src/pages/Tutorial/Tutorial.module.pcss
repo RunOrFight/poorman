@@ -1,0 +1,782 @@
+body {
+  background: rgba(0, 5, 24, 1);
+  background-image: url('/src/assets/bg.png');
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.wrapper {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  color: #fff;
+  background-image: url(/src/assets/tutorial/blur_1.png), url('/src/assets/tutorial/blur_2.png'), url('/src/assets/tutorial/blur_3.png'), url('/src/assets/tutorial/blur_4.png');
+  background-position: 0% 6%, 100% 23%, 0% 65%, 100% 87%;
+  background-repeat: no-repeat;
+
+  @media (max-width: 1024px) {
+    background-image: none;
+  }
+}
+
+.logo {
+  max-width: 168px;
+  margin: 0 auto;
+
+  &.small {
+    max-width: 190px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 145px 15px 60px 15px;
+
+  @media (max-width: 1024px) {
+    padding: 75px 195px 55px 195px;
+  }
+
+  @media (max-width: 730px) {
+    padding: 75px 50px 55px 50px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 63px 15px 70px 15px;
+  }
+}
+
+.headerContainer {
+  position: relative;
+  margin: 0 auto;
+  background-color: #010617;
+  background-image: url('/src/assets/tutorial/bg_tutorial.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @media (max-width: 1850px) {
+    background-size: cover;
+  }
+
+  @media (max-width: 1300px) {
+    background-position: -455px 0px;
+  }
+
+  @media (max-width: 1150px) {
+    background-position: -525px 0px;
+  }
+
+  @media (max-width: 1024px) {
+    background-image: url('/src/assets/tutorial/bg_tutorial_tablet.jpg');
+    background-position: center;
+  }
+
+  @media (max-width: 650px) {
+    background-size: cover;
+  }
+}
+
+.text {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 140%;
+
+  &.small {
+    font-size: 14px;
+  }
+
+  &.center {
+    text-align: center;
+    max-width: 648px;
+    margin: 0 auto;
+
+    @media (max-width: 1024px) {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 20px
+  }
+
+  @media (max-width: 650px) {
+    font-size: 18px
+  }
+}
+
+.h1 {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 120%;
+  padding: 25px 0 25px;
+
+  @media (max-width: 1024px) {
+    font-size: 60px;
+    padding: 12px 0;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 50px;
+  }
+}
+
+.h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 122.5%;
+  padding: 0 0 28px 0;
+
+  @media (max-width: 1024px) {
+    font-size: 44px;
+    padding: 0 0 18px 0;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 40px;
+    padding: 0 0 16px 0;
+  }
+}
+
+.cardsContainer {
+  display: flex;
+  padding: 233px 15px 0 15px;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 110px 30px 0 30px;
+    gap: 25px;
+  }
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+    gap: 38px;
+    padding: 55px 15px 0 15px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 55px 10px 0 10px;
+  }
+}
+
+.cardsDescription {
+  max-width: 430px;
+
+  @media (max-width: 1024px) {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  @media (max-width: 730px) {
+    max-width: none;
+  }
+
+  @media (max-width: 375px) {
+    max-width: 210px;
+    min-width: 0;
+  }
+}
+
+.cardsDeck {
+  display: flex;
+  justify-content: center;
+  gap: 96px;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    gap: 35px;
+  }
+
+  @media (max-width: 875px) {
+    gap: 25px;
+  }
+}
+
+.cardsDeckImg {
+  max-width: 276px;
+
+  @media (max-width: 1150px) {
+    max-width: 226px;
+  }
+
+  @media (max-width: 1000px) {
+    max-width: 180px;
+  }
+
+  @media (max-width: 850px) {
+    max-width: 160px;
+  }
+}
+
+
+.cardsDescriptionText {
+  padding: 0 165px 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
+}
+
+.cardLevelContainer {
+  display: flex;
+  gap: 90px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 233px 15px 0 15px;
+
+  @media (max-width: 1150px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+    gap: 25px;
+  }
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+    gap: 38px;
+    padding: 100px 15px 0 15px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 100px 10px 0 10px;
+  }
+}
+
+.cardLevelDescription {
+  max-width: 430px;
+
+  @media (max-width: 1024px) {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  @media (max-width: 730px) {
+    max-width: none;
+  }
+
+  @media (max-width: 375px) {
+    max-width: 305px;
+    min-width: 0;
+  }
+}
+
+.cardLevelDescriptionText {
+  width: 340px;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+    width: 300px;
+  }
+
+  @media (max-width: 730px) {
+    width: auto;
+  }
+}
+
+.levelList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  justify-items: center;
+  grid-row-gap: 42px;
+
+  @media (max-width: 850px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 730px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.levelList > *:nth-child(3n+1) {
+  justify-self: start;
+
+  @media (max-width: 850px) {
+    justify-self: center;
+  }
+}
+
+.levelList > *:nth-child(3n) {
+  justify-self: end;
+
+  @media (max-width: 850px) {
+    justify-self: center;
+  }
+}
+
+.levelImg {
+  width: 192px;
+
+  @media (max-width: 1005px) {
+    width: 140px;
+  }
+
+  @media (max-width: 500px) {
+    width: 105px;
+  }
+}
+
+.cardClassImg__red {
+  @media (max-width: 850px) {
+    height: 430px;
+  }
+
+  @media (max-width: 650px) {
+    height: 277px;
+  }
+}
+
+.levelItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  width: auto;
+
+  @media (max-width: 1024px) {
+    gap: 5px;
+  }
+}
+
+.levelText {
+  font-size: 34px;
+
+  @media (max-width: 1024px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 20px;
+  }
+}
+
+.cardClassContainer {
+  padding: 233px 15px 0 15px;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+  }
+
+  @media (max-width: 650px) {
+    padding: 100px 15px 0 15px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 100px 10px 0 10px;
+  }
+}
+
+.cardClassDescription {
+
+  @media (max-width: 375px) {
+    max-width: 305px;
+  }
+}
+
+.cardClassDescriptionText {
+  padding: 0 200px 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
+}
+
+.cardClassList {
+  display: flex;
+  justify-content: space-between;
+  gap: 42px;
+  padding: 38px 0 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 30px 0 0 0;
+  }
+
+  @media (max-width: 850px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 650px) {
+    gap: 70px;
+  }
+
+  @media (max-width: 430px) {
+    gap: 10px;
+  }
+}
+
+.cardClassImg {
+  padding: 30px 0 0 0;
+
+  @media (max-width: 1024px) {
+    padding: 19px 0 0 0;
+  }
+}
+
+.cardClassItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 850px) {
+    width: 263px;
+    height: 100%;
+  }
+
+  @media (max-width: 650px) {
+    width: 165px;
+  }
+}
+
+.gameBoardContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 35px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 233px 15px 0 15px;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+    gap: 25px;
+  }
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+    gap: 38px;
+    padding: 100px 15px 0 15px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 100px 10px 0 10px;
+  }
+}
+
+.gameBoardDescription {
+  max-width: 345px;
+  min-width: 320px;
+
+  @media (max-width: 1024px) {
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+.gameBoardDescriptionText {
+  padding: 0 0 30px 0;
+}
+
+.gameBoardImg {
+  max-width: 875px;
+}
+
+.gameBoardList {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 140%;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+
+.dot {
+  position: relative;
+  padding: 0 0 0 30px;
+
+  &::before {
+    content: "\2022";
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+}
+
+.deckCardsText {
+  padding: 0 0 30px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 18px 0;
+  }
+}
+
+.deckCardImg {
+  max-width: 166px;
+
+  @media (max-width: 1150px) {
+    position: relative;
+    width: 142px;
+    height: auto;
+    transition: transform 0.3s;
+    z-index: 1;
+  }
+}
+
+.deckCardList {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+
+  @media (max-width: 1280px) {
+    gap: 40px
+  }
+
+  @media (max-width: 1230px) {
+    gap: 25px
+  }
+
+  @media (max-width: 1024px) {
+    position: relative;
+    gap: 22px;
+    transition: transform 0.3s,
+  }
+
+  @media (max-width: 500px) {
+    justify-content: space-evenly;
+  }
+}
+
+.deckCardImg:hover {
+  transform: scale(1.5);
+  z-index: 2;
+  padding: 0 0 0 15px;
+}
+
+.deckCardsWrapper {
+  display:flex;
+  gap: 50px;
+  padding: 0 0 73px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 42px 0;
+  }
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 0 38px 0;
+  }
+}
+
+.deckCardsWrapper p {
+  flex: 50%;
+}
+
+.deckCardsContainer {
+  padding: 233px 15px 0 15px;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+  }
+
+  @media (max-width: 650px) {
+    padding: 100px 15px 0 15px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 100px 10px 0 10px;
+  }
+}
+
+.energyBlockContainer {
+  display: flex;
+  gap: 128px;
+  padding: 233px 15px 0 15px;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 0 30px;
+    gap: 100px;
+  }
+
+  @media (max-width: 980px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 900px) {
+    gap: 38px;
+  }
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+    gap: 38px;
+    padding: 100px 15px 0 15px;
+  }
+
+  @media (max-width: 370px) {
+    padding: 100px 10px 0 10px;
+  }
+}
+
+.gamePlayContainer {
+  padding: 233px 15px 210px 15px;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    padding: 150px 30px 150px 30px;
+  }
+
+  @media (max-width: 730px) {
+    padding: 100px 15px 100px 15px;
+  }
+}
+
+.phasesList {
+  padding: 20px 0 0 0;
+}
+
+.phaseBattleList {
+  padding: 15px 0 0 0;
+
+  @media (max-width: 375px) {
+    padding: 0;
+  }
+}
+
+.phaseBattleText {
+  padding: 15px 0 0 0;
+}
+
+.phasesBlockText {
+  display: flex;
+  gap: 50px;
+  padding: 15px 0 56px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 50px 0;
+  }
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 0 38px 0;
+  }
+}
+
+.phasesBlockText div,
+.phasesBlockText p {
+  flex: 50%;
+
+  @media (max-width: 375px) {
+    white-space: wrap;
+  }
+}
+
+.phasesText {
+  padding: 15px 0 0 0;
+
+  @media (max-width: 375px) {
+    padding: 0;
+  }
+}
+
+.phasesItem:not(:last-child) {
+  padding: 0 0 130px 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0 60px 0;
+  }
+
+  @media (max-width: 375px) {
+    padding: 0 0 40px 0;
+  }
+}
+
+.energyBlockImg {
+  display: flex;
+  align-items: flex-end;
+  gap: 55px;
+  margin: 0 auto;
+
+  @media (max-width: 900px) {
+    gap: 35px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 730px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 375px) {
+    justify-content: center;
+    gap: 35px;
+  }
+}
+
+.energyImg {
+  max-width: 44px;
+
+  @media (max-width: 950px) {
+    max-width: 38px;
+  }
+
+  @media (max-width: 850px) {
+    max-width: 34px;
+  }
+}
+
+.energyCostImg {
+  max-width: 255px;
+
+  @media (max-width: 950px) {
+    max-width: 210px;
+  }
+
+  @media (max-width: 850px) {
+    max-width: 183px;
+  }
+}
+
+.energyBlockText {
+  max-width: 540px;
+
+  @media (max-width: 1024px) {
+    max-width: 470px;
+  }
+
+  @media (max-width: 730px) {
+    max-width: none;
+  }
+
+  @media (max-width: 375px) {
+    max-width: 305px;
+    white-space: pre-wrap;
+  }
+}
+
+.footer {
+  padding: 41px 60px 30px;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #47528C;
+}
+
+.mailto {
+  padding: 14px 0 32px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.copyright {
+  color: #5a5a5a;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
