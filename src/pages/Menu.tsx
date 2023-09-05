@@ -3,8 +3,11 @@ import { CreateGameStartAction, useAppDispatch, useAuthSelector } from '../store
 import style from './Menu.module.pcss';
 import React from 'react';
 import { sound_start_game } from '../assets';
+import { TUTORIAL_ROUTE } from '../constants/Routes';
+import { useNavigate } from 'react-router-dom';
 
 const MenuPage = () => {
+  const navigate = useNavigate();
   const [gameFounding, setGameFounding] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -128,6 +131,9 @@ const MenuPage = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={style.start_game_btn}
+        onClick={() => {
+          navigate(TUTORIAL_ROUTE);
+        }}
       >
         <path
           d="M384.351 2H383.618L383.059 2.47289L372.225 11.635H92.4665L83.412 2.58541L82.8263 2H81.9982H32.0443H31.2162L30.6304 2.58541L2.58617 30.6146L2 31.2005V32.0292V94.219V95.0124L2.54397 95.5901L30.5882 125.371L31.1805 126H32.0443H68.8524H69.5069L70.0347 125.613L82.6526 116.365H174.01L182.179 125.346L182.774 126H183.659H319.498H320.899L321.378 124.684L324.404 116.365H399.878V124V126H401.878H446.574H447.353L447.927 125.473L480.353 95.692L481 95.0976V94.219V38.1606V37.3625L480.451 36.7837L448.024 2.62309L447.433 2H446.574H384.351Z"

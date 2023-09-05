@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { pointer_down, adv1, adv2, adv3, adv4, adv5, logo, cards_set } from '../../assets';
 import styled from './Landing.module.pcss';
-import { TUTORIAL_ROUTE } from '../../constants';
+import { LOGIN_ROUTE } from '../../constants';
 
 const feature = [
   {
@@ -98,7 +98,7 @@ const Index = () => {
         <a
           className={styled.button}
           onClick={() => {
-            navigate(TUTORIAL_ROUTE);
+            navigate(LOGIN_ROUTE);
           }}
         >
           PLAY
