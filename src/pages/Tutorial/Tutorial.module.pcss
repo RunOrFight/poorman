@@ -344,6 +344,10 @@ body {
 }
 
 .cardClassImg__red {
+  @media (max-width: 1024px) {
+  //height: 333px;
+  }
+
   @media (max-width: 850px) {
     height: 430px;
   }
@@ -354,6 +358,10 @@ body {
 }
 
 .cardClassImg__blue {
+
+  @media (max-width: 1024px) {
+  //height: 333px;
+  }
 
   @media (max-width: 650px) {
     width: 144px;
@@ -439,35 +447,60 @@ body {
   }
 }
 
-.cardClassItem__red {
-  padding-right: 33px;
+.cardClassItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 255px;
 
   @media (max-width: 1024px) {
-    padding-right: 0;
+    width: 215px;
+  //height: 100%;
+  }
+
+  @media (max-width: 850px) {
+    width: 169px;
+  //height: 100%;
+  }
+
+  @media (max-width: 650px) {
+  //width: 165px;
+  }
+}
+
+.cardClassItem__red {
+  margin-right: 110px;
+  width: 170px;
+
+  @media (max-width: 1024px) {
+    margin-right: 50px;
+
   }
 }
 
 .cardClassItem__blue {
-  padding-right: 132px;
+  margin-right: 132px;
 
   @media (max-width: 1024px) {
-    padding-right: 30px;
+  //padding-right: 0px;
+    margin-right: 75px;
   }
 
   @media (max-width: 850px) {
-    padding-right: 0px;
+  //padding-right: 0px;
   }
 }
 
 .cardClassItem__green {
-  padding-right: 80px;
+  margin-right: 80px;
 
   @media (max-width: 1024px) {
-    padding-right: 60px;
+  //padding-right: 0px;
+    margin-right: 35px;
   }
 
   @media (max-width: 850px) {
-    padding-right: 0px;
+  //padding-right: 0px;
   }
 }
 
@@ -487,7 +520,11 @@ body {
 }
 
 .classText__red {
-  margin-right: 70px;
+  margin-right: 0;
+
+  @media (max-width: 1024px) {
+    margin-right: 0;
+  }
 
   @media (max-width: 850px) {
     margin-right: 0;
@@ -495,7 +532,12 @@ body {
 }
 
 .classText__blue {
-  margin-left: 10px;
+  margin-left: 0;
+
+  @media (max-width: 1024px) {
+    margin-left: 0;
+
+  }
 
   @media (max-width: 850px) {
     margin-left: 0;
@@ -504,24 +546,11 @@ body {
 
 .cardClassImg {
   padding: 30px 0 0 0;
+  height: 333px;
 
   @media (max-width: 1024px) {
     padding: 19px 0 0 0;
-  }
-}
-
-.cardClassItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: 850px) {
-    width: 169px;
-  //height: 100%;
-  }
-
-  @media (max-width: 650px) {
-  //width: 165px;
+    height: 289px;
   }
 }
 
