@@ -3,6 +3,7 @@ body {
 }
 
 .wrapper {
+  position: relative;
   font-family: 'Jost', sans-serif;
   font-style: normal;
   color: #fff;
@@ -47,9 +48,7 @@ body {
     font-size: 14px;
   }
 
-
   @media (min-width: 768px) {
-
     font-size: 24px;
   }
 }
@@ -70,7 +69,6 @@ body {
   font-size: 21px;
   font-weight: 700;
   line-height: 122.5%;
-
 
   @media (min-width: 768px) {
     font-size: 42px;
@@ -270,4 +268,37 @@ body {
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+}
+
+.tag {
+  position: sticky;
+  left: 0;
+  top: 20%;
+  padding: 12px;
+  background-color: #ff4a59;
+  z-index: 2;
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 0px 5px 5px 0px;
+  background: linear-gradient(#283ded, #7b7dff);
+}
+
+.tag:before {
+  content: '';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.tag:hover:before {
+  margin-right: 10px;
+  opacity: 1;
+  content: 'Plinko';
+  animation: changeContent 1s linear;
 }

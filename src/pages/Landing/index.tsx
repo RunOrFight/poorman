@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { pointer_down, adv1, adv2, adv3, adv4, adv5, logo, cards_set } from '../../assets';
 import styled from './Landing.module.pcss';
 import { LOGIN_ROUTE } from '../../constants';
+import { PlinkoIcon } from '../../icons/PlinkoIcon';
 
 const feature = [
   {
@@ -44,6 +45,18 @@ const Index = () => {
 
   return (
     <div className={styled.wrapper}>
+      <div
+        className={styled.tag}
+        onClick={() =>
+          window.open(
+            'https://65231aac1e9f467913827977--admirable-bombolone-1bcd5b.netlify.app/',
+            '_blank',
+            'width=650,height=650,menubar=no,location=no,scrollbars=no,status=no,toolbar=no'
+          )
+        }
+      >
+        <PlinkoIcon />
+      </div>
       <section className={styled.headerContainer}>
         <div className={clsx(styled.container)}>
           <img className={styled.logo} src={logo} alt="Cybercats" width="339px" height="61px" />

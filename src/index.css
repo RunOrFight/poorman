@@ -147,10 +147,6 @@ h6 {
     /*background-image: url(assets/hand.png);*/
 }
 
-#root {
-    width: 100vw;
-    height: 100vh;
-}
 
 #canvas-overlay{
   width: 100vw;
