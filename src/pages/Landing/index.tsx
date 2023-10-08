@@ -51,7 +51,7 @@ const Index = () => {
           window.open(
             'https://65231aac1e9f467913827977--admirable-bombolone-1bcd5b.netlify.app/',
             '_blank',
-            'width=650,height=650,menubar=no,location=no,scrollbars=no,status=no,toolbar=no'
+            'width=1400,height=650,menubar=no,location=no,scrollbars=no,status=no,toolbar=no'
           )
         }
       >
